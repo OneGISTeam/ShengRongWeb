@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+	<!-- 设置文件上传最大限制为50M -->
+	<constant name="struts.multipart.maxSize" value="52428800"/>
+	<constant name="struts.devMode" value="true" />
+	<package name="common" namespace="/" extends="struts-default">
+		<!-- 系统初始化 -->
+		<action name="enter" class="com.shengrong.manager.actions.Login">
+			<result name="success">/Account/login.jsp</result>
+			<result name="input">/Account/register.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<!-- 超级管理员注册 -->
+		<action name="master*" class="com.shengrong.manager.actions.Login" method="{1}">
+			<result name="success">/Statistics/statistic.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+	</package>
+</struts>    

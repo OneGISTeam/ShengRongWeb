@@ -1,0 +1,27 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-CN">
+  <head>
+    <base href="<%=basePath%>">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>河南晟荣建筑工业科技有限公司-企业门户网站后台管理系统</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="description" content="河南晟荣建筑工业科技有限公司-企业门户网站后台管理系统">
+	<meta http-equiv="refresh" content="0;URL=enter.action" content="text/html; charset=utf-8">
+	
+  </head>
+  
+<body>
+	欢迎使用河南晟荣建筑工业科技有限公司-企业门户网站后台管理系统，正在跳转，请稍后...
+	
+</body>
+</html>

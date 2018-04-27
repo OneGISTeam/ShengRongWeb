@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table name="carousel" catalog="shengrong">
+		<column name="image" type="blob"></column>
+	</table>
+	<table name="manager" catalog="shengrong">
+		<column name="portrait" type="blob"></column>
+	</table>
+	<table name="news" catalog="shengrong">
+		<column name="image" type="blob"></column>
+	</table>
+	<table name="teamprocess" catalog="shengrong">
+		<column name="pos" type="blob"></column>
+		<column name="image" type="blob"></column>
+	</table>
+</hibernate-reverse-engineering>

@@ -1,0 +1,21 @@
+#MyEclipse Hibernate Properties
+#Fri Apr 27 14:47:19 CST 2018
+genBasicCompId=false
+sessionFactoryName=com.shengrong.hibernate.HibernateSessionFactory
+profile=
+daoSFId=
+jndiPath=
+detectM2M=false
+reStrategyClass=
+detectO2O=false
+springDaoFile=
+useJavaTypes=true
+keyGenerator=assigned
+genVersionTag=false
+sessionFactoryId=
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=/ShengRongManager/hibernate.reveng.xml
+configFile=/ShengRongManager/src/hibernate.cfg.xml
+createConfigFile=true
+baseDaoClass=com.shengrong.hibernate.BaseHibernateDAO
