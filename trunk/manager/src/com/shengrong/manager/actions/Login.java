@@ -2,10 +2,9 @@ package com.shengrong.manager.actions;
 
 import java.security.MessageDigest;
 import java.util.List;
+import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
-import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.Transaction;
 
 import sun.misc.BASE64Encoder;
@@ -15,7 +14,7 @@ import com.shengrong.hibernate.MasterDAO;
 import com.shengrong.hibernate.Role;
 import com.shengrong.hibernate.RoleDAO;
 
-public class Login extends ActionBase {
+public class Login extends ActionBase implements SessionAware{
 
 	/**
 	 * 
@@ -27,6 +26,14 @@ public class Login extends ActionBase {
 	private String password;
 	
 	private String roleid;
+	
+	private Map<String, Object> mySession;
+	
+	@Override
+	public void setSession(Map<String, Object> session) {
+		// TODO Auto-generated method stub
+		this.mySession = session;
+	}
 	
 	public String getRoleid(){
 		return this.roleid;
@@ -131,20 +138,7 @@ public class Login extends ActionBase {
 			return ERROR;
 		}
 		
-		//获取session对象，当session为空时不要创建新的session
-		HttpSession session = ServletActionContext.getRequest().getSession(false);
-		if(session == null){
-			this.setMessage("会话过期，请重新登陆！");
-			this.setHref("enter.action");
-			return ERROR;
-		}
-		
-		//如果session中存在name，则说明已登录
-		if(session.getAttribute("managername") != null){
-			return SUCCESS;			
-		}
-		
-		//如果session中没有managername字段，则需要验证登录信息
+		//验证登录信息
 		String encodePassword = null;
 		try{
 			MessageDigest md5 = MessageDigest.getInstance("MD5");
@@ -172,19 +166,20 @@ public class Login extends ActionBase {
 				return ERROR;
 			}else{
 				//登录成功
+				mySession.put("loginFlag", "login");
 				return SUCCESS;
 			}
 			
 		}else if(this.roleid.equals("admin")){
 			//普通管理员身份登录
 			
+			return SUCCESS;
 		}else{
 			this.setMessage("系统角色中仅有master和admin，但登录时出现了其余角色，请联系系统管理员！");
 			this.setHref("enter.action");
 			return ERROR;
 		}
-		
-		
-		return SUCCESS;
 	}
+
+	
 }

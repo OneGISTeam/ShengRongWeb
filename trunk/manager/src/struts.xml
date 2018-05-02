@@ -5,7 +5,17 @@
 	<!-- 设置文件上传最大限制为50M -->
 	<constant name="struts.multipart.maxSize" value="52428800"/>
 	<constant name="struts.devMode" value="true" />
+	<include file="manager-homepage.xml"></include>
 	<package name="common" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginStatus" class="com.shengrong.manager.interceptors.LoginStatus">
+			</interceptor>
+		</interceptors>
+		<global-results>
+            <!-- 逻辑名为login的结果，映射到/login.jsp页面 -->
+            <result name="login">/Account/login.jsp</result>
+        </global-results>
+		
 		<!-- 系统初始化 -->
 		<action name="enter" class="com.shengrong.manager.actions.Login">
 			<result name="success">/Account/login.jsp</result>
@@ -17,6 +27,8 @@
 		<action name="master*" class="com.shengrong.manager.actions.Login" method="{1}">
 			<result name="success">/Statistics/statistic.jsp</result>
 			<result name="error">error.jsp</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
 		</action>
 	</package>
 </struts>    

@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <a href="#"><i class="fa fa-sitemap"></i>公司首页管理<span class="fa arrow"></span></a>
                       <ul class="nav nav-second-level">
                           <li>
-                              <a href="#">轮播消息</a>
+                              <a href="<%=basePath %>homepage/carousel/findAll.action">轮播消息</a>
                           </li>
                           <li>
                               <a href="#">公司简介</a>

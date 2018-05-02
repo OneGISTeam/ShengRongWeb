@@ -23,7 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="<%=basePath%>styles.css" rel="stylesheet"/>
 	<!-- Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    
   </head>
   
 <body>
@@ -43,8 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ol> 
 			</div>
 			<div id="page-inner">
-				fafafdijadjfoao<br>
-				fafafdijadjfoao<br>
+				河南晟荣建筑工业科技有限公司-统计页面
 				<footer>
 					<p>Copyright &copy; 2018.河南晟荣建筑工业科技有限公司版权所有.</p>
 				</footer>
