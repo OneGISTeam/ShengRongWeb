@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/4/27 14:46:16                           */
+/* Created on:     2018/5/3 13:15:28                            */
 /*==============================================================*/
 
 
@@ -26,11 +26,11 @@ drop table if exists teamprocess;
 create table business
 (
    businessid           int not null auto_increment,
-   publisher            int not null,
-   name                 char(24) not null,
+   managername          char(32),
    des                  char(255) not null,
    icon                 char(64) not null,
    datetime             datetime not null,
+   businessname         char(32) not null,
    primary key (businessid)
 );
 
@@ -42,7 +42,7 @@ alter table business comment '业务范围表';
 create table carousel
 (
    carouselid           int not null auto_increment,
-   publichser           int,
+   name                 char(32),
    title                char(32) not null,
    content              char(255) not null,
    datetime             datetime not null,
@@ -58,7 +58,7 @@ alter table carousel comment '用于记录网站的首页轮播消息，照片�
 create table introduction
 (
    introductionid       int not null auto_increment,
-   publisher            int not null,
+   name                 char(32),
    content              text not null,
    datetime             datetime not null,
    primary key (introductionid)
@@ -71,14 +71,13 @@ alter table introduction comment '公司简介表';
 /*==============================================================*/
 create table manager
 (
-   managerid            int not null auto_increment,
-   roleid               char(24) not null,
    name                 char(32) not null,
+   roleid               char(24) not null,
    regdatetime          datetime not null,
    portrait             mediumblob not null,
    sex                  bool not null,
    password             char(64) not null,
-   primary key (managerid)
+   primary key (name)
 );
 
 alter table manager comment '管理员表';
@@ -88,7 +87,7 @@ alter table manager comment '管理员表';
 /*==============================================================*/
 create table master
 (
-   mastername           char(24) not null,
+   mastername           char(32) not null,
    roleid               char(24),
    password             char(64) not null,
    primary key (mastername)
@@ -102,7 +101,7 @@ alter table master comment '超级管理员，全局唯一';
 create table news
 (
    newsid               int not null auto_increment,
-   publisher            int not null,
+   name                 char(32),
    newsdate             date not null,
    publishdatetime      datetime not null,
    title                char(64) not null,
@@ -137,7 +136,7 @@ INSERT INTO role values
 create table teamprocess
 (
    processid            int not null auto_increment,
-   publihser            int,
+   name                 char(32),
    location             char(32) not null,
    pos                  blob,
    brief                char(255) not null,
@@ -148,14 +147,14 @@ create table teamprocess
 
 alter table teamprocess comment '团队进程表';
 
-alter table business add constraint FK_business_manager foreign key (publisher)
-      references manager (managerid) on delete restrict on update restrict;
+alter table business add constraint FK_business_manager foreign key (managername)
+      references manager (name) on delete restrict on update restrict;
 
-alter table carousel add constraint FK_carousel_manager foreign key (publichser)
-      references manager (managerid) on delete restrict on update restrict;
+alter table carousel add constraint FK_carousel_manager foreign key (name)
+      references manager (name) on delete restrict on update restrict;
 
-alter table introduction add constraint FK_introduction_manager foreign key (publisher)
-      references manager (managerid) on delete restrict on update restrict;
+alter table introduction add constraint FK_introduction_manager foreign key (name)
+      references manager (name) on delete restrict on update restrict;
 
 alter table manager add constraint FK_manager_role foreign key (roleid)
       references role (roleid) on delete restrict on update restrict;
@@ -163,9 +162,9 @@ alter table manager add constraint FK_manager_role foreign key (roleid)
 alter table master add constraint FK_master_role foreign key (roleid)
       references role (roleid) on delete restrict on update restrict;
 
-alter table news add constraint FK_news_manager foreign key (publisher)
-      references manager (managerid) on delete restrict on update restrict;
+alter table news add constraint FK_news_manager foreign key (name)
+      references manager (name) on delete restrict on update restrict;
 
-alter table teamprocess add constraint FK_teamprocess_manager foreign key (publihser)
-      references manager (managerid) on delete restrict on update restrict;
+alter table teamprocess add constraint FK_teamprocess_manager foreign key (name)
+      references manager (name) on delete restrict on update restrict;
 
