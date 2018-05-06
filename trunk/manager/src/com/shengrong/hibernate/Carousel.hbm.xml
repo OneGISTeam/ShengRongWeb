@@ -11,7 +11,7 @@
             <generator class="increment" />
         </id>
         <many-to-one name="manager" class="com.shengrong.hibernate.Manager" fetch="select">
-            <column name="publichser" />
+            <column name="name" length="32" />
         </many-to-one>
         <property name="title" type="java.lang.String">
             <column name="title" length="32" not-null="true" />

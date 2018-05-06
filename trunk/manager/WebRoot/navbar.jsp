@@ -21,27 +21,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </nav>
 <nav class="navbar-default navbar-side" role="navigation">
 	<div class="sidebar-collapse">
-              <ul class="nav" id="main-menu">
-              	<li>
-                      <a class="active-menu" href="index.html"><i class="fa fa-dashboard"></i>网站统计工具</a>
-                  </li>
-                  <li>
-                      <a href="#"><i class="fa fa-sitemap"></i>公司首页管理<span class="fa arrow"></span></a>
-                      <ul class="nav nav-second-level">
-                          <li>
-                              <a href="<%=basePath %>homepage/carousel/findAll.action">轮播消息</a>
-                          </li>
-                          <li>
-                              <a href="#">公司简介</a>
-                          </li>
-                          <li>
-                              <a href="#">业务范围</a>
-                          </li>
-                          <li>
-                              <a href="#">团队足迹</a>
-                          </li>
-                      </ul>
-                  </li>
-              </ul>
-          </div>
+        <ul class="nav" id="main-menu">
+        	<li>
+                <a href="index.html"><i class="fa fa-dashboard"></i>网站统计工具</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-sitemap"></i>公司首页管理<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                    	<!-- class="activate-menu" -->
+                        <a href="<%=basePath %>homepage/carousels.action">轮播消息</a>
+                    </li>
+                    <li>
+                        <a href="<%=basePath %>homepage/introductions.action">公司简介</a>
+                    </li>
+                    <li>
+                        <a href="<%=basePath %>homepage/businesses.action">业务范围</a>
+                    </li>
+                    <li>
+                        <a href="<%=basePath %>homepage/teamprocesses.action">团队足迹</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </nav>

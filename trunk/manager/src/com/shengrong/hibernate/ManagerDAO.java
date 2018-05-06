@@ -1,6 +1,5 @@
 package com.shengrong.hibernate;
 
-import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
@@ -24,7 +23,7 @@ import org.slf4j.LoggerFactory;
 public class ManagerDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory.getLogger(ManagerDAO.class);
 	// property constants
-	public static final String NAME = "name";
+	public static final String PORTRAIT = "portrait";
 	public static final String SEX = "sex";
 	public static final String PASSWORD = "password";
 
@@ -50,7 +49,7 @@ public class ManagerDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Manager findById(java.lang.Integer id) {
+	public Manager findById(java.lang.String id) {
 		log.debug("getting Manager instance with id: " + id);
 		try {
 			Manager instance = (Manager) getSession().get(
@@ -92,8 +91,8 @@ public class ManagerDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByName(Object name) {
-		return findByProperty(NAME, name);
+	public List findByPortrait(Object portrait) {
+		return findByProperty(PORTRAIT, portrait);
 	}
 
 	public List findBySex(Object sex) {

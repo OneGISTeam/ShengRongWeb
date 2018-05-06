@@ -1,6 +1,5 @@
 package com.shengrong.hibernate;
 
-import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,11 +12,10 @@ public class Manager implements java.io.Serializable {
 
 	// Fields
 
-	private Integer managerid;
-	private Role role;
 	private String name;
+	private Role role;
 	private Timestamp regdatetime;
-	private Blob portrait;
+	private String portrait;
 	private Boolean sex;
 	private String password;
 	private Set businesses = new HashSet(0);
@@ -33,10 +31,10 @@ public class Manager implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Manager(Role role, String name, Timestamp regdatetime,
-			Blob portrait, Boolean sex, String password) {
-		this.role = role;
+	public Manager(String name, Role role, Timestamp regdatetime,
+			String portrait, Boolean sex, String password) {
 		this.name = name;
+		this.role = role;
 		this.regdatetime = regdatetime;
 		this.portrait = portrait;
 		this.sex = sex;
@@ -44,11 +42,11 @@ public class Manager implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Manager(Role role, String name, Timestamp regdatetime,
-			Blob portrait, Boolean sex, String password, Set businesses,
+	public Manager(String name, Role role, Timestamp regdatetime,
+			String portrait, Boolean sex, String password, Set businesses,
 			Set teamprocesses, Set introductions, Set newses, Set carousels) {
-		this.role = role;
 		this.name = name;
+		this.role = role;
 		this.regdatetime = regdatetime;
 		this.portrait = portrait;
 		this.sex = sex;
@@ -62,12 +60,12 @@ public class Manager implements java.io.Serializable {
 
 	// Property accessors
 
-	public Integer getManagerid() {
-		return this.managerid;
+	public String getName() {
+		return this.name;
 	}
 
-	public void setManagerid(Integer managerid) {
-		this.managerid = managerid;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Role getRole() {
@@ -78,14 +76,6 @@ public class Manager implements java.io.Serializable {
 		this.role = role;
 	}
 
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Timestamp getRegdatetime() {
 		return this.regdatetime;
 	}
@@ -94,11 +84,11 @@ public class Manager implements java.io.Serializable {
 		this.regdatetime = regdatetime;
 	}
 
-	public Blob getPortrait() {
+	public String getPortrait() {
 		return this.portrait;
 	}
 
-	public void setPortrait(Blob portrait) {
+	public void setPortrait(String portrait) {
 		this.portrait = portrait;
 	}
 

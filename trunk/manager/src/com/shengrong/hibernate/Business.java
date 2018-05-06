@@ -12,10 +12,10 @@ public class Business implements java.io.Serializable {
 
 	private Integer businessid;
 	private Manager manager;
-	private String name;
 	private String des;
 	private String icon;
 	private Timestamp datetime;
+	private String businessname;
 
 	// Constructors
 
@@ -23,14 +23,23 @@ public class Business implements java.io.Serializable {
 	public Business() {
 	}
 
-	/** full constructor */
-	public Business(Manager manager, String name, String des, String icon,
-			Timestamp datetime) {
-		this.manager = manager;
-		this.name = name;
+	/** minimal constructor */
+	public Business(String des, String icon, Timestamp datetime,
+			String businessname) {
 		this.des = des;
 		this.icon = icon;
 		this.datetime = datetime;
+		this.businessname = businessname;
+	}
+
+	/** full constructor */
+	public Business(Manager manager, String des, String icon,
+			Timestamp datetime, String businessname) {
+		this.manager = manager;
+		this.des = des;
+		this.icon = icon;
+		this.datetime = datetime;
+		this.businessname = businessname;
 	}
 
 	// Property accessors
@@ -49,14 +58,6 @@ public class Business implements java.io.Serializable {
 
 	public void setManager(Manager manager) {
 		this.manager = manager;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getDes() {
@@ -81,6 +82,14 @@ public class Business implements java.io.Serializable {
 
 	public void setDatetime(Timestamp datetime) {
 		this.datetime = datetime;
+	}
+
+	public String getBusinessname() {
+		return this.businessname;
+	}
+
+	public void setBusinessname(String businessname) {
+		this.businessname = businessname;
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.shengrong.hibernate;
 
-import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -19,7 +18,7 @@ public class News implements java.io.Serializable {
 	private String title;
 	private String content;
 	private Boolean isheadline;
-	private Blob image;
+	private String image;
 
 	// Constructors
 
@@ -27,9 +26,23 @@ public class News implements java.io.Serializable {
 	public News() {
 	}
 
+	/** minimal constructor */
+	public News(Integer newsid, Date newsdate, Timestamp publishdatetime,
+			String title, String content, Boolean isheadline, String image) {
+		this.newsid = newsid;
+		this.newsdate = newsdate;
+		this.publishdatetime = publishdatetime;
+		this.title = title;
+		this.content = content;
+		this.isheadline = isheadline;
+		this.image = image;
+	}
+
 	/** full constructor */
-	public News(Manager manager, Date newsdate, Timestamp publishdatetime,
-			String title, String content, Boolean isheadline, Blob image) {
+	public News(Integer newsid, Manager manager, Date newsdate,
+			Timestamp publishdatetime, String title, String content,
+			Boolean isheadline, String image) {
+		this.newsid = newsid;
 		this.manager = manager;
 		this.newsdate = newsdate;
 		this.publishdatetime = publishdatetime;
@@ -97,11 +110,11 @@ public class News implements java.io.Serializable {
 		this.isheadline = isheadline;
 	}
 
-	public Blob getImage() {
+	public String getImage() {
 		return this.image;
 	}
 
-	public void setImage(Blob image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 

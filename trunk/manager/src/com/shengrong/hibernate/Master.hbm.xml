@@ -7,7 +7,7 @@
 <hibernate-mapping>
     <class name="com.shengrong.hibernate.Master" table="master" catalog="shengrong">
         <id name="mastername" type="java.lang.String">
-            <column name="mastername" length="24" />
+            <column name="mastername" length="32" />
             <generator class="assigned" />
         </id>
         <many-to-one name="role" class="com.shengrong.hibernate.Role" fetch="select">

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="homepage" namespace="/homepage" extends="struts-default,json-default">
+		<interceptors>
+			<interceptor name="loginStatus" class="com.shengrong.manager.interceptors.LoginStatus">
+			</interceptor>
+		</interceptors>
+		<global-results>
+            <!-- 逻辑名为login的结果，映射到/login.jsp页面 -->
+            <result name="login">/Account/login.jsp</result>
+        </global-results>
+		
+		<!-- 查找所有的carousel -->
+		<action name="carousels" class="com.shengrong.manager.actions.CarouselAction">
+			<result name="success">/HomePageManage/carousel.jsp</result>
+			<result name="error">error.jsp</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		<!-- 提交或增加carousel -->
+		<action name="saveOrUpdateCarousel" class="com.shengrong.manager.actions.CarouselAction" method="saveOrUnpdate">
+			<result type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		
+		<!-- 公司简介页面跳转 -->	
+		<action name="introductions" class="com.shengrong.manager.actions.IntroductionAction">
+			<result name="success">/HomePageManage/introduction.jsp</result>
+			<result name="error">error.jsp</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		<!-- 异步分页查询查询introduction -->
+		<action name="pagingQueryIntroduction" class="com.shengrong.manager.actions.IntroductionAction" method="pagingQuery">
+			<result type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		<!-- 新增公司简介 -->
+		<action name="saveIntroduction" class="com.shengrong.manager.actions.IntroductionAction" method="save">
+			<result name="success" type="chain">
+				<param name="actionName">introductions</param>
+				<param name="namespace">/homepage</param>
+			</result>
+			<result name="error">error.jsp</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		<!-- 删除公司简介 -->
+		<action name="deleteIntroduction" class="com.shengrong.manager.actions.IntroductionAction" method="delete">
+			<result type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		
+		<!-- 业务范围页面跳转 -->
+		<action name="businesses" class="com.shengrong.manager.actions.BusinessAction">
+			<result name="success">/HomePageManage/business.jsp</result>
+			<result name="error">error.jsp</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>	
+		<!-- 增加公司业务 -->
+		<action name="saveBusiness" class="com.shengrong.manager.actions.BusinessAction" method="save">
+			<result name="success" type="chain">
+				<param name="actionName">businesses</param>
+				<param name="namespace">/homepage</param>
+			</result>
+			<result name="error">error.jsp</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		<!-- 删除公司业务 -->
+		<action name="deleteBusiness" class="com.shengrong.manager.actions.BusinessAction" method="delete">
+			<result type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		
+		<!-- 团队足迹页面跳转 -->
+		<action name="teamprocesses" class="com.shengrong.manager.actions.TeamProcessAction">
+			<result name="success">/HomePageManage/teamprocess.jsp</result>
+			<result name="error">error.jsp</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		<!-- 添加团队足迹 -->
+		<action name="saveTeamprocess" class="com.shengrong.manager.actions.TeamProcessAction" method="save">
+			<result name="success" type="chain">
+				<param name="actionName">teamprocesses</param>
+				<param name="namespace">/homepage</param>
+			</result>
+			<result name="error">/error.jsp</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		<!-- 删除团队足迹 -->
+		<action name="deleteTeamprocess" class="com.shengrong.manager.actions.TeamProcessAction" method="delete">
+			<result type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<result name="error">/error.jsp</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+	</package>
+</struts>

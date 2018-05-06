@@ -21,6 +21,12 @@ public class Introduction implements java.io.Serializable {
 	public Introduction() {
 	}
 
+	/** minimal constructor */
+	public Introduction(String content, Timestamp datetime) {
+		this.content = content;
+		this.datetime = datetime;
+	}
+
 	/** full constructor */
 	public Introduction(Manager manager, String content, Timestamp datetime) {
 		this.manager = manager;

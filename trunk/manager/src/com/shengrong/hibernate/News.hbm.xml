@@ -8,10 +8,10 @@
     <class name="com.shengrong.hibernate.News" table="news" catalog="shengrong">
         <id name="newsid" type="java.lang.Integer">
             <column name="newsid" />
-            <generator class="increment" />
+            <generator class="assigned" />
         </id>
         <many-to-one name="manager" class="com.shengrong.hibernate.Manager" fetch="select">
-            <column name="publisher" not-null="true" />
+            <column name="name" length="32" />
         </many-to-one>
         <property name="newsdate" type="java.util.Date">
             <column name="newsdate" length="10" not-null="true" />
@@ -28,7 +28,7 @@
         <property name="isheadline" type="java.lang.Boolean">
             <column name="isheadline" not-null="true" />
         </property>
-        <property name="image" type="blob">
+        <property name="image" type="java.lang.String">
             <column name="image" not-null="true" />
         </property>
     </class>

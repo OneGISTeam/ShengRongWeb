@@ -8,7 +8,7 @@
     <class name="com.shengrong.hibernate.Role" table="role" catalog="shengrong">
         <id name="roleid" type="java.lang.String">
             <column name="roleid" length="24" />
-            <generator class="increment" />
+            <generator class="assigned" />
         </id>
         <property name="rolename" type="java.lang.String">
             <column name="rolename" length="24" not-null="true" />
@@ -21,6 +21,12 @@
                 <column name="roleid" length="24" not-null="true" />
             </key>
             <one-to-many class="com.shengrong.hibernate.Manager" />
+        </set>
+        <set name="masters" inverse="true">
+            <key>
+                <column name="roleid" length="24" />
+            </key>
+            <one-to-many class="com.shengrong.hibernate.Master" />
         </set>
     </class>
 </hibernate-mapping>

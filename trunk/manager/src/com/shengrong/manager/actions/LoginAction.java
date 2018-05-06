@@ -9,12 +9,14 @@ import org.hibernate.Transaction;
 
 import sun.misc.BASE64Encoder;
 
+import com.shengrong.hibernate.Manager;
+import com.shengrong.hibernate.ManagerDAO;
 import com.shengrong.hibernate.Master;
 import com.shengrong.hibernate.MasterDAO;
 import com.shengrong.hibernate.Role;
 import com.shengrong.hibernate.RoleDAO;
 
-public class Login extends ActionBase implements SessionAware{
+public class LoginAction extends ActionBase implements SessionAware{
 
 	/**
 	 * 
@@ -123,7 +125,7 @@ public class Login extends ActionBase implements SessionAware{
 		
 		this.setMessage("您已成功注册超级管理员！");
 		this.setHref("enter.action");
-		return SUCCESS;
+		return LOGIN;
 	}
 	
 	/**
@@ -167,19 +169,35 @@ public class Login extends ActionBase implements SessionAware{
 			}else{
 				//登录成功
 				mySession.put("loginFlag", "login");
+				mySession.put("loginRole", Role.MASTER);
+				//mySession.put("loginName", master.getMastername());
 				return SUCCESS;
 			}
 			
 		}else if(this.roleid.equals("admin")){
 			//普通管理员身份登录
+			Manager manager = new Manager();
+			manager.setName(this.mastername);
+			manager.setPassword(this.password);
+			ManagerDAO managerDao = new ManagerDAO();
 			
-			return SUCCESS;
+			@SuppressWarnings("unchecked")
+			List<Manager> result = managerDao.findByExample(manager);
+			if(result.size() == 0){
+				this.setMessage("账号或密码错误！");
+				this.setHref("enter.action");
+				return ERROR;
+			}else{
+				//登录成功
+				mySession.put("loginFlag", "login");
+				mySession.put("loginRole", Role.MANAGER);
+				mySession.put("loginName", manager.getName());
+				return SUCCESS;
+			}
 		}else{
 			this.setMessage("系统角色中仅有master和admin，但登录时出现了其余角色，请联系系统管理员！");
 			this.setHref("enter.action");
 			return ERROR;
 		}
 	}
-
-	
 }

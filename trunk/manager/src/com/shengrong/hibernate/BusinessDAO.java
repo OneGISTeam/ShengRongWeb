@@ -23,9 +23,9 @@ public class BusinessDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(BusinessDAO.class);
 	// property constants
-	public static final String NAME = "name";
 	public static final String DES = "des";
 	public static final String ICON = "icon";
+	public static final String BUSINESSNAME = "businessname";
 
 	public void save(Business transientInstance) {
 		log.debug("saving Business instance");
@@ -91,16 +91,16 @@ public class BusinessDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByName(Object name) {
-		return findByProperty(NAME, name);
-	}
-
 	public List findByDes(Object des) {
 		return findByProperty(DES, des);
 	}
 
 	public List findByIcon(Object icon) {
 		return findByProperty(ICON, icon);
+	}
+
+	public List findByBusinessname(Object businessname) {
+		return findByProperty(BUSINESSNAME, businessname);
 	}
 
 	public List findAll() {

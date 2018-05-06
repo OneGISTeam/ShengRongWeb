@@ -5,7 +5,7 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
-import com.shengrong.manager.actions.Login;
+import com.shengrong.manager.actions.LoginAction;
 
 public class LoginStatus extends AbstractInterceptor {
 
@@ -14,7 +14,7 @@ public class LoginStatus extends AbstractInterceptor {
 		// TODO Auto-generated method stub
 		Object action = invocation.getAction();
 		
-		if(action instanceof Login){
+		if(action instanceof LoginAction){
 			return invocation.invoke();
 		}
 		

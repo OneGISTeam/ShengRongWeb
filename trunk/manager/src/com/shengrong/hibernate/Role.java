@@ -10,15 +10,15 @@ import java.util.Set;
 public class Role implements java.io.Serializable {
 
 	//内部权限说明
-	public static int MASTER = 1;//超级管理员
-	public static int MANAGER = 2;//普通管理员
-		
+	final public static int MASTER = 1;//超级管理员
+	final public static int MANAGER = 2;//普通管理员
+	
 	// Fields
-
 	private String roleid;
 	private String rolename;
 	private String des;
 	private Set managers = new HashSet(0);
+	private Set masters = new HashSet(0);
 
 	// Constructors
 
@@ -27,16 +27,20 @@ public class Role implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Role(String rolename, String des) {
+	public Role(String roleid, String rolename, String des) {
+		this.roleid = roleid;
 		this.rolename = rolename;
 		this.des = des;
 	}
 
 	/** full constructor */
-	public Role(String rolename, String des, Set managers) {
+	public Role(String roleid, String rolename, String des, Set managers,
+			Set masters) {
+		this.roleid = roleid;
 		this.rolename = rolename;
 		this.des = des;
 		this.managers = managers;
+		this.masters = masters;
 	}
 
 	// Property accessors
@@ -71,6 +75,14 @@ public class Role implements java.io.Serializable {
 
 	public void setManagers(Set managers) {
 		this.managers = managers;
+	}
+
+	public Set getMasters() {
+		return this.masters;
+	}
+
+	public void setMasters(Set masters) {
+		this.masters = masters;
 	}
 
 }
