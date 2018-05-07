@@ -17,8 +17,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	
-	<link href="<%=basePath %>Plugins/bootstrap/bootstrap.css" rel="stylesheet" type='text/css'/>
-	<link href="<%=basePath %>Portal/style.css" rel="stylesheet" type='text/css'/>
+	<link href="<%=basePath%>Plugins/bootstrap/bootstrap.css" rel="stylesheet" type='text/css'/>
+	<link href="<%=basePath%>Portal/style.css" rel="stylesheet" type='text/css'/>
 	<script src="<%=basePath%>Plugins/jquery/jquery-1.11.1.min.js"></script>
 	<script src="<%=basePath%>Plugins/bootstrap/bootstrap.js"></script>
 	
@@ -90,20 +90,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.html">公司首页 <span class="sr-only">(current)</span></a></li>
+						<li class="active"><a href="homePage.jsp">公司首页 <span class="sr-only">(current)</span></a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品中心<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="about.html">About</a></li>
-										<li><a href="services.html">Services</a></li>
-										<li><a href="agents.html">Agents</a></li>
+										<li><a href="Products/coffeeMachine.jsp">咖啡机</a></li>
+										<li><a href="Products/coffeeMachine.jsp">消防器材</a></li>
+										<!-- <li><a href="agents.html">Agents</a></li>
 										<li><a href="forrent.html">For Rent</a></li>
 										<li><a href="forsale.html">For Sale</a></li>
 										<li><a href="pricing.html">Pricing</a></li>
 										<li><a href="faqs.html">FAQs</a></li>
 										<li><a href="idxpress.html">IDXpress</a></li>
 										<li><a href="terms.html">Terms of Use</a></li>
-										<li><a href="privacy.html">Privacy Policy</a></li>
+										<li><a href="privacy.html">Privacy Policy</a></li> -->
 									</ul>
 							</li>
 							<li class="dropdown ">
@@ -122,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<li><a href="4columnsgallery.html">4 Columns Gallery</a></li>
 									</ul>
 							</li>
-						<li><a href="contact.html">关于我们</a></li>
+						<li><a href="Aboutus/aboutshengrong.jsp">关于我们</a></li>
 					</ul>
 					<div class="clearfix"></div>
 				</div>
@@ -314,6 +314,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</script>
 	</div>
 	<!-- 添加pannel，动态链接方式，需要jsp重新编译 -->
-	<jsp:include page="./Portal/footer.jsp" flush="true" />
+	<jsp:include page="footer.jsp" flush="true" />
 </body>
 </html>
