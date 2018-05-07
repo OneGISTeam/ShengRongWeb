@@ -38,6 +38,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				font-weight: bold;
 				color: #cc5522;
 			}
+		.previewImage{
+			width:158px;
+			height:158px
+		}
 	</style>
   </head>
   
@@ -172,7 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   	   
 					    <div class="timeline">
 							   <div class="timeline-content">
-							       <div class="circle"><span><img class="fa fa-globe"></i></span></div>
+							       <div class="circle"><span><img class="previewImage" src="<%=basePath %>Images/p1.png"></i></span></div>
 								   <div class="content">
 								       <span class="year">2013 - 2014</span>
 									   <h6 class="time-title">公司起航</h6>
@@ -202,7 +206,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					    <div class="timeline">
 						<div class="timeline-content">
-							<div class="circle"><span><i class="fa fa-briefcase"></i></span></div>
+							<div class="circle"><span><i class="fa fa-bandcamp"></i></span></div>
 							<div class="content">
 								<span class="year">2015 - 2016</span>
 								<h6 class="time-title">公司起航</h6>
