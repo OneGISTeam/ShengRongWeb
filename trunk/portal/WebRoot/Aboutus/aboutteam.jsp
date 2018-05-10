@@ -72,24 +72,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品中心<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="about.html">About</a></li>
-										<li><a href="services.html">Services</a></li>
-										<li><a href="agents.html">Agents</a></li>
-										<li><a href="forrent.html">For Rent</a></li>
-										<li><a href="forsale.html">For Sale</a></li>
-										<li><a href="pricing.html">Pricing</a></li>
-										<li><a href="faqs.html">FAQs</a></li>
-										<li><a href="idxpress.html">IDXpress</a></li>
-										<li><a href="terms.html">Terms of Use</a></li>
-										<li><a href="privacy.html">Privacy Policy</a></li>
+										<li><a href="<%=basePath%>Products/coffeeMachine.jsp">咖啡机</a></li>
+										<li><a href="<%=basePath%>Products/coffeeMachine.jsp">消防器材</a></li>
 									</ul>
 							</li>
 							<li class="dropdown ">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">新闻前线<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="defaultvariation.html">Default – Variation</a></li>
-										<li><a href="agentinsidebarvariation.html">Agent in Sidebar - Variation</a></li>
-										<li><a href="galleryvariation.html">Gallery - Variation</a></li>
+										<li><a href="<%=basePath%>News/tradenews.jsp">行业新闻</a></li>
+										<li><a href="<%=basePath%>News/companynews.jsp">公司动态</a></li>
 									</ul>
 							</li>
 							<li class="dropdown">

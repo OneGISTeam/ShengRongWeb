@@ -96,22 +96,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<ul class="dropdown-menu">
 										<li><a href="Products/coffeeMachine.jsp">咖啡机</a></li>
 										<li><a href="Products/coffeeMachine.jsp">消防器材</a></li>
-										<!-- <li><a href="agents.html">Agents</a></li>
-										<li><a href="forrent.html">For Rent</a></li>
-										<li><a href="forsale.html">For Sale</a></li>
-										<li><a href="pricing.html">Pricing</a></li>
-										<li><a href="faqs.html">FAQs</a></li>
-										<li><a href="idxpress.html">IDXpress</a></li>
-										<li><a href="terms.html">Terms of Use</a></li>
-										<li><a href="privacy.html">Privacy Policy</a></li> -->
 									</ul>
 							</li>
 							<li class="dropdown ">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">新闻前线<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="defaultvariation.html">Default – Variation</a></li>
-										<li><a href="agentinsidebarvariation.html">Agent in Sidebar - Variation</a></li>
-										<li><a href="galleryvariation.html">Gallery - Variation</a></li>
+										<li><a href="News/tradenews.jsp">行业新闻</a></li>
+										<li><a href="News/companynews.jsp">公司动态</a></li>
 									</ul>
 							</li>
 							<li class="dropdown">
@@ -235,7 +226,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<h3>公司理念</h3>
 				<h5>Company Philosophy</h5>
 				<hr/>
-				<img src="<%=basePath %>Images/philosophy.png"/>
+				<img src="<%=basePath%>Images/philosophy.png"/>
 			</div>
 		</div>
 		<div class="place-section">

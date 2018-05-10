@@ -38,10 +38,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				font-weight: bold;
 				color: #cc5522;
 			}
-		.previewImage{
-			width:158px;
-			height:158px
-		}
+		 .previewImage{
+			width:160px;
+			height:160px
+		} 
 	</style>
   </head>
   
@@ -85,24 +85,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品中心<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="about.html">About</a></li>
-										<li><a href="services.html">Services</a></li>
-										<li><a href="agents.html">Agents</a></li>
-										<li><a href="forrent.html">For Rent</a></li>
-										<li><a href="forsale.html">For Sale</a></li>
-										<li><a href="pricing.html">Pricing</a></li>
-										<li><a href="faqs.html">FAQs</a></li>
-										<li><a href="idxpress.html">IDXpress</a></li>
-										<li><a href="terms.html">Terms of Use</a></li>
-										<li><a href="privacy.html">Privacy Policy</a></li>
+										<li><a href="<%=basePath%>Products/coffeeMachine.jsp">咖啡机</a></li>
+										<li><a href="<%=basePath%>Products/coffeeMachine.jsp">消防器材</a></li>
+									
 									</ul>
 							</li>
 							<li class="dropdown ">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">新闻前线<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="defaultvariation.html">Default – Variation</a></li>
-										<li><a href="agentinsidebarvariation.html">Agent in Sidebar - Variation</a></li>
-										<li><a href="galleryvariation.html">Gallery - Variation</a></li>
+										<li><a href="<%=basePath%>News/tradenews.jsp">行业新闻</a></li>
+										<li><a href="<%=basePath%>News/companynews.jsp">公司动态</a></li>
+								
 									</ul>
 							</li>
 							<li class="dropdown">
@@ -176,7 +169,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   	   
 					    <div class="timeline">
 							   <div class="timeline-content">
-							       <div class="circle"><span><img class="previewImage" src="<%=basePath %>Images/p1.png"></i></span></div>
+							       <div class="circle"><span><img class="previewImage" src="<%=basePath %>Images/p1.png"></span></div>
 								   <div class="content">
 								       <span class="year">2013 - 2014</span>
 									   <h6 class="time-title">公司起航</h6>
@@ -191,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				        <div class="timeline">
 					  	<div class="timeline-content">
-							<div class="circle"><span></span></div>
+							<div class="circle"><span><img class="previewImage" src="<%=basePath %>Images/p2.png"></span></div>
 							<div class="content">
 									<span class="year">2014 - 2015</span>
 									<h6 class="time-title">公司起航</h6>
@@ -206,7 +199,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					    <div class="timeline">
 						<div class="timeline-content">
-							<div class="circle"><span><i class="fa fa-bandcamp"></i></span></div>
+							<div class="circle"><span><img class="previewImage" src="<%=basePath %>Images/p3.png"></i></span></div>
 							<div class="content">
 								<span class="year">2015 - 2016</span>
 								<h6 class="time-title">公司起航</h6>
@@ -221,7 +214,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					    <div class="timeline">
 						<div class="timeline-content">
-							<div class="circle"><span><i class="fa fa-mobile"></i></span></div>
+							<div class="circle"><span><img class="previewImage" src="<%=basePath %>Images/p.png"></span></div>
 							<div class="content">
 								<span class="year">2016 - 2017</span>
 								<h6 class="time-title">公司起航</h6>
