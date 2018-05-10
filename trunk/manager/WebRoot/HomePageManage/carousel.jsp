@@ -27,7 +27,7 @@ int iDisplayCount = carouselSetting.getDisplayCount();
 	<link href="<%=basePath%>Plugins/FontAwesome/font-awesome.css" rel="stylesheet"/>
 	<link href="<%=basePath%>styles.css" rel="stylesheet"/>
 	<link href="<%=basePath%>Plugins/cropper/cropper.css" rel="stylesheet"/>
-	
+	<link href="<%=basePath%>Plugins/validform/css/validform.css" rel="stylesheet"/>
 	<!-- Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <style>
@@ -87,18 +87,20 @@ int iDisplayCount = carouselSetting.getDisplayCount();
 												</div>
 											</div >
 											<div class="col-lg-5">
-				                            	<div class="form-group"> 	
-				                                    <label>轮播消息标题</label>
-				                                    <p class="help-block">请输入轮播消息的标题，不要超过XX个字</p>
-				                                    <input id="input_title_<%=i+1 %>" class="form-control" value="<%=carousels.get(i).getTitle() %>">
-				                                </div>
-			                                    <div class="form-group">
-			                                        <label>轮播消息内容</label>
-			                                        <p class="help-block">请输入轮播消息的详细内容，不要超过XX个字</p>
-			                                        <textarea id="textarea_content_<%=i+1 %>" class="form-control" rows="3"><%=carousels.get(i).getContent() %></textarea>            
-			                                	</div>
-			                                	<button type="submit" class="btn btn-default" onclick="uploadImage(<%=i+1 %>)">上传照片</button>
-					                            <button type="submit" class="btn btn-default" onclick="saveCarousel(<%=i+1 %>)">保存结果</button>
+												<form>
+					                            	<div class="form-group"> 	
+					                                    <label>轮播消息标题</label>
+					                                    <input id="input_title_<%=i+1 %>" datatype="*1-16" errormsg="轮播消息标题不要超过16个字！" class="form-control" value="<%=carousels.get(i).getTitle() %>">
+					                                    <p class="help-block">请输入轮播消息的标题，不要超过16个字</p>
+					                                </div>
+				                                    <div class="form-group">
+				                                        <label>轮播消息内容</label>
+				                                        <textarea id="textarea_content_<%=i+1 %>" datatype="*60-128" errormsg="轮播消息内容最好在60-128个字之间！" class="form-control" rows="3"><%=carousels.get(i).getContent() %></textarea>
+				                                        <p class="help-block">请输入轮播消息的详细内容，不要超过128个字</p>            
+				                                	</div>
+				                                	<button type="button" class="btn btn-default" onclick="uploadImage(<%=i+1 %>)">上传照片</button>
+						                            <button type="submit" class="btn btn-default" onclick="saveCarousel(<%=i+1 %>)">保存结果</button>
+												</form>
 											</div>
 										</div>
 									</div>
@@ -131,18 +133,20 @@ int iDisplayCount = carouselSetting.getDisplayCount();
 													</div>
 												</div >
 												<div class="col-lg-5">
-					                            	<div class="form-group"> 	
-					                                    <label>轮播消息标题</label>
-					                                    <p class="help-block">请输入轮播消息的标题，不要超过XX个字</p>
-					                                    <input id="input_title_<%=iCarouselCount+i+1 %>" class="form-control">
-					                                </div>
-				                                    <div class="form-group">
-				                                        <label>轮播消息内容</label>
-				                                        <p class="help-block">请输入轮播消息的详细内容，不要超过XX个字</p>
-				                                        <textarea id="textarea_content_<%=iCarouselCount+i+1 %>" class="form-control" rows="3"></textarea>            
-				                                	</div>
-				                                	<button type="submit" class="btn btn-default" onclick="uploadImage(<%=iCarouselCount+i+1 %>)">上传照片</button>
-						                            <button type="submit" class="btn btn-default" onclick="saveCarousel(<%=iCarouselCount+i+1 %>)">保存结果</button>
+													<form>
+						                            	<div class="form-group"> 	
+						                                    <label>轮播消息标题</label>
+						                                    <input id="input_title_<%=iCarouselCount+i+1 %>" datatype="*1-16" errormsg="轮播消息标题不要超过16个字！" class="form-control">
+						                                	<p class="help-block">请输入轮播消息的标题，不要超过16个字</p>
+						                                </div>
+					                                    <div class="form-group">
+					                                        <label>轮播消息内容</label>
+					                                        <textarea id="textarea_content_<%=iCarouselCount+i+1 %>" datatype="*60-128" errormsg="轮播消息内容最好在60-128个字之间！" class="form-control" rows="3"></textarea>            
+					                                		<p class="help-block">请输入轮播消息的详细内容，不要超过128个字</p>
+					                                	</div>
+					                                	<button type="button" class="btn btn-default" onclick="uploadImage(<%=iCarouselCount+i+1 %>)">上传照片</button>
+							                            <button type="submit" class="btn btn-default" onclick="saveCarousel(<%=iCarouselCount+i+1 %>)">保存结果</button>
+													</form>
 												</div>
 											</div>
 										</div>
@@ -184,8 +188,10 @@ int iDisplayCount = carouselSetting.getDisplayCount();
 	<script src="<%=basePath%>Plugins/bootstrap/bootstrap.min.js"></script>
 	<script src="<%=basePath%>scripts.js"></script>
 	<script src="<%=basePath%>Plugins/cropper/cropper.js"></script>
+	<script src="<%=basePath%>Plugins/validform/js/Validform_v5.3.2_ncr_min.js"></script>
 	<script type="text/javascript">
 		var croppers = [];
+		var validForms = [];
 		$(function(){
 			$(window).resize(function(){
 				updateCarouselImageSize();	
@@ -210,6 +216,22 @@ int iDisplayCount = carouselSetting.getDisplayCount();
 				croppers.push(new Cropper(images[i], options));
 			}
 			initFileInput();
+			
+			//初始化表单验证信息
+			var forms = $("form");
+			for(var i=0; i<forms.length;i++){
+				var formValid = $(forms[i]).Validform({
+					tiptype:3,
+					label:".label",
+					showAllError:true,
+					callback:function(form){
+						//仅仅作表单验证，不要提交，使用自定义的ajax提交表单
+						return false;
+					}
+				});
+				validForms.push(formValid);
+			}
+			
 		});
 		
 		/**
@@ -253,6 +275,9 @@ int iDisplayCount = carouselSetting.getDisplayCount();
 		*	@param index 轮播消息的索引号
 		**/
 		function saveCarousel(index){
+			if(validForms[index-1].check() == false)
+				return;
+			
 			var carouselid = $("#input_id_" + index).val();
 			var carouselTitle = $("#input_title_" + index).val();
 			var carouselContent = $("#textarea_content_" + index).val();

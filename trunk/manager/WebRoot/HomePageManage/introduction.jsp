@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="<%=basePath %>Plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet"/>
 	<link href="<%=basePath%>Plugins/FontAwesome/font-awesome.css" rel="stylesheet"/>
 	<link href="<%=basePath%>styles.css" rel="stylesheet"/>
+	<link href="<%=basePath%>Plugins/validform/css/validform.css" rel="stylesheet"/>
 	<!-- Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
   </head>
@@ -56,8 +57,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<div class="col-lg-12">
 										<form method="post" role="form" action="<%=basePath %>homepage/saveIntroduction.action">
 											<div class="form-group">
+												<textarea name="content" datatype="*500-10000" errormsg="公司简介内容太少会影响页面美观，建议至少500个字！" class="form-control" rows="5"></textarea>
 												<p class="help-block">请输入公司简介</p>
-												<textarea name="content" class="form-control" rows="5"></textarea>
 											</div>
 											<button type="submit" class="btn btn-default">确认增加</button>
 	                                        <button type="reset" class="btn btn-default">内容重置</button>
@@ -126,9 +127,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="<%=basePath%>Plugins/dataTables/jquery.dataTables.js"></script>
 	<script src="<%=basePath%>Plugins/dataTables/dataTables.bootstrap.js"></script>
 	<script src="<%=basePath%>scripts.js"></script>
+	<script src="<%=basePath%>Plugins/validform/js/Validform_v5.3.2_ncr_min.js"></script>
 	<script type="text/javascript">
 		var dataTable = null;
 		$(function(){
+			//初始化表单验证信息
+			var form = $("form").Validform({
+				tiptype:3,
+				label:".label",
+				showAllError:true
+			});
+			
 			//提示信息
 	        var lang = {
 	            "sProcessing": "处理中...",

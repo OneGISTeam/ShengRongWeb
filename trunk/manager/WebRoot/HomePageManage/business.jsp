@@ -22,6 +22,7 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
 	<link href="<%=basePath%>Plugins/bootstrap/bootstrap.css" rel="stylesheet"/>
 	<link href="<%=basePath%>Plugins/FontAwesome/font-awesome.css" rel="stylesheet"/>
 	<link href="<%=basePath%>styles.css" rel="stylesheet"/>
+	<link href="<%=basePath%>Plugins/validform/css/validform.css" rel="stylesheet"/>
 	<!-- Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
   	<style>
@@ -96,19 +97,19 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
 	                        			<form method="post" role="form" action="<%=basePath %>homepage/saveBusiness.action">
 	                        				<div class="form-group">
 	                        					<label>业务名称</label>
+	                        					<input type="text" class="form-control" datatype="*1-16" errormsg="业务名称不能为空，且不要超过16个字！" name="business.businessname"/>
 	                        					<p class="help-block">请输入业务的名称，为了前台页面美观，请尽可能不要超过16个字</p>
-	                        					<input class="form-control" name="business.businessname"/>
 	                        				</div>
 	                        				<div class="form-group">
-	                        					<label>业务描述</label>
-	                        					<p class="help-block">请输入业务的描述内容，为了前台页面美观,请控制在100个字以内，并保证各个业务描述字数大致相等</p>
-	                        					<textarea class="form-control" rows="3" name="business.des"></textarea>
+	                        					<label>业务描述</label> 
+	                        					<textarea class="form-control" rows="3" name="business.des" datatype="*90-128" errormsg="业务描述最好在90-128个字之间！"></textarea>
+	                        					<p class="help-block">请输入业务的描述内容，为了前台页面美观,请控制在128个字以内，并保证各个业务描述字数大致相等</p>
 	                        				</div>
 	                        				<div class="form-group">
-	                        					<label>业务图标</label>
+	                        					<label>业务图标</label><br>
 	                        					<input id="selectedIcon" value="glyphicon glyphicon-leaf" name="business.icon" style="display:none" />
-	                        					<p class="help-block">请<a onclick="selectIcon()" target="_blank">点击这里</a>选择最能代表公司该项业务的图标，否则将使用默认图标</p>
 	                        					<span>当前图标：</span><i id="currentIcon" class="glyphicon glyphicon-leaf fa-5x"></i>
+	                        					<p class="help-block">请<a onclick="selectIcon()" target="_blank">点击这里</a>选择最能代表公司该项业务的图标，否则将使用默认图标</p>
 	                        				</div>
 	                        				<button type="submit" class="btn btn-default">确认提交</button>
                                         	<button type="reset" onclick="resetIcon()" class="btn btn-default">内容重置</button>
@@ -202,7 +203,16 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
 	<script src="<%=basePath%>Plugins/jquery/jquery.metisMenu.js"></script>
 	<script src="<%=basePath%>Plugins/bootstrap/bootstrap.min.js"></script>
 	<script src="<%=basePath%>scripts.js"></script>
+	<script src="<%=basePath%>Plugins/validform/js/Validform_v5.3.2_ncr_min.js"></script>
 	<script type="text/javascript">
+		$(function(){
+			//初始化表单验证信息
+			var form = $("form").Validform({
+				tiptype:3,
+				label:".label",
+				showAllError:true
+			});
+		});
 		function resetIcon(){
 			$("#currentIcon").attr("class","glyphicon glyphicon-leaf fa-5x");
 			return true;

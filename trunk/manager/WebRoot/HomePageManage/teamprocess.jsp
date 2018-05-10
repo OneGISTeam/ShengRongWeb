@@ -27,6 +27,7 @@ String tpsjson = (String)request.getAttribute("catalogJSON");
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link href="<%=basePath%>Plugins/cropper/cropper.css" rel="stylesheet"/>
     <link href="<%=basePath%>Plugins/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="<%=basePath%>Plugins/validform/css/validform.css" rel="stylesheet"/>
     <style>
     	.cropppic {
 		    position:relative; /* or fixed or absolute */
@@ -74,12 +75,11 @@ String tpsjson = (String)request.getAttribute("catalogJSON");
 										<form method="post" role="form" action="<%=basePath %>homepage/saveTeamprocess.action">
 											<div class="form-group">
 												<label>足迹位置</label>
+												<input datatype="*1-16" errormsg="足迹名称不能为空，且不要超过16个字！" class="form-control" name="encpTeamProcess.location"/>
 												<p class="help-block">请输入足迹的位置，为了前台页面美观，请尽可能不要超过16个字</p>
-												<input class="form-control" name="encpTeamProcess.location"/>
 											</div>
 											<div class="form-group">
-												<label>足迹地理坐标</label>
-												<p class="help-block">请点击按钮获取足迹的地理坐标</p>
+												<label>足迹地理坐标</label>						
 												<div class="input-group">
 													<span class="input-group-btn">
 														<button class="btn btn-default" type="button" onclick="showGeolocationDialog()">
@@ -87,30 +87,26 @@ String tpsjson = (String)request.getAttribute("catalogJSON");
 														</button>
 													</span>
 													<input id="input_pos" class="form-control" disabled/>
-													<input name="encpTeamProcess.encpPos" type="text" class="sr-only" id="input_posdata"/>
 												</div><!-- /input-group -->
+												<input datatype="*" errormsg="您还没有选择地理坐标！" name="encpTeamProcess.encpPos" type="text" class="sr-only" id="input_posdata"/>
+												<p class="help-block">请点击按钮获取足迹的地理坐标</p>
 											</div>
 											<div class="form-group">
-												<label>足迹时间戳</label>
-												<p class="help-block">请选择该足迹的时间</p>
-												<div class='input-group date' id='datetime'>  
-									                <input name="encpTeamProcess.encpDatetime" type='text' class="form-control" />  
-									                <span class="input-group-addon">  
-									                    <span class="glyphicon glyphicon-calendar"></span>  
-									                </span>  
-									            </div>  
+												<label>足迹时间戳</label>											
+												<input datatype="*" errormsg="您还没有选择足迹时间！" id="input_date" name="encpTeamProcess.encpDatetime" type='text' class="form-control" />  
+									            <p class="help-block">请选择该足迹的时间</p>
 											</div>
 											<div class="form-group">
 												<label>足迹简要描述</label>
-												<p class="help-block">对团队的里程碑事件进行简要描述，请尽可能不要超过100个字</p>
-												<textarea name="encpTeamProcess.brief" class="form-control" rows="3"></textarea>
+												<textarea datatype="*1-128" errormsg="足迹描述不能为空，且不要超过128个字！" name="encpTeamProcess.brief" class="form-control" rows="3"></textarea>
+												<p class="help-block">对团队的里程碑事件进行简要描述，请尽可能不要超过128个字</p>
 											</div>
 											<div id="form_group_img" class="form-group">
 												<label>上传足迹图片</label>
-												<p class="help-block">发一张代表团队里程碑事件的图片，图片大小不要超过16M，<a onclick="loadImage()">点击此处添加图片</a></p>
 												<img id="img_teamprocess" class="cropppic" src="<%=basePath %>Images/login-bg.jpg" />
 												<input type="file" class="sr-only" id="input_file" name="image" accept="image/*">
 												<input name="encpTeamProcess.encpImage" type="text" class="sr-only" id="input_imagedata"/>
+												<p class="help-block">发一张代表团队里程碑事件的图片，图片大小不要超过16M，<a onclick="loadImage()">点击此处添加图片</a></p>
 											</div>
 											<button type="submit" onclick="preSubmit()" class="btn btn-default">保存结果</button>
 						                    <button onclick="resetImage()" type="reset" class="btn btn-default">内容重置</button>
@@ -250,12 +246,14 @@ String tpsjson = (String)request.getAttribute("catalogJSON");
 	<script src="<%=basePath%>Plugins/cropper/cropper.js"></script>
 	<script src="<%=basePath%>Plugins/datetimepicker/moment-with-locales.min.js"></script>
 	<script src="<%=basePath%>Plugins/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	<script src="<%=basePath%>Plugins/validform/js/Validform_v5.3.2_ncr_min.js"></script>
 	<script type="text/javascript">
 		var map = null;
 		var geolocation = null;
 		var cropper = null;
 		//var previews = [];
 		var infowindows = [];
+		var formvalidator = null;
 		$(function(){
 			$(window).resize(function(){
 				updateCroppicSize();	
@@ -268,10 +266,17 @@ String tpsjson = (String)request.getAttribute("catalogJSON");
 			initPreviewMaps();
 			
 			initDatetimePicker();
+			
+			//初始化表单验证信息
+			formvalidator = $("form").Validform({
+				tiptype:3,
+				label:".label",
+				showAllError:true
+			});
 		});
 		
 		function initDatetimePicker(){
-			$("#datetime").datetimepicker({
+			$("#input_date").datetimepicker({
 				format: 'YYYY-MM-DD',
 				locale: moment.locale('zh-cn')
 			});
@@ -370,6 +375,7 @@ String tpsjson = (String)request.getAttribute("catalogJSON");
 				var pos = geolocation.lng + "," + geolocation.lat;
 				$("#input_pos").val(pos);
 				$("#input_posdata").val(pos);
+				formvalidator.check(false, "#input_posdata");
 				$("#geolocation_dlg").modal("hide");
 			}
 		}
@@ -377,6 +383,15 @@ String tpsjson = (String)request.getAttribute("catalogJSON");
 		function preSubmit(){
 			var dataURL = cropper.getCroppedCanvas().toDataURL('image/jpeg');
 			$("#input_imagedata").val(dataURL);
+			
+			/*var inputPos = $("#input_pos").val();
+			var inputDate = $("#input_date").val();
+			if(inputPos==null || inputDate==null ||
+				inputPos == "" || inputDate == null){
+				alert("信息不完整！请检查地理坐标和时间戳！");
+				return false;
+			}
+			return false;*/
 		}
 		
 		function getInfoWindow(id){
