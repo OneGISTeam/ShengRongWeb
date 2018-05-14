@@ -37,19 +37,17 @@
     -o-transform: translate(10px, -10px);
     -ms-transform: translate(10px, -10px);
     -moz-transition-duration: 1000ms;
-    background: #faa43d;
     cursor:pointer;
 }
 
 
-.blog:hover{
-	transform: translate(-10px, -10px);
-    -webkit-transform: translate(-10px, -10px);
-    -moz-transform: translate(-10px, -10px);
-    -o-transform: translate(-10px, -10px);
-    -ms-transform: translate(-10px, -10px);
-    -moz-transition-duration: 1000ms;
-    background: #faa43d;
+.forsale-grids:hover{
+	transform: translate(-10px, 0px);
+    -webkit-transform: translate(-10px, 0px);
+    -moz-transform: translate(-10px, 0px);
+    -o-transform: translate(-10px, 0px);
+    -ms-transform: translate(-10px, 0px);
+    -moz-transition-duration: 800ms;
     cursor:pointer;
-}
+} 
 

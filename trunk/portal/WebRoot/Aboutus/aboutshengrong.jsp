@@ -81,23 +81,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="<%=basePath %>homePage.jsp">公司首页 <span class="sr-only">(current)</span></a></li>
+						   <li><a href="<%=basePath%>homePage.jsp">公司首页 <span class="sr-only">(current)</span></a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品中心<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="<%=basePath%>Products/coffeeMachine.jsp">咖啡机</a></li>
+										<li><a href="<%=basePath%>Products/coffeeMachine.jsp" target="_blank">咖啡机</a></li>
 										<li><a href="<%=basePath%>Products/coffeeMachine.jsp">消防器材</a></li>
-									
 									</ul>
 							</li>
-							<li class="dropdown ">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">新闻前线<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="<%=basePath%>News/tradenews.jsp">行业新闻</a></li>
-										<li><a href="<%=basePath%>News/companynews.jsp">公司动态</a></li>
-								
-									</ul>
-							</li>
+							<li><a href="<%=basePath%>News/tradenews.jsp">新闻前线</a></li>
+						
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">资料共享 <span class="caret"></span></a>
 									<ul class="dropdown-menu">
@@ -106,7 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<li><a href="4columnsgallery.html">4 Columns Gallery</a></li>
 									</ul>
 							</li>
-						<li class="active"><a href="./aboutshengrong.jsp">关于我们</a></li>
+						<li class="active"><a href="<%=basePath%>Aboutus/aboutshengrong.jsp">关于我们</a></li>
 					</ul>
 					<div class="clearfix"></div>
 				</div>
@@ -121,8 +114,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    </div>
 		    
 		    <div class="dynamic-news">
-		         <a class="dynamic active" href="./aboutshengrong.jsp" >关于晟荣</a> 
-		         <a class="dynamic" href="./aboutteam.jsp">关于团队</a>
+		         <a class="dynamic active" href="<%=basePath%>Aboutus/aboutshengrong.jsp" >关于晟荣</a> 
+		         <a class="dynamic" href="<%=basePath%>Aboutus/aboutteam.jsp">关于团队</a>
 		    </div>
 		</div>
 	<!---banner--->

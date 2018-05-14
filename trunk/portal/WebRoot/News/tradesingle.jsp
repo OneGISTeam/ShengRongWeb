@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<link href="<%=basePath%>Plugins/bootstrap/bootstrap.css" rel="stylesheet" type='text/css'/>
 	<link href="<%=basePath%>Portal/style.css" rel="stylesheet" type='text/css'/>
-	<%-- <link href="<%=basePath%>Portal/news.css" rel="stylesheet" type='text/css'/> --%>
+	<link href="<%=basePath%>Portal/news.css" rel="stylesheet" type='text/css'/>
 	<script src="<%=basePath%>Plugins/jquery/jquery-1.11.1.min.js"></script>
 	<script src="<%=basePath%>Plugins/bootstrap/bootstrap.js"></script>
 	
@@ -84,17 +84,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品中心<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="<%=basePath%>Products/coffeeMachine.jsp">咖啡机</a></li>
+										<li><a href="<%=basePath%>Products/coffeeMachine.jsp" target="_blank">咖啡机</a></li>
 										<li><a href="<%=basePath%>Products/coffeeMachine.jsp">消防器材</a></li>
 									</ul>
-						</li>
-						<li class="dropdown active">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">新闻前线<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="<%=basePath%>News/tradenews.jsp">行业新闻</a></li>
-										<li><a href="<%=basePath%>News/companynews.jsp">公司动态</a></li>
-									</ul>
-						</li>
+							</li>
+							<li class="active"><a href="<%=basePath%>News/tradenews.jsp" >新闻前线</a></li>
 						<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">资料共享 <span class="caret"></span></a>
 									<ul class="dropdown-menu">

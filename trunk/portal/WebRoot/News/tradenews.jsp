@@ -40,6 +40,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				});
 	</script>
 	<!-- //FlexSlider-->
+	<style>
+	.pagination{
+	display:table;
+	margin:40px auto;
+	}
+	  
+	</style>
   </head>
   
 <body>
@@ -81,17 +88,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品中心<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="<%=basePath%>Products/coffeeMachine.jsp">咖啡机</a></li>
+										<li><a href="<%=basePath%>Products/coffeeMachine.jsp" target="_blank">咖啡机</a></li>
 										<li><a href="<%=basePath%>Products/coffeeMachine.jsp">消防器材</a></li>
 									</ul>
-						</li>
-						<li class="dropdown active">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">新闻前线<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="<%=basePath%>News/tradenews.jsp">行业新闻</a></li>
-										<li><a href="<%=basePath%>News/companynews.jsp">公司动态</a></li>
-									</ul>
-						</li>
+							</li>
+							<li class="active"><a href="<%=basePath%>News/tradenews.jsp" >新闻前线</a></li>
 						<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">资料共享 <span class="caret"></span></a>
 									<ul class="dropdown-menu">
@@ -117,72 +118,174 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!---banner--->
 	<!---banner--->
 	<div class="content">
-			<div class="blog-section">
-				<div class="container">
-					<div class="blog-grids">
-						<div class="col-md-9 blog-grid">
-							<div class="blog">
-								<h3><a href="tradesingle.jsp">无人驾驶技术应用到共享汽车</a></h3>
-								    <p>2017-11-15 05/<a href="#">John Doe</a>/<a href="#">0 评论</a></p>
-								    <a href="tradesingle.jsp" class="news_img"><img src="<%=basePath%>Images/n.jpg" class="img-responsive" alt=""></a>
-								<p>
-								今年4月的时候，百度正式发布了阿波罗计划，将向汽车行业及自动驾驶领域的合作伙伴提供一个开放、完整、安全的软件平台，帮助他们结合车辆和硬件系统，快速搭建一套属于自己的完整的自动驾驶系统。
-								也可以理解Apollo计划就是百度要搭建出行生态的Android系统。
-                                                                                        无人驾驶技术的落地需要一颗可以自我学习的最强大脑外，离不开车辆的本身作为载体，汽车人工智能依靠高精度地图
-                                </p>
-								<a href="tradesingle.jsp" class="button5 hvr-shutter-out-horizontal">详情信息</a>
-							</div>
-							
-							<div class="blog blog2">
-								<h3><a href="tradesingle.jsp">无人驾驶技术应用到共享汽车是种怎样的体验</a></h3>
-								<p>2017-11-15 05/ <a href="#">John Doe</a> / <a href="#">0 Comments</a></p>
-								<a href="tradesingle.jsp" class="news_img"><img src="<%=basePath %>Images/n.jpg" class="img-responsive" alt=""/></a>
-								<p>今年4月的时候，百度正式发布了阿波罗计划，将向汽车行业及自动驾驶领域的合作伙伴提供一个开放、完整、安全的软件平台，帮助他们结合车辆和硬件系统，快速搭建一套属于自己的完整的自动驾驶系统。也可以理解Apollo计划就是百度要搭建出行生态的Android系统。
-                                                                                                 无人驾驶技术的落地需要一颗可以自我学习的最强大脑外，离不开车辆的本身作为载体，汽车人工智能依靠高精度地图</p>
-								<a href="tradesingle.jsp" class="button5 hvr-shutter-out-horizontal">详情信息</a>
-							</div>
-							
-							<div class="blog">
-								<h3><a href="tradesingle.jsp">无人驾驶技术应用到共享汽车是种怎样的体验</a></h3>
-								<p>2017-11-15 05/ <a href="#">John Doe</a> / <a href="#">0 Comments</a></p>
-								<a href="tradesingle.jsp" class="news_img"><img src="<%=basePath %>Images/n.jpg" class="img-responsive" alt=""/></a>
-								<p>今年4月的时候，百度正式发布了阿波罗计划，将向汽车行业及自动驾驶领域的合作伙伴提供一个开放、完整、安全的软件平台，帮助他们结合车辆和硬件系统，快速搭建一套属于自己的完整的自动驾驶系统。也可以理解Apollo计划就是百度要搭建出行生态的Android系统。
-                                                                                                 无人驾驶技术的落地需要一颗可以自我学习的最强大脑外，离不开车辆的本身作为载体，汽车人工智能依靠高精度地图</p>
-								<a href="tradesingle.jsp" class="button5 hvr-shutter-out-horizontal">详情信息</a>
-							</div>
-						</div>
-						
-						<div class="col-md-3 blog-grid1">	
-							<div class="feature">
-								<h4>相关新闻</h4>
-								<div class="feature-top">
-								<img src="<%=basePath %>Images/s1.jpg" class="img-responsive" alt="/">
-										<h5>大数据时代展望</h5>
-										<p>当今世界进入了智能化、绿色化、网络化、全球化的相互交织时期，世界经济和人类社会正在改变,… <a href="#">详情信息</a></p>
+		<div class="properties-section">
+			<div class="container">
+				<div class="properties-grids">
+					<!-- <div class="col-md-9 forsales-left"> -->
+					<!-- <div class="forsale"> -->
+				  <!-- <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">  -->
+					<ul id="myTab" class="nav nav-tabs">
+						<li class="active"><a href="#industry" id="industry-tab" role="tab" data-toggle="tab">行业</a></li>
+						<li ><a href="#company" role="tab" id="company-tab" data-toggle="tab">公司</a></li>
+					</ul>
+					
+				      <div id="myTabContent" class="tab-content">
+					   <div role="tabpanel" class="tab-pane fade in active" id="industry">
+						<div class="forsale-grids">
+							<div class="forsale1"> 
+								<div class="forsale-left">
+									<a href="tradesingle.jsp" class="news_img"><img src="<%=basePath%>Images/s.jpg" class="img-responsive" alt=""></a>
 								</div>
-								<div class="feature-top top2">
-								<img src="<%=basePath %>Images/s1.jpg" class="img-responsive" alt="/">
-										<h5>大数据时代展望</h5>
-										<p>当今世界进入了智能化、绿色化、网络化、全球化的相互交织时期，世界经济和人类社会正在改变,… <a href="#">详情信息</a></p>
-								</div>
-								<div class="feature-top top2">
-								<img src="<%=basePath %>Images/s1.jpg" class="img-responsive" alt="/">
-										<h5>大数据时代展望</h5>
-										<p>当今世界进入了智能化、绿色化、网络化、全球化的相互交织时期，世界经济和人类社会正在改变,… <a href="#">详情信息</a></p>
-								</div>
-								<div class="feature-top top2">
-								        <img src="<%=basePath%>Images/s1.jpg" class="img-responsive" alt="/">
-										<h5>大数据时代展望</h5>
-										<p>当今世界进入了智能化、绿色化、网络化、全球化的相互交织时期，世界经济和人类社会正在改变,… <a href="#">详情信息</a></p>
-								</div>
+								<div class="forsale-right">
+								    <h5><a href="tradesingle.jsp" >无人驾驶技术应用到共享汽车</a></h5>
+								    <p>
+								                     今年4月的时候，百度正式发布了阿波罗计划，将向汽车行业及自动驾驶领域的合作伙伴提供一个开放、完整、安全的软件平台，帮助他们结合车辆和硬件系统，快速搭建一套属于自己的完整的自动驾驶系统。
+                                                                                                             无人驾驶技术的落地需要一颗可以自我学习的最强大脑外，离不开车辆的本身作为载体，汽车人工智能依靠高精度地图...
+                                    </p>
+                                   <!--  <a href="tradesingle.jsp" class="button4">详情信息</a> -->
+                                 </div>
+								 <div class="clearfix"></div>
+								 <ul>
+								 	<li>2017-11-15</li>
+									<li><a href="#">John Doe</a></li>
+									<li><a href="#">0 评论</a></li>
+									<li><a href="tradesingle.jsp">详情信息</a></li>				
+								 </ul>    
+							</div> 
+					   </div>
+					    <div class="forsale-grids">
+					       <div class="forsale1">
+							   <div class="forsale-left">
+							   	   <a href="tradesingle.jsp" class="news_img"><img src="<%=basePath%>Images/s.jpg" class="img-responsive" alt=""></a>
+							   </div>
+							   <div class="forsale-right">
+								   <h5><a href="tradesingle.jsp" >无人驾驶技术应用到共享汽车</a></h5>
+								   <p>
+								                     今年4月的时候，百度正式发布了阿波罗计划，将向汽车行业及自动驾驶领域的合作伙伴提供一个开放、完整、安全的软件平台，帮助他们结合车辆和硬件系统，快速搭建一套属于自己的完整的自动驾驶系统。
+                                                                                                             无人驾驶技术的落地需要一颗可以自我学习的最强大脑外，离不开车辆的本身作为载体，汽车人工智能依靠高精度地图...
+                                   </p>
+                                   <!--  <a href="tradesingle.jsp" class="button4">详情信息</a> -->
+                               </div>
+							   <div class="clearfix"></div>
+							   <ul>
+									<li>2017-11-15</li>
+									<li><a href="#">John Doe</a></li>
+									<li><a href="#">0 评论</a></li>
+									<li><a href="tradesingle.jsp">详情信息</a></li>			
+							   </ul>    
 							</div>
 						</div>
+                        <div class="forsale-grids">
+							<div class="forsale1">
+								<div class="forsale-left">
+									<a href="tradesingle.jsp" class="news_img"><img src="<%=basePath%>Images/s.jpg" class="img-responsive" alt=""></a>
+								</div>
+								<div class="forsale-right">
+								    <h5><a href="tradesingle.jsp">无人驾驶技术应用到共享汽车</a></h5>
+								    <p>
+								                     今年4月的时候，百度正式发布了阿波罗计划，将向汽车行业及自动驾驶领域的合作伙伴提供一个开放、完整、安全的软件平台，帮助他们结合车辆和硬件系统，快速搭建一套属于自己的完整的自动驾驶系统。
+                                                                                                             无人驾驶技术的落地需要一颗可以自我学习的最强大脑外，离不开车辆的本身作为载体，汽车人工智能依靠高精度地图...
+                                    </p>
+                                   <!--  <a href="tradesingle.jsp" class="button4">详情信息</a> -->
+                                 </div>
+								 <div class="clearfix"></div>
+								 <ul>
+								     <li>2017-11-15</li>
+									 <li><a href="#">John Doe</a></li>
+									 <li><a href="#">0 评论</a></li>
+									 <li><a href="tradesingle.jsp">详情信息</a></li>
+								 </ul>    
+							</div>
+						</div>	
+					   </div>
+					 
+					  <div role="tabpanel" class="tab-pane fade" id="company">
+						<div class="forsale-grids">
+							<div class="forsale1"> 
+								<div class="forsale-left">
+									<a href="tradesingle.jsp" class="news_img"><img src="<%=basePath%>Images/s.jpg" class="img-responsive" alt=""></a>
+								</div>
+								<div class="forsale-right">
+								    <h5><a href="tradesingle.jsp" >无人驾驶技术应用到共享汽车</a></h5>
+								    <p>
+								                     今年4月的时候，百度正式发布了阿波罗计划，将向汽车行业及自动驾驶领域的合作伙伴提供一个开放、完整、安全的软件平台，帮助他们结合车辆和硬件系统，快速搭建一套属于自己的完整的自动驾驶系统。
+                                                                                                             无人驾驶技术的落地需要一颗可以自我学习的最强大脑外，离不开车辆的本身作为载体，汽车人工智能依靠高精度地图...
+                                    </p>
+                                   <!--  <a href="tradesingle.jsp" class="button4">详情信息</a> -->
+                                 </div>
+								 <div class="clearfix"></div>
+								 <ul>
+								 	<li>2017-11-15</li>
+									<li><a href="#">John Doe</a></li>
+									<li><a href="#">0 评论</a></li>
+									<li><a href="tradesingle.jsp">详情信息</a></li>				
+								 </ul>    
+							</div> 
+					   </div>
+					    <div class="forsale-grids">
+					       <div class="forsale1">
+							   <div class="forsale-left">
+							   	   <a href="tradesingle.jsp" class="news_img"><img src="<%=basePath%>Images/s.jpg" class="img-responsive" alt=""></a>
+							   </div>
+							   <div class="forsale-right">
+								   <h5><a href="tradesingle.jsp" >无人驾驶技术应用到共享汽车</a></h5>
+								   <p>
+								                     今年4月的时候，百度正式发布了阿波罗计划，将向汽车行业及自动驾驶领域的合作伙伴提供一个开放、完整、安全的软件平台，帮助他们结合车辆和硬件系统，快速搭建一套属于自己的完整的自动驾驶系统。
+                                                                                                             无人驾驶技术的落地需要一颗可以自我学习的最强大脑外，离不开车辆的本身作为载体，汽车人工智能依靠高精度地图...
+                                   </p>
+                                   <!--  <a href="tradesingle.jsp" class="button4">详情信息</a> -->
+                               </div>
+							   <div class="clearfix"></div>
+							   <ul>
+									<li>2017-11-15</li>
+									<li><a href="#">John Doe</a></li>
+									<li><a href="#">0 评论</a></li>
+									<li><a href="tradesingle.jsp">详情信息</a></li>			
+							   </ul>    
+							</div>
+						</div>
+                        <div class="forsale-grids">
+							<div class="forsale1">
+								<div class="forsale-left">
+									<a href="tradesingle.jsp" class="news_img"><img src="<%=basePath%>Images/s.jpg" class="img-responsive" alt=""></a>
+								</div>
+								<div class="forsale-right">
+								    <h5><a href="tradesingle.jsp">无人驾驶技术应用到共享汽车</a></h5>
+								    <p>
+								                     今年4月的时候，百度正式发布了阿波罗计划，将向汽车行业及自动驾驶领域的合作伙伴提供一个开放、完整、安全的软件平台，帮助他们结合车辆和硬件系统，快速搭建一套属于自己的完整的自动驾驶系统。
+                                                                                                             无人驾驶技术的落地需要一颗可以自我学习的最强大脑外，离不开车辆的本身作为载体，汽车人工智能依靠高精度地图...
+                                    </p>
+                                   <!--  <a href="tradesingle.jsp" class="button4">详情信息</a> -->
+                                 </div>
+								 <div class="clearfix"></div>
+								 <ul>
+								     <li>2017-11-15</li>
+									 <li><a href="#">John Doe</a></li>
+									 <li><a href="#">0 评论</a></li>
+									 <li><a href="tradesingle.jsp">详情信息</a></li>
+								 </ul>    
+							</div>
+						</div>	
+					   </div>
+					   
+					   <ul class="pagination">
+							<li><a href="#">&laquo;</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">&raquo;</a></li>
+					  </ul>
+				
+					</div>	
+				<!-- </div> -->	
 
-						<div class="clearfix"></div>
-					</div>
-				</div>
+				<div class="clearfix"></div>
 			</div>
-		
+		</div>
+	</div>
+</div>	
 	<!-- 添加pannel，动态链接方式，需要jsp重新编译 -->
 	<jsp:include page="../footer.jsp" flush="true" />
 </body>

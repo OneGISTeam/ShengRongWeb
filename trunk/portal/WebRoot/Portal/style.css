@@ -945,16 +945,16 @@ a.button3 {
     line-height: 1.42857143;
     border: 1px solid #FAA43D;
     border-radius:0;
-	background: #FAA43D;
+	/* background: #FAA43D; */
 }
 .forsale-grids {
-    margin-top: 3em;
+    margin-top: 2em;
 }
-.forsale-grids h4 a {
+.forsale-grids a {
     font-size: 1.1em;
     font-family: 'Righteous', cursive;
     color: #000;
-    margin-bottom: .5em;
+    margin-bottom:.5em;
     display: block;
     text-decoration: none;
 }
@@ -967,29 +967,22 @@ a.button3 {
     width: 71%;
 }
 .forsale-right h5 {
-    font-size: 1.2em;
-    padding: .5em 0 .5em .5em;
+    font-size: 1.5em;
+    padding: .5em 0 .5em 0em;
     font-family: 'Righteous', cursive;
-    color: #fff;
-    background: #34ABE2;
+    /* color: #777; */
 }
 .forsale-right p {
     font-size: .95em;
-    padding: 1.5em .5em .5em 1em;
+    padding: .5em 0 .5em 0em;
     color: #777;
     line-height: 1.8em;
 }
-a.button4 {
-    font-size: 1em;
-    margin: .5em 0 0 .8em;
-    text-transform: capitalize;
-    text-decoration: none;
-    color: #000;
-	display:block;
-}
+
+
 .forsale1 ul li {
     display: inline-block;
-    padding: 1em 2em;
+    padding: 0.5em 1em;
 	border-left: 1px solid #ddd;
 	font-size: 1em;
 }
@@ -1034,7 +1027,7 @@ a.button4 {
 /**services**/
 .services-section {
     padding: 5em 0;
-	    background: #eee;
+	background: #eee;
 }
 .services-grid h4 {
     font-size: 1.5em;
@@ -1752,7 +1745,7 @@ ul.bottom-right {
 /**IDXpress**/
 /**properties**/
 .properties-section {
-    padding: 5em 0;
+    padding: 3em 0;
 }
 .properties-details {
     margin: 2em 0;
@@ -2913,10 +2906,10 @@ ul.callbacks_tabs.callbacks1_tabs {
     line-height: 1.5em;
 	font-size: 1.15em;
 }
-.forsale-grid1 {
+/* .forsale-grid1 {
     float: left;
     width: 33.3%;
-}
+} */
 .sale-info {
     width: 33%;
 }
@@ -2934,13 +2927,13 @@ ul.callbacks_tabs.callbacks1_tabs {
     width: 97%;
 }
 .forsale-right h5 {
-    font-size: 1.15em;
+    font-size: 1.5em;
 }
 .search1 input[type="submit"] {
     width: 51%;
 }
 .forsale-right p {
-    padding: 1em .5em .5em 1em;
+    padding: .5em .5em .5em .5em;
 }
 .price-grid {
     float: left;
@@ -3491,7 +3484,7 @@ a.button {
   width: 100%;
 }
 .forsale1 ul li {
-     padding: 0.5em 0em;
+    padding: 0.5em 0em;
     font-size: 0.96em;
     text-align: center;
 	display:block;
@@ -3716,11 +3709,11 @@ ul.callbacks_tabs.callbacks1_tabs {
     width: 24.68%;
 }
 .forsale-right h5 {
-    font-size: 1em;
+    font-size: 1.5em;
 }
-.forsale-grids h4 a, .forsale-grids h4 a {
+/* .forsale-grids h4 a, .forsale-grids h4 a {
     font-size: 0.952em;
-}
+} */
 .price-grid {
     width: 100%;
 }

@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span class="icon-bar"></span>
 					</button>				  
 					<div class="navbar-brand">
-						<img style="height:50px" src="<%=basePath %>Images/shengrong-green.png">
+						<img style="height:50px" src="<%=basePath%>Images/shengrong-green.png">
 					</div>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -94,17 +94,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品中心<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="Products/coffeeMachine.jsp">咖啡机</a></li>
-										<li><a href="Products/coffeeMachine.jsp">消防器材</a></li>
+										<li><a href="<%=basePath%>Products/coffeeMachine.jsp" target="_blank">咖啡机</a></li>
+										<li><a href="<%=basePath%>Products/coffeeMachine.jsp" target="_blank" >消防器材</a></li>
 									</ul>
 							</li>
-							<li class="dropdown ">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">新闻前线<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="News/tradenews.jsp">行业新闻</a></li>
-										<li><a href="News/companynews.jsp">公司动态</a></li>
-									</ul>
-							</li>
+							<li><a href="<%=basePath%>News/tradenews.jsp">新闻前线</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">资料共享 <span class="caret"></span></a>
 									<ul class="dropdown-menu">
@@ -113,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<li><a href="4columnsgallery.html">4 Columns Gallery</a></li>
 									</ul>
 							</li>
-						<li><a href="Aboutus/aboutshengrong.jsp">关于我们</a></li>
+						<li><a href="<%=basePath%>Aboutus/aboutshengrong.jsp">关于我们</a></li>
 					</ul>
 					<div class="clearfix"></div>
 				</div>
