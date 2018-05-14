@@ -1,5 +1,6 @@
 package com.shengrong.hibernate;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +27,7 @@ public class NewsDAO extends BaseHibernateDAO {
 	public static final String TITLE = "title";
 	public static final String CONTENT = "content";
 	public static final String ISHEADLINE = "isheadline";
-	public static final String IMAGE = "image";
+	public static final String KEYWORDS = "keywords";
 
 	public void save(News transientInstance) {
 		log.debug("saving News instance");
@@ -104,8 +105,8 @@ public class NewsDAO extends BaseHibernateDAO {
 		return findByProperty(ISHEADLINE, isheadline);
 	}
 
-	public List findByImage(Object image) {
-		return findByProperty(IMAGE, image);
+	public List findByKeywords(Object keywords) {
+		return findByProperty(KEYWORDS, keywords);
 	}
 
 	public List findAll() {

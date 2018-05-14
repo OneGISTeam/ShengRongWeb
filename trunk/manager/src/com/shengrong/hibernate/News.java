@@ -1,5 +1,6 @@
 package com.shengrong.hibernate;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -12,13 +13,15 @@ public class News implements java.io.Serializable {
 	// Fields
 
 	private Integer newsid;
+	private Newstype newstype;
 	private Manager manager;
 	private Date newsdate;
 	private Timestamp publishdatetime;
 	private String title;
 	private String content;
 	private Boolean isheadline;
-	private String image;
+	private Blob image;
+	private String keywords;
 
 	// Constructors
 
@@ -27,22 +30,22 @@ public class News implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public News(Integer newsid, Date newsdate, Timestamp publishdatetime,
-			String title, String content, Boolean isheadline, String image) {
-		this.newsid = newsid;
+	public News(Date newsdate, Timestamp publishdatetime, String title,
+			String content, Boolean isheadline, Blob image, String keywords) {
 		this.newsdate = newsdate;
 		this.publishdatetime = publishdatetime;
 		this.title = title;
 		this.content = content;
 		this.isheadline = isheadline;
 		this.image = image;
+		this.keywords = keywords;
 	}
 
 	/** full constructor */
-	public News(Integer newsid, Manager manager, Date newsdate,
+	public News(Newstype newstype, Manager manager, Date newsdate,
 			Timestamp publishdatetime, String title, String content,
-			Boolean isheadline, String image) {
-		this.newsid = newsid;
+			Boolean isheadline, Blob image, String keywords) {
+		this.newstype = newstype;
 		this.manager = manager;
 		this.newsdate = newsdate;
 		this.publishdatetime = publishdatetime;
@@ -50,6 +53,7 @@ public class News implements java.io.Serializable {
 		this.content = content;
 		this.isheadline = isheadline;
 		this.image = image;
+		this.keywords = keywords;
 	}
 
 	// Property accessors
@@ -60,6 +64,14 @@ public class News implements java.io.Serializable {
 
 	public void setNewsid(Integer newsid) {
 		this.newsid = newsid;
+	}
+
+	public Newstype getNewstype() {
+		return this.newstype;
+	}
+
+	public void setNewstype(Newstype newstype) {
+		this.newstype = newstype;
 	}
 
 	public Manager getManager() {
@@ -110,12 +122,20 @@ public class News implements java.io.Serializable {
 		this.isheadline = isheadline;
 	}
 
-	public String getImage() {
+	public Blob getImage() {
 		return this.image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(Blob image) {
 		this.image = image;
+	}
+
+	public String getKeywords() {
+		return this.keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
 	}
 
 }

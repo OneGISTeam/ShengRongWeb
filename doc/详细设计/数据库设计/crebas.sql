@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/5/3 13:15:28                            */
+/* Created on:     2018/5/10 17:23:11                           */
 /*==============================================================*/
 
 
@@ -15,6 +15,8 @@ drop table if exists manager;
 drop table if exists master;
 
 drop table if exists news;
+
+drop table if exists newstype;
 
 drop table if exists role;
 
@@ -102,16 +104,35 @@ create table news
 (
    newsid               int not null auto_increment,
    name                 char(32),
+   typeid               int,
    newsdate             date not null,
    publishdatetime      datetime not null,
    title                char(64) not null,
    content              text not null,
    isheadline           bool not null,
    image                mediumblob not null,
+   keywords             char(255) not null,
    primary key (newsid)
 );
 
 alter table news comment '新闻表';
+
+/*==============================================================*/
+/* Table: newstype                                              */
+/*==============================================================*/
+create table newstype
+(
+   typeid               int not null auto_increment,
+   name                 char(32) not null,
+   des                  char(255) not null,
+   primary key (typeid)
+);
+
+alter table newstype comment '新闻类型表';
+
+INSERT INTO newstype values
+(0,'行业新闻','主要是跟公司主营业务相关的行业新闻'),
+(0,'公司新闻','主要是公司内部新闻');
 
 /*==============================================================*/
 /* Table: role                                                  */
@@ -164,6 +185,9 @@ alter table master add constraint FK_master_role foreign key (roleid)
 
 alter table news add constraint FK_news_manager foreign key (name)
       references manager (name) on delete restrict on update restrict;
+
+alter table news add constraint FK_news_newstype foreign key (typeid)
+      references newstype (typeid) on delete restrict on update restrict;
 
 alter table teamprocess add constraint FK_teamprocess_manager foreign key (name)
       references manager (name) on delete restrict on update restrict;

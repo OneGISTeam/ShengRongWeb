@@ -6,6 +6,7 @@
 	<constant name="struts.multipart.maxSize" value="52428800"/>
 	<constant name="struts.devMode" value="true" />
 	<include file="manager-homepage.xml"></include>
+	<include file="manager-news.xml"></include>
 	<package name="common" namespace="/" extends="struts-default">
 		<interceptors>
 			<interceptor name="loginStatus" class="com.shengrong.manager.interceptors.LoginStatus">

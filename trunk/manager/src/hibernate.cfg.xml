@@ -29,6 +29,7 @@
 		<mapping resource="com/shengrong/hibernate/Teamprocess.hbm.xml" />
 		<mapping resource="com/shengrong/hibernate/Manager.hbm.xml" />
 		<mapping resource="com/shengrong/hibernate/Master.hbm.xml" />
+		<mapping resource="com/shengrong/hibernate/Newstype.hbm.xml" />
 
 	</session-factory>
 

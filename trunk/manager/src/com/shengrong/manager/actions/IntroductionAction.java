@@ -145,6 +145,7 @@ public class IntroductionAction extends ActionBase {
 		if(request.getParameter("id") == null){
 			root.put("code", "400");
 			root.put("msg", "参数标识id为空！");
+			return SUCCESS;
 		}
 		int introid = Integer.parseInt(request.getParameter("id"));
 		

@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <a href="index.html"><i class="fa fa-dashboard"></i>网站统计工具</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-sitemap"></i>公司首页管理<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-home"></i>晟荣首页管理<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                     	<!-- class="activate-menu" -->
@@ -42,6 +42,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="<%=basePath %>homepage/teamprocesses.action">团队足迹</a>
                     </li>
                 </ul>
+            </li>
+            <li>
+            	<a href="#"><i class="fa fa-globe"></i>晟荣新闻管理<span class="fa arrow"></span></a>
+            	<ul class="nav nav-second-level">
+            		<li>
+                        <a href="<%=basePath %>news/newstypes.action">新闻类型</a>
+                    </li>
+            		<li>
+                        <a href="<%=basePath %>news/newses.action">发布新闻</a>
+                    </li>
+             
+            	</ul>
             </li>
         </ul>
     </div>
