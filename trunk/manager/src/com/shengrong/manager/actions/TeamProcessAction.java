@@ -3,11 +3,8 @@ package com.shengrong.manager.actions;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.TreeMap;
 
 import net.sf.json.JSONArray;
@@ -18,7 +15,7 @@ import org.hibernate.Transaction;
 import com.shengrong.hibernate.Teamprocess;
 import com.shengrong.hibernate.TeamprocessDAO;
 import com.shengrong.hibernate.customization.TeamprocessEncapsulator;
-import com.shengrong.system.System;
+
 
 public class TeamProcessAction extends ActionBase {
 
@@ -136,7 +133,7 @@ public class TeamProcessAction extends ActionBase {
 		if(encpTeamProcess.getEncpImage() == null || encpTeamProcess.getEncpPos() == null ||
 				encpTeamProcess.getLocation() == null || encpTeamProcess.getBrief() == null){
 			this.setMessage("信息填写不完整！");
-			this.setHref("<%=basePath%>homepage/teamprocesses.action");
+			this.setHref("homepage/teamprocesses.action");
 			return ERROR;
 		}
 		

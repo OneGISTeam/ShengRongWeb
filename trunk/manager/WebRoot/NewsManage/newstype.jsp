@@ -38,7 +38,7 @@ List<Newstype> newstypeList = (List<Newstype>)request.getAttribute("newstypeList
 		<div id="page-wrapper">
 			<div class="header"> 
 				<h1 class="page-header">
-					新闻管理<small>News Manage</small>
+					新闻类型管理<small>Newstype Manage</small>
 				</h1>
 				<ol class="breadcrumb">
 				  <li><a href="#">河南晟荣</a></li>

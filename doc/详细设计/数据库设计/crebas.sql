@@ -1,18 +1,24 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/5/10 17:23:11                           */
+/* Created on:     2018/5/21 21:10:44                           */
 /*==============================================================*/
 
+
+drop table if exists Datum;
 
 drop table if exists business;
 
 drop table if exists carousel;
+
+drop table if exists companyprocess;
 
 drop table if exists introduction;
 
 drop table if exists manager;
 
 drop table if exists master;
+
+drop table if exists member;
 
 drop table if exists news;
 
@@ -21,6 +27,23 @@ drop table if exists newstype;
 drop table if exists role;
 
 drop table if exists teamprocess;
+
+/*==============================================================*/
+/* Table: Datum                                                 */
+/*==============================================================*/
+create table Datum
+(
+   datumid              int not null auto_increment,
+   name                 char(32),
+   title                char(32) not null,
+   brief                char(255) not null,
+   url                  char(255) not null,
+   keywords             char(32) not null,
+   datetime             datetime not null,
+   primary key (datumid)
+);
+
+alter table Datum comment '公司资料表';
 
 /*==============================================================*/
 /* Table: business                                              */
@@ -53,6 +76,22 @@ create table carousel
 );
 
 alter table carousel comment '用于记录网站的首页轮播消息，照片最大不超过16M';
+
+/*==============================================================*/
+/* Table: companyprocess                                        */
+/*==============================================================*/
+create table companyprocess
+(
+   processid            int not null auto_increment,
+   name                 char(32),
+   title                char(32) not null,
+   brief                char(255) not null,
+   date                 date not null,
+   image                mediumblob not null,
+   primary key (processid)
+);
+
+alter table companyprocess comment '记录公司的发展历程及里程碑事件';
 
 /*==============================================================*/
 /* Table: introduction                                          */
@@ -96,6 +135,21 @@ create table master
 );
 
 alter table master comment '超级管理员，全局唯一';
+
+/*==============================================================*/
+/* Table: member                                                */
+/*==============================================================*/
+create table member
+(
+   memberid             int not null auto_increment,
+   name                 char(32),
+   membername           char(32) not null,
+   post                 char(64) not null,
+   image                mediumblob not null,
+   primary key (memberid)
+);
+
+alter table member comment '团队成员表';
 
 /*==============================================================*/
 /* Table: news                                                  */
@@ -168,10 +222,16 @@ create table teamprocess
 
 alter table teamprocess comment '团队进程表';
 
+alter table Datum add constraint FK_Reference_11 foreign key (name)
+      references manager (name) on delete restrict on update restrict;
+
 alter table business add constraint FK_business_manager foreign key (managername)
       references manager (name) on delete restrict on update restrict;
 
 alter table carousel add constraint FK_carousel_manager foreign key (name)
+      references manager (name) on delete restrict on update restrict;
+
+alter table companyprocess add constraint FK_Reference_9 foreign key (name)
       references manager (name) on delete restrict on update restrict;
 
 alter table introduction add constraint FK_introduction_manager foreign key (name)
@@ -182,6 +242,9 @@ alter table manager add constraint FK_manager_role foreign key (roleid)
 
 alter table master add constraint FK_master_role foreign key (roleid)
       references role (roleid) on delete restrict on update restrict;
+
+alter table member add constraint FK_Reference_10 foreign key (name)
+      references manager (name) on delete restrict on update restrict;
 
 alter table news add constraint FK_news_manager foreign key (name)
       references manager (name) on delete restrict on update restrict;

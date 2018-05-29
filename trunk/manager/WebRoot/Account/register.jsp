@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>Plugins/FontAwesome/font-awesome.css" />
 	<link rel="stylesheet" href="<%=basePath%>Account/form-elements.css" />
 	<link rel="stylesheet" href="<%=basePath%>Account/style.css" />
+	<link href="<%=basePath%>Plugins/validform/css/validform.css" rel="stylesheet"/>
 	
   </head>
   
@@ -58,15 +59,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<form role="form" action="masterregister.action" method="post" class="login-form">
 			                 	<div class="form-group">
 			                 		<label class="sr-only" for="mastername">账号</label>
-			                     	<input type="text" name="mastername" placeholder="账号..." class="form-username form-control" id="form-username">
+			                     	<input type="text" datatype="s5-16" errormsg="昵称至少5个字符,最多16个字符！" name="mastername" placeholder="账号..." class="form-username form-control" id="form-username">
 			                     </div>
 			                     <div class="form-group">
 			                     	<label class="sr-only" for="password">密码</label>
-			                     	<input type="password" name="password" placeholder="密码..." class="form-password form-control" id="form-password">
+			                     	<input type="password" datatype="*6-15" errormsg="密码范围在6~15位之间,不能使用空格！" name="password" placeholder="密码..." class="form-password form-control" id="form-password">
 			                     </div>
 			                     <div class="form-group">
 			                     	<label class="sr-only" for="repassword">确认密码</label>
-			                     	<input type="password" name="repassword" placeholder="重新输入密码..." class="form-password form-control" id="form-repassword">
+			                     	<input type="password" datatype="*" recheck="password" errormsg="您两次输入的账号密码不一致！" name="repassword" placeholder="重新输入密码..." class="form-password form-control" id="form-repassword">
 			                     </div>
 			                     <button type="submit" class="btn">注册</button>
 							</form>
@@ -80,5 +81,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>Plugins/bootstrap/bootstrap.min.js"></script>
     <script src="<%=basePath%>Plugins/jquery/jquery.backstretch.min.js"></script>
     <script src="<%=basePath%>Account/scripts.js"></script>
+    <script src="<%=basePath%>Plugins/validform/js/Validform_v5.3.2_ncr_min.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    		//初始化表单验证信息
+			var form = $("form").Validform({
+				tiptype:3,
+				label:".label",
+				showAllError:true
+			});
+    	});
+    </script>
 </body>
 </html>

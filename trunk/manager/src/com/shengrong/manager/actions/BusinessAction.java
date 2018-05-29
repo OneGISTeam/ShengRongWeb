@@ -52,7 +52,7 @@ public class BusinessAction extends ActionBase {
 				||business.getDes() == null || business.getDes().isEmpty() 
 				||business.getIcon() == null || business.getIcon().isEmpty()){
 			this.setMessage("信息填写不完整！");
-			this.setHref("<%=basePath%>homepage/businesses.action");
+			this.setHref("homepage/businesses.action");
 			return ERROR;
 		}
 		business.setManager(getManager());

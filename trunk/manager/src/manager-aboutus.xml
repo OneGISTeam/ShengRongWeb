@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="aboutus" namespace="/aboutus" extends="struts-default,json-default">
+		<interceptors>
+			<interceptor name="loginStatus" class="com.shengrong.manager.interceptors.LoginStatus">
+			</interceptor>
+		</interceptors>
+		<global-results>
+            <!-- 逻辑名为login的结果，映射到/login.jsp页面 -->
+            <result name="login">/Account/login.jsp</result>
+        </global-results>
+        
+        <!-- 公司历程的页面跳转 -->
+        <action name="aboutcompany" class="com.shengrong.manager.actions.AboutCompanyAction">
+        	<result name="success">/Aboutus/aboutcompany.jsp</result>
+    		<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <!-- 保存关于公司 -->
+        <action name="saveAboutcompany" class="com.shengrong.manager.actions.AboutCompanyAction" method="save">
+        	<result name="success" type="chain">
+				<param name="actionName">aboutcompany</param>
+				<param name="namespace">/aboutus</param>
+			</result>
+        	<result name="error">/error.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <!-- 删除关于公司 -->
+        <action name="deleteAboutcompany" class="com.shengrong.manager.actions.AboutCompanyAction" method="delete">
+        	<result type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        
+        <!-- 关于公司团队的页面跳转 -->
+        <action name="aboutmember" class="com.shengrong.manager.actions.AboutMemberAction">
+        	<result name="success">/Aboutus/aboutmember.jsp</result>
+    		<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <!-- 保存关于团队 -->
+        <action name="saveAboutmember" class="com.shengrong.manager.actions.AboutMemberAction" method="save">
+        	<result name="success" type="chain">
+				<param name="actionName">aboutmember</param>
+				<param name="namespace">/aboutus</param>
+			</result>
+        	<result name="error">/error.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <!-- 删除团队成员 -->
+        <action name="deleteAboutMember" class="com.shengrong.manager.actions.AboutMemberAction" method="delete">
+        	<result type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+	</package>
+</struts>

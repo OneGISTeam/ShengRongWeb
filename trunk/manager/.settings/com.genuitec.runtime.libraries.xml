@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project adv-config="true">
+  <container path="com.genuitec.runtime.library/com.genuitec.struts_2.1">
+    <disable type="custom_jars"/>
+    <disable name="commons-io-1.3.2.jar" type="jar"/>
+    <disable name="commons-fileupload-1.2.1.jar" type="jar"/>
+    <disable name="antlr-2.7.2.jar" type="jar"/>
+    <custom-jar path="D:lib/MyEclipse Workspace/ShengRongWeb/trunk/manager/WebRoot/WEB-INF/lib/commons-fileupload-1.3.1.jar"/>
+  </container>
+</project>

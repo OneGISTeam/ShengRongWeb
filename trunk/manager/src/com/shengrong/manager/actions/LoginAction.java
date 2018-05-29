@@ -163,7 +163,7 @@ public class LoginAction extends ActionBase implements SessionAware{
 			@SuppressWarnings("unchecked")
 			List<Master> masters = masterDao.findByExample(master);
 			if(masters.size() == 0){
-				this.setMessage("账号或密码错误！");
+				this.setMessage("账号或密码错误！也有可能是身份选择错误！");
 				this.setHref("enter.action");
 				return ERROR;
 			}else{
@@ -184,7 +184,7 @@ public class LoginAction extends ActionBase implements SessionAware{
 			@SuppressWarnings("unchecked")
 			List<Manager> result = managerDao.findByExample(manager);
 			if(result.size() == 0){
-				this.setMessage("账号或密码错误！");
+				this.setMessage("账号或密码错误！也有可能是身份选择错误！");
 				this.setHref("enter.action");
 				return ERROR;
 			}else{

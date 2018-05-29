@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
+	<!-- 配置自定义文件上传类MyRequestParser，继承MultiPartRequest重写 -->
+	<bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest" name="myRequestParser"
+		class="com.shengrong.manager.file.MyJakartaMultiPartRequest" scope="default" optional="true"></bean>
 	<constant name="struts.enable.DynamicMethodInvocation" value="false"/>
-	<!-- 设置文件上传最大限制为50M -->
-	<constant name="struts.multipart.maxSize" value="52428800"/>
+	<!-- 设置文件上传最大限制为1G -->
+	<constant name="struts.multipart.maxSize" value="1073741824"/>
+	<!-- 设置文件上传解析器为自定义解析器myRequestParser -->
+	<constant name="struts.multipart.handler" value="myRequestParser"></constant>
+	
 	<constant name="struts.devMode" value="true" />
 	<include file="manager-homepage.xml"></include>
 	<include file="manager-news.xml"></include>
-	<package name="common" namespace="/" extends="struts-default">
+	<include file="manager-aboutus.xml"></include>
+	<include file="manager-datum.xml"></include>
+	<package name="common" namespace="/" extends="struts-default" >
 		<interceptors>
 			<interceptor name="loginStatus" class="com.shengrong.manager.interceptors.LoginStatus">
 			</interceptor>

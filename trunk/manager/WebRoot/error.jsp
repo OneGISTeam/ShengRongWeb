@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,21 +9,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
-    <title>My JSP 'error.jsp' starting page</title>
+    <meta charset="utf-8" />
+    <title>河南晟荣建筑工业科技有限公司-超级管理员注册页面</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
+	<meta http-equiv="description" content="河南晟荣建筑工业科技有限公司-超级管理员注册页面">
+	
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" />
+	<link rel="stylesheet" href="<%=basePath%>Plugins/bootstrap/bootstrap.css" />
+	<link rel="stylesheet" href="<%=basePath%>Plugins/FontAwesome/font-awesome.css" />
+	<link rel="stylesheet" href="<%=basePath%>Account/form-elements.css" />
+	<link rel="stylesheet" href="<%=basePath%>Account/style.css" />
+	
   </head>
   
-  <body>
-    error<br>
-  </body>
+<body>
+	<!-- Top content -->
+	<div class="top-content">
+		<div class="inner-bg">
+			<div class="container">
+    			<div class="row">
+					<div class="col-sm-8 col-sm-offset-2 text">
+						<h1><i class="fa fa-times fa-2x"></i><strong>错误!</strong></h1>
+						<h4>
+							${message}
+						</h4>
+						<button type="button" class="btn" onclick="window.location.href= '<%=basePath%>${href}'">点击继续</button>
+                     </div>
+				</div>
+    		</div>
+    	</div>
+    </div>
+    <script src="<%=basePath%>Plugins/jquery/jquery-1.10.2.js"></script>
+    <script src="<%=basePath%>Plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="<%=basePath%>Plugins/jquery/jquery.backstretch.min.js"></script>
+    <script src="<%=basePath%>Account/scripts.js"></script>
+</body>
 </html>

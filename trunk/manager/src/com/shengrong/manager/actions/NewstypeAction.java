@@ -54,7 +54,7 @@ public class NewstypeAction extends ActionBase {
 	public String save(){
 		if(this.newstype == null){
 			this.setMessage("新闻类型为null！");
-			this.setHref("<%=basePath%>news/newstypes.action");
+			this.setHref("news/newstypes.action");
 			return ERROR;
 		}
 		NewstypeDAO newstypeDao = new NewstypeDAO();

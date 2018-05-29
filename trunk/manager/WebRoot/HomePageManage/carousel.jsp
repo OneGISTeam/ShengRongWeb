@@ -231,7 +231,6 @@ int iDisplayCount = carouselSetting.getDisplayCount();
 				});
 				validForms.push(formValid);
 			}
-			
 		});
 		
 		/**

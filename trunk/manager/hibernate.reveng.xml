@@ -5,4 +5,10 @@
 	<table name="news" catalog="shengrong">
 		<column name="image" type="blob"></column>
 	</table>
+	<table name="companyprocess" catalog="shengrong">
+		<column name="image" type="blob"></column>
+	</table>
+	<table name="member" catalog="shengrong">
+		<column name="image" type="blob"></column>
+	</table>
 </hibernate-reverse-engineering>

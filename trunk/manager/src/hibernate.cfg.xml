@@ -30,6 +30,10 @@
 		<mapping resource="com/shengrong/hibernate/Manager.hbm.xml" />
 		<mapping resource="com/shengrong/hibernate/Master.hbm.xml" />
 		<mapping resource="com/shengrong/hibernate/Newstype.hbm.xml" />
+		<mapping
+			resource="com/shengrong/hibernate/Companyprocess.hbm.xml" />
+		<mapping resource="com/shengrong/hibernate/Member.hbm.xml" />
+		<mapping resource="com/shengrong/hibernate/Datum.hbm.xml" />
 
 	</session-factory>
 

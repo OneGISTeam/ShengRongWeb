@@ -14,7 +14,7 @@
 		<!-- 查找所有的carousel -->
 		<action name="carousels" class="com.shengrong.manager.actions.CarouselAction">
 			<result name="success">/HomePageManage/carousel.jsp</result>
-			<result name="error">error.jsp</result>
+			<result name="error">/error.jsp</result>
 			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
 			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
 		</action>
@@ -33,7 +33,7 @@
 		<!-- 公司简介页面跳转 -->	
 		<action name="introductions" class="com.shengrong.manager.actions.IntroductionAction">
 			<result name="success">/HomePageManage/introduction.jsp</result>
-			<result name="error">error.jsp</result>
+			<result name="error">/error.jsp</result>
 			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
 			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
 		</action>
@@ -54,7 +54,7 @@
 				<param name="actionName">introductions</param>
 				<param name="namespace">/homepage</param>
 			</result>
-			<result name="error">error.jsp</result>
+			<result name="error">/error.jsp</result>
 			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
 			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
 		</action>
@@ -73,7 +73,7 @@
 		<!-- 业务范围页面跳转 -->
 		<action name="businesses" class="com.shengrong.manager.actions.BusinessAction">
 			<result name="success">/HomePageManage/business.jsp</result>
-			<result name="error">error.jsp</result>
+			<result name="error">/error.jsp</result>
 			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
 			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
 		</action>	
@@ -83,7 +83,7 @@
 				<param name="actionName">businesses</param>
 				<param name="namespace">/homepage</param>
 			</result>
-			<result name="error">error.jsp</result>
+			<result name="error">/error.jsp</result>
 			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
 			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
 		</action>
@@ -102,7 +102,7 @@
 		<!-- 团队足迹页面跳转 -->
 		<action name="teamprocesses" class="com.shengrong.manager.actions.TeamProcessAction">
 			<result name="success">/HomePageManage/teamprocess.jsp</result>
-			<result name="error">error.jsp</result>
+			<result name="error">/error.jsp</result>
 			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
 			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
 		</action>

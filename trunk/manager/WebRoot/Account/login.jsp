@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</h4>
 						<div class="description">
 							<p>
-	                          	您即将登录河南晟荣建筑工业科技有限公司后台管理员系统，系统提供您对公司网站内容的动态编辑与管理。
+	                          	即将登录河南晟荣建筑工业科技有限公司后台管理员系统，系统提供对公司网站内容的动态编辑与管理。
 							</p>
 						</div>
                      </div>

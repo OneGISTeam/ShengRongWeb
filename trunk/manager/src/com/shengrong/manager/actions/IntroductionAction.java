@@ -124,7 +124,7 @@ public class IntroductionAction extends ActionBase {
 	public String save(){
 		if(this.content == null || this.content.isEmpty()){
 			this.setMessage("提交的公司简介内容不能为空！");
-			this.setHref("<%=basePath%>homepage/saveIntroduction.action");
+			this.setHref("homepage/saveIntroduction.action");
 			return ERROR;
 		}
 		
