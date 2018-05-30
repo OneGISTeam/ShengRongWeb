@@ -15,9 +15,13 @@
 			
             $(window).bind("load resize", function () {
                 if ($(this).width() < 768) {
-                    $('div.sidebar-collapse').addClass('collapse')
+                    $('div.sidebar-collapse').addClass('collapse');
+                    $('.nav-side-portrait').addClass('collapse');
+                    $('#nav_top_header').addClass('collapse');
                 } else {
-                    $('div.sidebar-collapse').removeClass('collapse')
+                    $('div.sidebar-collapse').removeClass('collapse');
+                    $('.nav-side-portrait').removeClass('collapse');
+                    $('#nav_top_header').removeClass('collapse');
                 }
             });
 

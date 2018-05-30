@@ -15,7 +15,7 @@
 	<include file="manager-news.xml"></include>
 	<include file="manager-aboutus.xml"></include>
 	<include file="manager-datum.xml"></include>
-	<package name="common" namespace="/" extends="struts-default" >
+	<package name="common" namespace="/" extends="struts-default,json-default" >
 		<interceptors>
 			<interceptor name="loginStatus" class="com.shengrong.manager.interceptors.LoginStatus">
 			</interceptor>
@@ -35,9 +35,12 @@
 		<!-- 超级管理员注册 -->
 		<action name="master*" class="com.shengrong.manager.actions.LoginAction" method="{1}">
 			<result name="success">/Statistics/statistic.jsp</result>
-			<result name="master">/Master/master.jsp</result>
+			<result name="master" type="chain">
+				<param name="actionName">masterPage</param>
+			</result>
 			<result name="login">success.jsp</result>
 			<result name="error">error.jsp</result>
+			<result name="logout">/Account/login.jsp</result>
 			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
 			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
 		</action>
@@ -49,8 +52,46 @@
 		</action>
 		
 		<!-- 超级管理员页面跳转 -->
-		<action name="masterPage" class="com.opensymphony.xwork2.ActionSupport">
+		<action name="masterPage" class="com.shengrong.manager.actions.MasterAction">
 			<result name="success">/Master/master.jsp</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		
+		<!-- 通过审核 -->
+		<action name="passAudit" class="com.shengrong.manager.actions.MasterAction" method="passAudit">
+			<result name="success" type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		
+		<!-- 撤销审核 -->
+		<action name="revokeAudit" class="com.shengrong.manager.actions.MasterAction" method="revokeAudit">
+			<result name="success" type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		
+		<!-- 删除管理员账号 -->
+		<action name="deleteManager" class="com.shengrong.manager.actions.MasterAction" method="delete">
+			<result name="success" type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
 		</action>
 	</package>
 </struts>    

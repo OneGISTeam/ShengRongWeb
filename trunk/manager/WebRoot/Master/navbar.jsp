@@ -17,16 +17,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <div id="sideNav">
          	<i class="fa fa-caret-right"></i>
          </div>
+         <div id="nav_top_header" class="nav navbar-top-links navbar-left" style="padding-left:30px">
+         	<h4 class="nav-top-title" style="color:#F09B22">河南晟荣建筑科技有限公司-超级管理员系统</h4>
+         </div>
 	</div>
+	<ul class="nav navbar-top-links navbar-right">
+     	<li class="dropdown">
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+             </a>
+             <ul class="dropdown-menu dropdown-user">
+                 <li><a href="<%=basePath %>masterlogout.action"><i class="fa fa-sign-out fa-fw"></i>退出登录</a>
+                 </li>
+             </ul>
+             <!-- /.dropdown-user -->
+     	</li>
+     </ul>
 </nav>
 <nav class="navbar-default navbar-side" role="navigation">
-	<div>
-		<img style="width:60px;height:60px" src="<%=basePath %>Images/potrait.png" />
+	<div class="nav-side-portrait" style="text-align:center">
+		<h5 style="color:#F09B22">欢迎，超级管理员：</h5>
+		<h5 style="color:#F09B22">
+			<%=session.getAttribute("loginName") %>
+		</h5>
 	</div>
 	<div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li>
-            	<a href="<%=basePath %>masterPage.action"><i class="fa fa-dashboard"></i>管理员账号管理</a>
+            	<a href="<%=basePath %>masterPage.action"><i class="fa fa-users"></i>管理员账号管理</a>
             </li>
         </ul>
     </div>

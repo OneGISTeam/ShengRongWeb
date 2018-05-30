@@ -17,9 +17,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <div id="sideNav">
          	<i class="fa fa-caret-right"></i>
          </div>
+         <div id="nav_top_header" class="nav navbar-top-links navbar-left" style="padding-left:30px">
+         	<h4 class="nav-top-title" style="color:#F09B22">河南晟荣建筑科技有限公司-后台管理员系统</h4>
+         </div>
 	</div>
+	<ul class="nav navbar-top-links navbar-right">
+     	<li class="dropdown">
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+             </a>
+             <ul class="dropdown-menu dropdown-user">
+                 <li><a href="<%=basePath %>masterlogout.action"><i class="fa fa-sign-out fa-fw"></i>退出登录</a>
+                 </li>
+             </ul>
+             <!-- /.dropdown-user -->
+     	</li>
+     </ul>
 </nav>
 <nav class="navbar-default navbar-side" role="navigation">
+	<div class="nav-side-portrait" style="text-align:center">
+		<img style="width:60px;height:60px;border-radius:50%" src="<%=basePath %>Images/potrait.png" />
+		<h5 style="color:white">
+			<%
+				String sex = (String)session.getAttribute("loginSex");
+				if(sex.equals("true")){
+				%>
+				<span style="color:#AEEEEE" class="fa fa-male"></span>
+				<%
+				}else{
+				%>
+				<span style="color:#FFC1C1" class="fa fa-female"></span>
+				<%
+				}
+			%>
+			<%=session.getAttribute("loginName") %>
+		</h5>
+	</div>
 	<div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
         	<li>

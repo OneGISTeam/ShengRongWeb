@@ -164,7 +164,7 @@ public class LoginAction extends ActionBase implements SessionAware{
 				//登录成功
 				mySession.put("loginFlag", "login");
 				mySession.put("loginRole", Role.MASTER);
-				//mySession.put("loginName", master.getMastername());
+				mySession.put("loginName", master.getMastername());
 				return "master";
 			}else{
 				this.setMessage("账号或密码错误！也有可能是身份选择错误！");
@@ -183,6 +183,7 @@ public class LoginAction extends ActionBase implements SessionAware{
 					mySession.put("loginFlag", "login");
 					mySession.put("loginRole", Role.MANAGER);
 					mySession.put("loginName", manager.getName());
+					mySession.put("loginSex", manager.getSex().toString());
 					return SUCCESS;
 				}else{
 					//登录成功
@@ -200,5 +201,10 @@ public class LoginAction extends ActionBase implements SessionAware{
 			this.setHref("enter.action");
 			return ERROR;
 		}
+	}
+	
+	public String logout(){
+		mySession.clear();
+		return "logout";
 	}
 }
