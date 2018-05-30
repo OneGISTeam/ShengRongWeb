@@ -1,26 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ page import="com.mysql.jdbc.Driver"%> 
-<%@ page import="java.sql.*" %> 
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-//加载驱动程序   
-String driverName="com.mysql.jdbc.Driver";   
-//数据库信息  
-String userName="root";   
-//密码   
-String userPassword="root";   
-//数据库名   
-String dbName="shengrong";   
-//表名   
-String tableName="carousel"; 
-
-String url = "jdbc:mysql://localhost/"+dbName+"?user="+userName+"&password="+userPassword; 
-//Class.forName("com.mysql.jdbc.Driver").newInstance();  
-Connection connection = DriverManager.getConnection(url);    //通过url连接数据库
-Statement statement = connection.createStatement();    //获取可执行sql语句的对象
-String sql = "SELECT * FROM " + tableName;    //sql语句，遍历数据表的参数
-ResultSet resultset = statement.executeQuery(sql);    //执行sql语句并将数据表返回给ResultSet
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -78,7 +59,23 @@ ResultSet resultset = statement.executeQuery(sql);    //执行sql语句并将数
 	<!---header--->
 	<div class="header-section">
 		<div class="container">
-			
+			<div class="head-top">
+				<div class="social-icon">
+					<a href="#"><i class="icon"></i></a>
+					<a href="#"><i class="icon1"></i></a>
+					<a href="#"><i class="icon2"></i></a>
+					<a href="#"><i class="icon3"></i></a>
+					<a href="#"><i class="icon4"></i></a>
+				</div>
+				<div class="email">
+					<ul>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email: <a href="mailto:info@example.com">info@example.com</a> </li>
+						<li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+						<li><i class="glyphicon glyphicon-lock" aria-hidden="true"></i><a href="#" data-toggle="modal" data-target="#myModal1">Register</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
 			<nav class="navbar navbar-default">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -93,7 +90,7 @@ ResultSet resultset = statement.executeQuery(sql);    //执行sql语句并将数
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="<%=basePath%>homepage.action">公司首页 <span class="sr-only">(current)</span></a></li>
+						<li class="active"><a href="homePage.jsp">公司首页 <span class="sr-only">(current)</span></a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品中心<span class="caret"></span></a>
 									<ul class="dropdown-menu">
@@ -110,7 +107,7 @@ ResultSet resultset = statement.executeQuery(sql);    //执行sql语句并将数
 										<li><a href="4columnsgallery.html">4 Columns Gallery</a></li>
 									</ul>
 							</li>
-						<li><a href="<%=basePath%>aboutshengrong.action">关于我们</a></li>
+						<li><a href="<%=basePath%>Aboutus/aboutshengrong.jsp">关于我们</a></li>
 					</ul>
 					<div class="clearfix"></div>
 				</div>
@@ -122,31 +119,27 @@ ResultSet resultset = statement.executeQuery(sql);    //执行sql语句并将数
 	<div class="slider">
 		<div class="callbacks_container">
 			<ul class="rslides" id="slider">
-			<% while (resultset.next()) { %>   
-			
-				<div class="slid banner<%out.print(resultset.getString("carouselid"));%>">
-					  <div class="caption">
-							<h3><%out.print(resultset.getString("title"));%></h3>
-							<p><%out.print(resultset.getString("content"));%></p>
-							<a href="#" class="button">了解一下</a>
-					  </div>
-				</div>
-			 <% } %>  
-				
-				<!-- <div class="slid banner2">	
+				<div class="slid banner1">
 					  <div class="caption">
 							<h3>标题</h3>
 							<p>新型节能环保材料、建筑材料的技术研发及销售；消防器材销售及售后服务；消防工程设计及施工。</p>
 							<a href="#" class="button">了解一下</a>
 					  </div>
-				</div> -->
-				<!-- <div class="slid banner3">	
+				</div>
+				<div class="slid banner2">	
+					  <div class="caption">
+							<h3>标题</h3>
+							<p>新型节能环保材料、建筑材料的技术研发及销售；消防器材销售及售后服务；消防工程设计及施工。</p>
+							<a href="#" class="button">了解一下</a>
+					  </div>
+				</div>
+				<div class="slid banner3">	
 					<div class="caption">
 						<h3>标题</h3>
 						<p>新型节能环保材料、建筑材料的技术研发及销售；消防器材销售及售后服务；消防工程设计及施工。</p>
 						<a href="#" class="button">了解一下</a>
 					</div>
-				</div> -->
+				</div>
 			</ul>
 		</div>
 	</div>

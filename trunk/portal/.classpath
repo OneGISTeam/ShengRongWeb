@@ -25,9 +25,6 @@
 			<attribute name="owner.project.facets" value="web.struts2"/>
 		</attributes>
 	</classpathentry>
-<<<<<<< HEAD
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ShengRongManager"/>
-=======
 	<classpathentry kind="con" path="com.genuitec.runtime.library/com.genuitec.hibernate_4.1">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="WEB-INF/lib"/>
@@ -35,6 +32,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ShengRongHibernate"/>
->>>>>>> abf8c4610d7ff835177d9d19679d59e81075a1c7
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

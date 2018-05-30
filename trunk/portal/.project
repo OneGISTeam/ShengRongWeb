@@ -3,11 +3,7 @@
 	<name>ShengRongPortal</name>
 	<comment></comment>
 	<projects>
-<<<<<<< HEAD
-		<project>ShengRongManager</project>
-=======
 		<project>ShengRongHibernate</project>
->>>>>>> abf8c4610d7ff835177d9d19679d59e81075a1c7
 	</projects>
 	<buildSpec>
 		<buildCommand>

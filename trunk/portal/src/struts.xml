@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
-    <!-- <constant name="struts.enable.DynamicMethodInvocation" value="false"/> -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
 	<constant name="struts.devMode" value="true" />
 	<package name="common" namespace="/" extends="struts-default">
 		<!-- 系统初始化 -->
-		<action name="enter" class="com.shengrong.portal.actions.HomepageAction">
-			<result name="homepage">homepage.jsp</result><!--首页 -->
-		</action>
-		
-		<action name="homepage" class="com.shengrong.portal.actions.HomepageAction">
-			<result name="homepage">homepage.jsp</result><!--首页 -->
-		</action>
-		</package>
-		
-	  <package name="aboutus" namespace="/" extends="struts-default">	
-		<action name="aboutshengrong" class="com.shengrong.portal.actions.AboutCompanyAction">
-			<result name="SUCCESS">aboutshengrong.jsp</result>
-		</action>
-		
-		<action name="aboutteam" class="com.shengrong.portal.actions.AboutMemberAction">
-			<result name="success">aboutteam.jsp</result>
+		<action name="enter" class="actions.HomePage">
+			<result name="homePage">homePage.jsp</result><!--首页 -->
 		</action>
 	</package>
-	
 </struts>      
