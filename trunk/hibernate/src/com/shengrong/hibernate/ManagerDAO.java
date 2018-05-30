@@ -1,5 +1,6 @@
 package com.shengrong.hibernate;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
@@ -23,9 +24,9 @@ import org.slf4j.LoggerFactory;
 public class ManagerDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory.getLogger(ManagerDAO.class);
 	// property constants
-	public static final String PORTRAIT = "portrait";
 	public static final String SEX = "sex";
 	public static final String PASSWORD = "password";
+	public static final String PERMITTED = "permitted";
 
 	public void save(Manager transientInstance) {
 		log.debug("saving Manager instance");
@@ -91,16 +92,16 @@ public class ManagerDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByPortrait(Object portrait) {
-		return findByProperty(PORTRAIT, portrait);
-	}
-
 	public List findBySex(Object sex) {
 		return findByProperty(SEX, sex);
 	}
 
 	public List findByPassword(Object password) {
 		return findByProperty(PASSWORD, password);
+	}
+
+	public List findByPermitted(Object permitted) {
+		return findByProperty(PERMITTED, permitted);
 	}
 
 	public List findAll() {

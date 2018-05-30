@@ -84,6 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>Plugins/validform/js/Validform_v5.3.2_ncr_min.js"></script>
     <script type="text/javascript">
     	$(function(){
+    		$.backstretch("./Images/master-bg.jpg");
     		//初始化表单验证信息
 			var form = $("form").Validform({
 				tiptype:3,

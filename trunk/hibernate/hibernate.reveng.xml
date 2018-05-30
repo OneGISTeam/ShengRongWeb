@@ -11,4 +11,7 @@
 	<table name="member" catalog="shengrong">
 		<column name="image" type="blob"></column>
 	</table>
+	<table name="manager" catalog="shengrong">
+		<column name="portrait" type="blob"></column>
+	</table>
 </hibernate-reverse-engineering>

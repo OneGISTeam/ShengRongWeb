@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/5/21 21:10:44                           */
+/* Created on:     2018/5/29 17:54:23                           */
 /*==============================================================*/
 
 
@@ -118,6 +118,7 @@ create table manager
    portrait             mediumblob not null,
    sex                  bool not null,
    password             char(64) not null,
+   permitted            boolean not null,
    primary key (name)
 );
 

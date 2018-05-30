@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                      		<p>请输入账号和密码:</p>
 	                  		</div>
 	                  		<div class="form-top-right">
-	                  			<i class="fa fa-key"></i>
+	                  			<i class="fa fa-sign-in"></i>
 	                  		</div>
 	                    </div>
 	                 	<div class="form-bottom">
@@ -70,6 +70,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                     </select>
 			                     <button type="submit" class="btn">进入系统</button>
 							</form>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3 social-login">
+						<h3>管理员账号申请注册</h3>
+						<div class="social-login-buttons">
+							<a class="btn btn-link-1 btn-link-1-twitter" href="<%=basePath %>Account/managerRegister.jsp">
+                        		<i class="fa fa-user"></i> 申请注册管理员
+                        	</a>
 						</div>
 					</div>
 				</div>

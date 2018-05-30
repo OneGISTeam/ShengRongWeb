@@ -35,10 +35,22 @@
 		<!-- 超级管理员注册 -->
 		<action name="master*" class="com.shengrong.manager.actions.LoginAction" method="{1}">
 			<result name="success">/Statistics/statistic.jsp</result>
+			<result name="master">/Master/master.jsp</result>
 			<result name="login">success.jsp</result>
 			<result name="error">error.jsp</result>
 			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
 			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		
+		<!-- 普通管理员注册 -->
+		<action name="adminReg" class="com.shengrong.manager.actions.ManagerAction" method="register">
+			<result name="success">success.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<!-- 超级管理员页面跳转 -->
+		<action name="masterPage" class="com.opensymphony.xwork2.ActionSupport">
+			<result name="success">/Master/master.jsp</result>
 		</action>
 	</package>
 </struts>    

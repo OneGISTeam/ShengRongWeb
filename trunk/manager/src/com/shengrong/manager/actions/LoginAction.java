@@ -158,41 +158,42 @@ public class LoginAction extends ActionBase implements SessionAware{
 		
 		//超级管理员身份登录
 		if(this.roleid.equals("master")){
-			Master master = new Master(this.mastername, role, encodePassword);
 			MasterDAO masterDao = new MasterDAO();
-			@SuppressWarnings("unchecked")
-			List<Master> masters = masterDao.findByExample(master);
-			if(masters.size() == 0){
-				this.setMessage("账号或密码错误！也有可能是身份选择错误！");
-				this.setHref("enter.action");
-				return ERROR;
-			}else{
+			Master master = masterDao.findById(this.mastername);
+			if(master != null && master.getPassword().equals(encodePassword)){
 				//登录成功
 				mySession.put("loginFlag", "login");
 				mySession.put("loginRole", Role.MASTER);
 				//mySession.put("loginName", master.getMastername());
-				return SUCCESS;
+				return "master";
+			}else{
+				this.setMessage("账号或密码错误！也有可能是身份选择错误！");
+				this.setHref("enter.action");
+				return ERROR;
 			}
 			
 		}else if(this.roleid.equals("admin")){
 			//普通管理员身份登录
-			Manager manager = new Manager();
-			manager.setName(this.mastername);
-			manager.setPassword(this.password);
 			ManagerDAO managerDao = new ManagerDAO();
 			
-			@SuppressWarnings("unchecked")
-			List<Manager> result = managerDao.findByExample(manager);
-			if(result.size() == 0){
+			Manager manager = managerDao.findById(this.mastername);
+			if(manager != null && manager.getPassword().equals(encodePassword)){
+				if(manager.getPermitted()){
+					//登录成功
+					mySession.put("loginFlag", "login");
+					mySession.put("loginRole", Role.MANAGER);
+					mySession.put("loginName", manager.getName());
+					return SUCCESS;
+				}else{
+					//登录成功
+					this.setMessage("您的账号还未通过超级管理员审核，请联系超级管理员进行审核！");
+					this.setHref("enter.action");
+					return ERROR;
+				}
+			}else{
 				this.setMessage("账号或密码错误！也有可能是身份选择错误！");
 				this.setHref("enter.action");
 				return ERROR;
-			}else{
-				//登录成功
-				mySession.put("loginFlag", "login");
-				mySession.put("loginRole", Role.MANAGER);
-				mySession.put("loginName", manager.getName());
-				return SUCCESS;
 			}
 		}else{
 			this.setMessage("系统角色中仅有master和admin，但登录时出现了其余角色，请联系系统管理员！");
