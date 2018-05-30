@@ -25,6 +25,6 @@
 			<attribute name="owner.project.facets" value="web.struts2"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/ShengRongManager"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ShengRongManager"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

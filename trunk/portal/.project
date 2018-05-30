@@ -3,6 +3,7 @@
 	<name>ShengRongPortal</name>
 	<comment></comment>
 	<projects>
+		<project>ShengRongManager</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
