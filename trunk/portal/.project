@@ -3,7 +3,11 @@
 	<name>ShengRongPortal</name>
 	<comment></comment>
 	<projects>
+<<<<<<< HEAD
 		<project>ShengRongManager</project>
+=======
+		<project>ShengRongHibernate</project>
+>>>>>>> abf8c4610d7ff835177d9d19679d59e81075a1c7
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -44,4 +48,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>com</name>
+			<type>2</type>
+			<location>D:/MyEclipse Workspace/ShengRongWeb/trunk/manager/src/com</location>
+		</link>
+	</linkedResources>
 </projectDescription>

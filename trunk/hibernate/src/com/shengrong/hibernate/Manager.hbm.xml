@@ -16,7 +16,7 @@
         <property name="regdatetime" type="java.sql.Timestamp">
             <column name="regdatetime" length="19" not-null="true" />
         </property>
-        <property name="portrait" type="java.lang.String">
+        <property name="portrait" type="blob">
             <column name="portrait" not-null="true" />
         </property>
         <property name="sex" type="java.lang.Boolean">
@@ -25,6 +25,21 @@
         <property name="password" type="java.lang.String">
             <column name="password" length="64" not-null="true" />
         </property>
+        <property name="permitted" type="java.lang.Boolean">
+            <column name="permitted" not-null="true" />
+        </property>
+        <set name="datums" inverse="true">
+            <key>
+                <column name="name" length="32" />
+            </key>
+            <one-to-many class="com.shengrong.hibernate.Datum" />
+        </set>
+        <set name="members" inverse="true">
+            <key>
+                <column name="name" length="32" />
+            </key>
+            <one-to-many class="com.shengrong.hibernate.Member" />
+        </set>
         <set name="businesses" inverse="true">
             <key>
                 <column name="managername" length="32" />
@@ -48,6 +63,12 @@
                 <column name="name" length="32" />
             </key>
             <one-to-many class="com.shengrong.hibernate.News" />
+        </set>
+        <set name="companyprocesses" inverse="true">
+            <key>
+                <column name="name" length="32" />
+            </key>
+            <one-to-many class="com.shengrong.hibernate.Companyprocess" />
         </set>
         <set name="carousels" inverse="true">
             <key>

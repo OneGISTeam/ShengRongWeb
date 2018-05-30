@@ -1,5 +1,6 @@
 package com.shengrong.hibernate;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,13 +16,17 @@ public class Manager implements java.io.Serializable {
 	private String name;
 	private Role role;
 	private Timestamp regdatetime;
-	private String portrait;
+	private Blob portrait;
 	private Boolean sex;
 	private String password;
+	private Boolean permitted;
+	private Set datums = new HashSet(0);
+	private Set members = new HashSet(0);
 	private Set businesses = new HashSet(0);
 	private Set teamprocesses = new HashSet(0);
 	private Set introductions = new HashSet(0);
 	private Set newses = new HashSet(0);
+	private Set companyprocesses = new HashSet(0);
 	private Set carousels = new HashSet(0);
 
 	// Constructors
@@ -32,29 +37,35 @@ public class Manager implements java.io.Serializable {
 
 	/** minimal constructor */
 	public Manager(String name, Role role, Timestamp regdatetime,
-			String portrait, Boolean sex, String password) {
+			Blob portrait, Boolean sex, String password, Boolean permitted) {
 		this.name = name;
 		this.role = role;
 		this.regdatetime = regdatetime;
 		this.portrait = portrait;
 		this.sex = sex;
 		this.password = password;
+		this.permitted = permitted;
 	}
 
 	/** full constructor */
 	public Manager(String name, Role role, Timestamp regdatetime,
-			String portrait, Boolean sex, String password, Set businesses,
-			Set teamprocesses, Set introductions, Set newses, Set carousels) {
+			Blob portrait, Boolean sex, String password, Boolean permitted,
+			Set datums, Set members, Set businesses, Set teamprocesses,
+			Set introductions, Set newses, Set companyprocesses, Set carousels) {
 		this.name = name;
 		this.role = role;
 		this.regdatetime = regdatetime;
 		this.portrait = portrait;
 		this.sex = sex;
 		this.password = password;
+		this.permitted = permitted;
+		this.datums = datums;
+		this.members = members;
 		this.businesses = businesses;
 		this.teamprocesses = teamprocesses;
 		this.introductions = introductions;
 		this.newses = newses;
+		this.companyprocesses = companyprocesses;
 		this.carousels = carousels;
 	}
 
@@ -84,11 +95,11 @@ public class Manager implements java.io.Serializable {
 		this.regdatetime = regdatetime;
 	}
 
-	public String getPortrait() {
+	public Blob getPortrait() {
 		return this.portrait;
 	}
 
-	public void setPortrait(String portrait) {
+	public void setPortrait(Blob portrait) {
 		this.portrait = portrait;
 	}
 
@@ -106,6 +117,30 @@ public class Manager implements java.io.Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Boolean getPermitted() {
+		return this.permitted;
+	}
+
+	public void setPermitted(Boolean permitted) {
+		this.permitted = permitted;
+	}
+
+	public Set getDatums() {
+		return this.datums;
+	}
+
+	public void setDatums(Set datums) {
+		this.datums = datums;
+	}
+
+	public Set getMembers() {
+		return this.members;
+	}
+
+	public void setMembers(Set members) {
+		this.members = members;
 	}
 
 	public Set getBusinesses() {
@@ -138,6 +173,14 @@ public class Manager implements java.io.Serializable {
 
 	public void setNewses(Set newses) {
 		this.newses = newses;
+	}
+
+	public Set getCompanyprocesses() {
+		return this.companyprocesses;
+	}
+
+	public void setCompanyprocesses(Set companyprocesses) {
+		this.companyprocesses = companyprocesses;
 	}
 
 	public Set getCarousels() {

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faceted-project>
+  <runtime name="com.genuitec.runtime.generic.jee60"/>
+  <fixed facet="java"/>
+  <fixed facet="jst.utility"/>
+  <fixed facet="me.hibernate"/>
+  <installed facet="java" version="1.7"/>
+  <installed facet="me.hibernate" version="4.1"/>
+  <installed facet="jst.utility" version="1.0"/>
+</faceted-project>

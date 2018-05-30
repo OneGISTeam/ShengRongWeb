@@ -2,6 +2,9 @@
     <wb-module deploy-name="ShengRongWeb">
         <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="ShengRongHibernate.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ShengRongHibernate/ShengRongHibernate">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/ShengRongWeb/WebRoot/WEB-INF/classes"/>
         <property name="context-root" value="/ShengRongPortal"/>
     </wb-module>
