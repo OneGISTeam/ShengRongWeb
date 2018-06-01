@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
         	<li>
-                <a href="index.html"><i class="fa fa-dashboard"></i>网站统计工具</a>
+                <a href="<%=basePath %>statistic/statistic.action"><i class="fa fa-dashboard"></i>网站统计工具</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-home"></i>晟荣首页管理<span class="fa arrow"></span></a>
@@ -101,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	</ul>
             </li>
             <li>
-            	<a href="#"><i class="fa fa-file-text-o"></i>晟荣资料管理<span class="fa arrow"></span></a>
+            	<a href="#"><i class="fa fa-tasks"></i>晟荣资料管理<span class="fa arrow"></span></a>
             	<ul class="nav nav-second-level">
             		<li>
                         <a href="<%=basePath %>datum/datum.action">资料上传</a>

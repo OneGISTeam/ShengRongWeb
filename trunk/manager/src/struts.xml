@@ -15,6 +15,7 @@
 	<include file="manager-news.xml"></include>
 	<include file="manager-aboutus.xml"></include>
 	<include file="manager-datum.xml"></include>
+	<include file="manager-statistic.xml"></include>
 	<package name="common" namespace="/" extends="struts-default,json-default" >
 		<interceptors>
 			<interceptor name="loginStatus" class="com.shengrong.manager.interceptors.LoginStatus">
@@ -34,7 +35,10 @@
 		
 		<!-- 超级管理员注册 -->
 		<action name="master*" class="com.shengrong.manager.actions.LoginAction" method="{1}">
-			<result name="success">/Statistics/statistic.jsp</result>
+			<result name="success" type="chain">
+				<param name="actionName">statistic</param>
+				<param name="namespace">/statistic</param>
+			</result>
 			<result name="master" type="chain">
 				<param name="actionName">masterPage</param>
 			</result>
