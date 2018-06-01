@@ -1,7 +1,9 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*, com.shengrong.hibernate.*, java.text.SimpleDateFormat, java.io.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+response.setCharacterEncoding("utf-8");
+List<Companyprocess> cpList = (List<Companyprocess>)request.getAttribute("companyprocessList");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -39,8 +41,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				color: #cc5522;
 			}
 		 .previewImage{
-			width:160px;
-			height:160px
+			width:162px;
+			height:162px;
+			border-radius:50%;
+			margin-left:-3px;
+			margin-top:-3px;
 		} 
 	</style>
   </head>
@@ -143,66 +148,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		       <div class="row">
 			   	   <div class="col-md-12">
 				   	   <div class="main-timeline">
-				   	   
+				   	   <%
+							for(int i=0; i<cpList.size(); i++){
+							InputStream is = cpList.get(i).getImage().getBinaryStream();
+							byte[] b = new byte[is.available()];
+							is.read(b, 0, b.length);
+							String imageString = new String(b); 
+							String cpDate = new SimpleDateFormat("yyyy-MM-dd").format(cpList.get(i).getDate());
+						%>
 					    <div class="timeline">
 							   <div class="timeline-content">
-							       <div class="circle"><span><img class="previewImage" src="<%=basePath %>Images/p1.png"></span></div>
+							       <div class="circle"><span><img class="previewImage" src="<%=imageString %>"></span></div>
 								   <div class="content">
-								       <span class="year">2013 - 2014</span>
-									   <h6 class="time-title">公司起航</h6>
+								       <span class="year"><%=cpDate %></span>
+									   <h6 class="time-title"><%=cpList.get(i).getTitle() %></h6>
 									   <p class="description">
-											公司成立于2017年4月26日，主要是新型节能环保材料、建筑材料的技术研发及销售；消防器材销售及售后服务；消防工程设计及施工。
-	          								公司成立于2017年4月26日，主要是新型节能环保材料、建筑材料的技术研发及销售；消防器材销售及售后服务；消防工程设计及施工。
+											<%=cpList.get(i).getBrief() %>
 									   </p>
 								       <div class="icon"><span></span></div>
 							       </div>
 						      </div>
 					      </div>
-
-				        <div class="timeline">
-					  	<div class="timeline-content">
-							<div class="circle"><span><img class="previewImage" src="<%=basePath %>Images/p2.png"></span></div>
-							<div class="content">
-									<span class="year">2014 - 2015</span>
-									<h6 class="time-title">公司起航</h6>
-									<p class="description">
-									公司成立于2017年4月26日，主要是新型节能环保材料、建筑材料的技术研发及销售；消防器材销售及售后服务；消防工程设计及施工。
-	          	                                                       公司成立于2017年4月26日，主要是新型节能环保材料、建筑材料的技术研发及销售；消防器材销售及售后服务；消防工程设计及施工。
-								    </p>
-								   <div class="icon"><span></span></div>
-							  </div>
-						</div>
-					</div>
-
-					    <div class="timeline">
-						<div class="timeline-content">
-							<div class="circle"><span><img class="previewImage" src="<%=basePath %>Images/p3.png"></i></span></div>
-							<div class="content">
-								<span class="year">2015 - 2016</span>
-								<h6 class="time-title">公司起航</h6>
-								<p class="description">
-								公司成立于2017年4月26日，主要是新型节能环保材料、建筑材料的技术研发及销售；消防器材销售及售后服务；消防工程设计及施工。
-	          					公司成立于2017年4月26日，主要是新型节能环保材料、建筑材料的技术研发及销售；消防器材销售及售后服务；消防工程设计及施工。
-								</p>
-								<div class="icon"><span></span></div>
-							</div>
-						</div>
-					</div>
-
-					    <div class="timeline">
-						<div class="timeline-content">
-							<div class="circle"><span><img class="previewImage" src="<%=basePath %>Images/p.png"></span></div>
-							<div class="content">
-								<span class="year">2016 - 2017</span>
-								<h6 class="time-title">公司起航</h6>
-								<p class="description">
-									公司成立于2017年4月26日，主要是新型节能环保材料、建筑材料的技术研发及销售；消防器材销售及售后服务；消防工程设计及施工。
-	          						公司成立于2017年4月26日，主要是新型节能环保材料、建筑材料的技术研发及销售；消防器材销售及售后服务；消防工程设计及施工。
-								</p>
-								<div class="icon"><span></span></div>
-							</div>
-						</div>
-					</div>
+                       <%
+                          } 
+                       %>
+				        
 				       </div>
 			      </div>
 		      </div>

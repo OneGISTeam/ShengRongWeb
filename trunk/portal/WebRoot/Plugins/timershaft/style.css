@@ -76,9 +76,8 @@
     height: 180px;
     border-radius: 50%;
     background: #fff; 
-     /* background-image: url(../Images/a1.jpg);
-    background-repeat: no-repeat; */
-    border: 8px solid #cca872;
+
+    border: 10px solid #cca872;
     float: left;
     margin-right: 25px;
     position: relative;
@@ -94,7 +93,7 @@
     right: -33px;
     bottom: 0;
     z-index: -1;
-    box-shadow: inset 7px 0 9px -7px #444;
+    box-shadow: inset 7px 0 9px -7px #444; 
 }
 .main-timeline .circle span{
     display: block;
@@ -105,8 +104,6 @@
     border: 3px solid #adabab;
     font-size: 80px;
     color: #454344;
-   /*  background-image: url(../Images/a1.jpg);
-    background-repeat: no-repeat; */
 }
 .main-timeline .circle span:before,
 .main-timeline .circle span:after{

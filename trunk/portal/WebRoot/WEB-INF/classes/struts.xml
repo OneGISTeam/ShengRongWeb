@@ -6,17 +6,17 @@
 	<package name="common" namespace="/" extends="struts-default">
 		<!-- 系统初始化 -->
 		<action name="enter" class="com.shengrong.portal.actions.HomepageAction">
-			<result name="homepage">homepage.jsp</result><!--首页 -->
+			<result name="success">homepage.jsp</result><!--首页 -->
 		</action>
 		
 		<action name="homepage" class="com.shengrong.portal.actions.HomepageAction">
-			<result name="homepage">homepage.jsp</result><!--首页 -->
+			<result name="success">homepage.jsp</result><!--首页 -->
 		</action>
-		</package>
+	</package>
 		
 	  <package name="aboutus" namespace="/" extends="struts-default">	
 		<action name="aboutshengrong" class="com.shengrong.portal.actions.AboutCompanyAction">
-			<result name="SUCCESS">aboutshengrong.jsp</result>
+			<result name="success">aboutshengrong.jsp</result>
 		</action>
 		
 		<action name="aboutteam" class="com.shengrong.portal.actions.AboutMemberAction">

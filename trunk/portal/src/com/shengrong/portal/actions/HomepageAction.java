@@ -1,9 +1,60 @@
 package com.shengrong.portal.actions;
 
-public class HomepageAction {
+import java.util.List;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.shengrong.hibernate.Carousel;
+import com.shengrong.hibernate.CarouselDAO;
+import com.shengrong.hibernate.Introduction;
+import com.shengrong.hibernate.IntroductionDAO;
+import com.shengrong.hibernate.Business;
+import com.shengrong.hibernate.BusinessDAO;
+
+public class HomepageAction extends ActionSupport{
 	
+	private List<Carousel> carousels;
+	private List<Introduction> introductions;
+	private List<Business> businessList;
+	
+	public List<Carousel> getCarousels(){
+		return this.carousels;
+	}
+	
+	public void setCarousels(List<Carousel> carousels){
+		this.carousels = carousels;
+	}
+	
+	public List<Introduction> getIntroductions(){
+		return this.introductions;
+	}
+	
+	public void setIntroductions(List<Introduction> introductions){
+		this.introductions = introductions;
+	}
+	
+	public List<Business> getBusinessList(){
+		return this.businessList;
+	}
+	
+	public void setBusinessList(List<Business> businessList){
+		this.businessList = businessList;
+	}
+	
+	
+	
+	@SuppressWarnings("unchecked")
 	public String execute() {
-		return "homepage";
+		CarouselDAO carouselDao = new CarouselDAO();
+		carousels = carouselDao.findAll();
+		
+		IntroductionDAO introductionDao = new IntroductionDAO();
+		introductions = introductionDao.findAll();
+		/*Introduction introduction = introductions.get(introductions.size()-1);*/
+		
+		BusinessDAO businessDao = new BusinessDAO();
+		businessList = businessDao.findAll();
+		
+		return SUCCESS;
 	}
 
 }
