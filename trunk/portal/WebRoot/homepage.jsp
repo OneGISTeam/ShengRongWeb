@@ -20,7 +20,6 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	
 	<link href="<%=basePath%>Plugins/bootstrap/bootstrap.css" rel="stylesheet" type='text/css'/>
 	<link href="<%=basePath%>Portal/style.css" rel="stylesheet" type='text/css'/>
 	<script src="<%=basePath%>Plugins/jquery/jquery-1.11.1.min.js"></script>
@@ -43,17 +42,39 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
 		  });
 		});
 	</script>
-	<link href="<%=basePath %>Plugins/carousel/owl.carousel.css" rel="stylesheet" type='text/css'/>
-	<script src="<%=basePath %>Plugins/carousel/owl.carousel.js"></script>
+    <link href="<%=basePath %>Plugins/carousel/owl.carousel1.css" rel="stylesheet" type='text/css'/>
+    <link href="<%=basePath %>Plugins/carousel/owl.theme.css" rel="stylesheet" type='text/css'/>
+    <style type="text/css">
+    	 #scroll .item{position:relative;width:90%;margin:0 auto;overflow:hidden;} 
+		
+        /* 左右箭头 */
+       .owl-buttons div{
+             position:absolute;
+             top:180px;
+             width:30px;
+             height:60px;
+             margin:0;
+             padding:0;
+             border-radius:0; 
+             font:55px/55px "宋体";  
+             background-color:transparent;
+             overflow:hidden;
+             _display:none; 
+             } 
+       .owl-prev{left:-80px;background-position:0 0;}
+       .owl-next{right:-80px;background-position:right 0;}
+       .owl-prev:before{content:"<";}
+       .owl-next:before{content:">";}
+</style>
+	<script src="<%=basePath %>Plugins/carousel/owl.carousel.min.js"></script>
 	<script>
 		$(document).ready(function() {
-		$("#owl-demo").owlCarousel({
-			items : 1,
+		$("#scroll").owlCarousel({
+			items : 4,
 			lazyLoad : true,
-			autoPlay : true,
-			navigation : false,
-			navigationText : false, 
-			pagination : true,
+			autoPlay : false,
+			navigation : true,
+			navigationText: ["",""],
 		});
 		});
 	</script>
@@ -135,8 +156,7 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
 				<h5>Company Introduction</h5>
 				<hr/>
 				<p class="introduction">
-				    <% int i = introductions.size()-1;%>
-				    <%=introductions.get(i).getContent() %>
+				    <%=introductions.get(0).getContent() %>
 				</p>
 			</div>
 		</div>
@@ -144,16 +164,17 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
 			<div class="container">
 				<h3>业务范围</h3>
 				<h5>Sphere of Business</h5>
-				<hr/>
-				<div class="service-grids">
+				
+				<div id="scroll" class="owl-carousel owl-theme service-grids">
+				
 				   <% for(int j=0; j<businesses.size(); j++){ %>
-					<div class="col-md-3 service-grid hvr-bounce-to-bottom">
+					<div class="item col-md-3 service-grid hvr-bounce-to-bottom">
 						<i class="<%=businesses.get(j).getIcon()%>" aria-hidden="true"></i>
 						<h4><%=businesses.get(j).getBusinessname()%></h4>
 						<p><%=businesses.get(j).getDes()%></p>
 					</div>
-					<%} %>		
-					<div class="clearfix"></div>
+					<%} %>	
+					
 				</div>
 			</div>
 		</div>

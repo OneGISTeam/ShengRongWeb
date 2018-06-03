@@ -690,9 +690,9 @@ ul.member {
 .test-monials {
 	margin-top: 5em;
 }
-div#owl-demo {
+/* div#owl-demo {
     margin-top: 3em;
-}
+} */
 .footer-section {
     background: #333d47;
     padding: 5em 0;
@@ -3214,9 +3214,9 @@ div#bs-example-navbar-collapse-1 {
 .feature-grid:nth-child(4) {
     margin-top: 2em;
 }
-div#owl-demo {
+/* div#owl-demo {
     margin-top: 1em;
-}
+} */
 .testimonials h4 a {
     font-size: 0.95em;
 }

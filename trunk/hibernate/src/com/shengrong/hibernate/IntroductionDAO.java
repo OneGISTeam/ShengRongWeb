@@ -88,7 +88,7 @@ public class IntroductionDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
-
+	
 	public List findByContent(Object content) {
 		return findByProperty(CONTENT, content);
 	}
@@ -101,6 +101,18 @@ public class IntroductionDAO extends BaseHibernateDAO {
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
+			throw re;
+		}
+	}
+	
+	public List findbySql(String queryString){
+		try
+		{
+			
+			Query queryObject = getSession().createQuery(queryString);
+			return queryObject.list();	
+		}catch(RuntimeException re){
+			log.error("executeQuerySql failed", re);
 			throw re;
 		}
 	}
@@ -140,3 +152,5 @@ public class IntroductionDAO extends BaseHibernateDAO {
 		}
 	}
 }
+
+

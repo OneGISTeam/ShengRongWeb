@@ -1,5 +1,6 @@
 package com.shengrong.portal.actions;
 
+import java.sql.*;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -48,13 +49,14 @@ public class HomepageAction extends ActionSupport{
 		carousels = carouselDao.findAll();
 		
 		IntroductionDAO introductionDao = new IntroductionDAO();
-		introductions = introductionDao.findAll();
-		/*Introduction introduction = introductions.get(introductions.size()-1);*/
+		String sql= "from Introduction  where introductionid = (SELECT max(introductionid) FROM Introduction)";
+		introductions = introductionDao.findbySql(sql);
 		
 		BusinessDAO businessDao = new BusinessDAO();
 		businessList = businessDao.findAll();
 		
 		return SUCCESS;
 	}
+
 
 }
