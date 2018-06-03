@@ -24,7 +24,7 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
 	<link href="<%=basePath%>styles.css" rel="stylesheet"/>
 	<link href="<%=basePath%>Plugins/validform/css/validform.css" rel="stylesheet"/>
 	<!-- Google Fonts-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href='<%=basePath%>fonts.css' rel='stylesheet' type='text/css' />
   	<style>
   		.bs-glyphicons {
 			margin: 0 -10px 20px;

@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="<%=basePath%>styles.css" rel="stylesheet"/>
 	<link href="<%=basePath%>Plugins/validform/css/validform.css" rel="stylesheet"/>
 	<!-- Google Fonts-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href='<%=basePath%>fonts.css' rel='stylesheet' type='text/css' />
   </head>
   
 <body>

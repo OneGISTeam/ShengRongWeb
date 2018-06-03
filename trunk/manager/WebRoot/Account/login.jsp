@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="description" content="河南晟荣建筑工业科技有限公司-超级管理员注册页面">
 	
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" />
+	<link href='<%=basePath%>fonts.css' rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" href="<%=basePath%>Plugins/bootstrap/bootstrap.css" />
 	<link rel="stylesheet" href="<%=basePath%>Plugins/FontAwesome/font-awesome.css" />
 	<link rel="stylesheet" href="<%=basePath%>Account/form-elements.css" />

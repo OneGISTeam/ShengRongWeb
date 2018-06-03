@@ -17,5 +17,15 @@
         	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
 			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
         </action>
+        
+        <!-- 异步获取CPU使用率 -->
+        <action name="systemPerformance" class="com.shengrong.manager.actions.StatisticAction" method="systemPerformance">
+        	<result type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+        </action>
 	</package>
 </struts>

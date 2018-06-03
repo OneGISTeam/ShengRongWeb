@@ -23,7 +23,7 @@ AmountInfo amountInfo = (AmountInfo)request.getAttribute("amountInfo");
 	<link href="<%=basePath%>Plugins/FontAwesome/font-awesome.css" rel="stylesheet"/>
 	<link href="<%=basePath%>styles.css" rel="stylesheet"/>
 	<!-- Google Fonts-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href='<%=basePath%>fonts.css' rel='stylesheet' type='text/css' />
   </head>
   
 <body>
@@ -133,7 +133,21 @@ AmountInfo amountInfo = (AmountInfo)request.getAttribute("amountInfo");
 	                    </div>
 	                </div>
 				</div>
-				
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+	                        	服务器内存占有率监视
+	                        </div>
+	                        <div class="panel-body">
+	                            <div class="flot-chart">
+	                            	<label>当内存占有率百分比（%）</label>
+	                                <div style="height:300px" class="flot-chart-content" id="flot-line-chart-moving"></div>
+	                            </div>
+	                        </div>
+						</div>
+					</div>
+				</div>
 				<footer>
 					<p>Copyright &copy; 2018.河南晟荣建筑工业科技有限公司版权所有.</p>
 				</footer>
@@ -146,5 +160,121 @@ AmountInfo amountInfo = (AmountInfo)request.getAttribute("amountInfo");
 	<script src="<%=basePath%>Plugins/jquery/jquery.metisMenu.js"></script>
 	<script src="<%=basePath%>Plugins/bootstrap/bootstrap.min.js"></script>
 	<script src="<%=basePath%>scripts.js"></script>
+	<!-- flot -->
+	<script src="<%=basePath%>Plugins/flot/excanvas.min.js"></script>
+	<script src="<%=basePath%>Plugins/flot/jquery.flot.js"></script>
+	<script src="<%=basePath%>Plugins/flot/jquery.flot.resize.js"></script>
+	<script src="<%=basePath%>Plugins/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+	<script type="text/javascript">
+		var memoryRatio = [];
+		var _MAX_COUNT = 200;
+		var movingPlot;
+		var seriesdata = [];
+		$(function(){
+
+			initFlotLineChartMoving();
+			
+		});
+		
+		function initMemoryRatiao(){
+			for(var i=0; i<_MAX_COUNT; i++){
+				memoryRatio.push(0.0);
+				seriesdata.push([
+					i,
+					0.0
+				]);
+			}
+		}
+		
+		function initFlotLineChartMoving(){
+			initMemoryRatiao();
+			var container = $("#flot-line-chart-moving");
+			
+		    series = [{
+		        data: seriesdata,
+		        lines: {
+		            fill: true
+		        }
+		    }];
+		    
+		    
+		    movingPlot = $.plot(container, series, {
+		        grid: {
+		            borderWidth: 1,
+		            minBorderMargin: 20,
+		            labelMargin: 10,
+		            backgroundColor: {
+		                colors: ["#fff", "#e4f4f4"]
+		            },
+		            margin: {
+		                top: 8,
+		                bottom: 20,
+		                left: 20
+		            },
+		            markings: function(axes) {
+		                var markings = [];
+		                var xaxis = axes.xaxis;
+		                for (var x = Math.floor(xaxis.min); x < xaxis.max; x += xaxis.tickSize * 2) {
+		                    markings.push({
+		                        xaxis: {
+		                            from: x,
+		                            to: x + xaxis.tickSize
+		                        },
+		                        color: "rgba(232, 232, 255, 0.2)"
+		                    });
+		                }
+		                return markings;
+		            }
+		        },
+		        xaxis: {
+		            tickFormatter: function() {
+		                return "";
+		            }
+		        },
+		        yaxis: {
+		            min: 0,
+		            max: 110
+		        },
+		        legend: {
+		            show: true
+		        }
+		    });
+		    
+		    setInterval(function updateRandom() {
+		    	getRandomData();
+		    	
+		    }, 1000);
+		}
+		
+		function getRandomData() {
+			$.ajax({
+				url: "<%=basePath%>statistic/systemPerformance.action",
+				method: "GET",
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function(data) {
+					var json = JSON.parse(data);
+					memoryRatio = memoryRatio.slice(1);
+					seriesdata.splice(0,seriesdata.length);
+					for(var i=0; i<memoryRatio.length; i++){
+						var item = [
+							i,
+							memoryRatio[i]
+						];
+						seriesdata.push(item);
+					}
+					memoryRatio.push(json.memoryRatio);
+					seriesdata.push([
+						_MAX_COUNT - 1,
+						json.memoryRatio
+					]);
+					
+					series[0].data = seriesdata;
+					movingPlot.setData(series);
+			    	movingPlot.draw();
+				}
+			});
+	    }
+	</script>
 </body>
 </html>

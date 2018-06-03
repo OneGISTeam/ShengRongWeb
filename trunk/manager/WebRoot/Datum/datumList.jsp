@@ -28,7 +28,7 @@ PagingInfo pagingInfo = (PagingInfo)request.getAttribute("pagingInfo");
 	<link href="<%=basePath%>styles.css" rel="stylesheet"/>
 	<link href="<%=basePath%>Plugins/validform/css/validform.css" rel="stylesheet"/>
 	<!-- Google Fonts-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href='<%=basePath%>fonts.css' rel='stylesheet' type='text/css' />
     <link href="<%=basePath%>Plugins/pagination/pagination.css" rel="stylesheet"/>
   </head>
   
