@@ -156,7 +156,19 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
 				<h5>Company Introduction</h5>
 				<hr/>
 				<p class="introduction">
-				    <%=introductions.get(0).getContent() %>
+				    <%  int size = introductions.size();
+				        if(size>0)
+				        {
+				     %>
+				        <%=introductions.get(0).getContent()%> 
+				     <% 
+				         }
+				        else {
+				      %> 
+				      暂无公司简介
+				      <% 
+				         }
+				      %>  
 				</p>
 			</div>
 		</div>
