@@ -137,12 +137,16 @@ AmountInfo amountInfo = (AmountInfo)request.getAttribute("amountInfo");
 					<div class="col-lg-12">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-	                        	服务器内存占有率监视
+	                        	服务器性能监视器
 	                        </div>
 	                        <div class="panel-body">
+	                        	<div class="flot-chart">
+	                            	<label>当前CPU使用率百分比（%）</label>
+	                                <div style="height:300px" class="flot-chart-content" id="flot-line-chart-moving-cpu"></div>
+	                            </div>
 	                            <div class="flot-chart">
-	                            	<label>当内存占有率百分比（%）</label>
-	                                <div style="height:300px" class="flot-chart-content" id="flot-line-chart-moving"></div>
+	                            	<label>当前内存占有率百分比（%）</label>
+	                                <div style="height:300px" class="flot-chart-content" id="flot-line-chart-moving-memory"></div>
 	                            </div>
 	                        </div>
 						</div>
@@ -167,19 +171,30 @@ AmountInfo amountInfo = (AmountInfo)request.getAttribute("amountInfo");
 	<script src="<%=basePath%>Plugins/flot-tooltip/jquery.flot.tooltip.min.js"></script>
 	<script type="text/javascript">
 		var memoryRatio = [];
+		var cpuRatio = [];
 		var _MAX_COUNT = 200;
-		var movingPlot;
-		var seriesdata = [];
+		var memory_movingPlot;
+		var cpu_movingPlot;
+		var memory_seriesdata = [];
+		var cpu_seriesdata = [];
 		$(function(){
-
 			initFlotLineChartMoving();
-			
 		});
 		
 		function initMemoryRatiao(){
 			for(var i=0; i<_MAX_COUNT; i++){
 				memoryRatio.push(0.0);
-				seriesdata.push([
+				memory_seriesdata.push([
+					i,
+					0.0
+				]);
+			}
+		}
+		
+		function initCPURatio(){
+			for(var i=0; i<_MAX_COUNT; i++){
+				cpuRatio.push(0.0);
+				cpu_seriesdata.push([
 					i,
 					0.0
 				]);
@@ -188,17 +203,67 @@ AmountInfo amountInfo = (AmountInfo)request.getAttribute("amountInfo");
 		
 		function initFlotLineChartMoving(){
 			initMemoryRatiao();
-			var container = $("#flot-line-chart-moving");
+			initCPURatio();
+			var memory_container = $("#flot-line-chart-moving-memory");
+			var cpu_container = $("#flot-line-chart-moving-cpu");
 			
-		    series = [{
-		        data: seriesdata,
+		    memory_series = [{
+		        data: memory_seriesdata,
 		        lines: {
 		            fill: true
 		        }
 		    }];
 		    
+		    cpu_series = [{
+		    	data: cpu_seriesdata,
+		        lines: {
+		            fill: true
+		        }
+		    }];
 		    
-		    movingPlot = $.plot(container, series, {
+		    cpu_movingPlot = $.plot(cpu_container, cpu_series, {
+		        grid: {
+		            borderWidth: 1,
+		            minBorderMargin: 20,
+		            labelMargin: 10,
+		            backgroundColor: {
+		                colors: ["#fff", "#e4f4f4"]
+		            },
+		            margin: {
+		                top: 8,
+		                bottom: 20,
+		                left: 20
+		            },
+		            markings: function(axes) {
+		                var markings = [];
+		                var xaxis = axes.xaxis;
+		                for (var x = Math.floor(xaxis.min); x < xaxis.max; x += xaxis.tickSize * 2) {
+		                    markings.push({
+		                        xaxis: {
+		                            from: x,
+		                            to: x + xaxis.tickSize
+		                        },
+		                        color: "rgba(232, 232, 255, 0.2)"
+		                    });
+		                }
+		                return markings;
+		            }
+		        },
+		        xaxis: {
+		            tickFormatter: function() {
+		                return "";
+		            }
+		        },
+		        yaxis: {
+		            min: 0,
+		            max: 110
+		        },
+		        legend: {
+		            show: true
+		        }
+		    });
+		    
+		    memory_movingPlot = $.plot(memory_container, memory_series, {
 		        grid: {
 		            borderWidth: 1,
 		            minBorderMargin: 20,
@@ -242,7 +307,6 @@ AmountInfo amountInfo = (AmountInfo)request.getAttribute("amountInfo");
 		    
 		    setInterval(function updateRandom() {
 		    	getRandomData();
-		    	
 		    }, 1000);
 		}
 		
@@ -255,23 +319,42 @@ AmountInfo amountInfo = (AmountInfo)request.getAttribute("amountInfo");
 				success: function(data) {
 					var json = JSON.parse(data);
 					memoryRatio = memoryRatio.slice(1);
-					seriesdata.splice(0,seriesdata.length);
-					for(var i=0; i<memoryRatio.length; i++){
-						var item = [
+					cpuRatio = cpuRatio.slice(1);
+					memory_seriesdata.splice(0,memory_seriesdata.length);
+					cpu_seriesdata.splice(0, cpu_seriesdata.length);
+					
+					for(var i=0; i<_MAX_COUNT-2; i++){
+						var memory_item = [
 							i,
 							memoryRatio[i]
 						];
-						seriesdata.push(item);
+						var cpu_item = [
+							i,
+							cpuRatio[i]
+						];
+						cpu_seriesdata.push(cpu_item);
+						memory_seriesdata.push(memory_item);
 					}
+					cpuRatio.push(json.cpuRatio);
 					memoryRatio.push(json.memoryRatio);
-					seriesdata.push([
+					
+					cpu_seriesdata.push([
+						_MAX_COUNT - 1,
+						json.cpuRatio
+					]);
+					
+					memory_seriesdata.push([
 						_MAX_COUNT - 1,
 						json.memoryRatio
 					]);
 					
-					series[0].data = seriesdata;
-					movingPlot.setData(series);
-			    	movingPlot.draw();
+					memory_series[0].data = memory_seriesdata;
+					memory_movingPlot.setData(memory_series);
+			    	memory_movingPlot.draw();
+			    	
+			    	cpu_series[0].data = cpu_seriesdata;
+			    	cpu_movingPlot.setData(cpu_series);
+			    	cpu_movingPlot.draw();
 				}
 			});
 	    }
