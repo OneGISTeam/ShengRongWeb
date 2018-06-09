@@ -27,10 +27,10 @@ p{
 	margin:10 0;
 }
 
-.team-process{
+/* .team-process{
 	 padding-left:5%;
 	 padding-top:5%
-}
+} */
 
 .headline{
 	padding: 5em 0;
@@ -47,13 +47,17 @@ p{
 	margin-left:20px;
 	margin-right:20px;
 	padding:5px;
-	line-height: 1.8em;
-	color: #969696
+	color: #969696;
+	position:relative;
+	line-height:1.8em;
+	height:3.6em;
+	overflow:hidden;
 }
 
 .headline img{
 	width:400px;
 	height:200px;
+	margin-top:20px; 
 	margin-bottom:40px;
 }
 
@@ -72,8 +76,11 @@ p{
 }
 
 .newsRow p{
+	color: #969696;
+	 position:relative; 
 	line-height:1.8em;
-	color: #969696
+	height:3.6em;
+	overflow:hidden;
 }
 
 .newsRow:hover{
@@ -205,7 +212,7 @@ hr{
 .navbar-nav {
     float: left;
     margin: 0;
-    width: 70%;
+    width: 100%;
 }
 div#bs-example-navbar-collapse-1 {
     float: left;
@@ -937,16 +944,16 @@ a.button3 {
     border: 1px solid #2da9e1;
     border-bottom-color: none !important;
 }
-.nav-tabs {
+/* .nav-tabs {
     border-bottom: none!important;
-}
-.nav-tabs > li > a {
+} */
+/* .nav-tabs > li > a {
     margin-right: 0px;
     line-height: 1.42857143;
-    border: 1px solid #FAA43D;
+    border: 1px solid;
     border-radius:0;
-	/* background: #FAA43D; */
-}
+	background: #FAA43D;
+} */
 .forsale-grids {
     margin-top: 2em;
 }
@@ -966,18 +973,18 @@ a.button3 {
     float: left;
     width: 71%;
 }
-.forsale-right h5 {
+ .forsale-right h5 {
     font-size: 1.5em;
     padding: .5em 0 .5em 0em;
     font-family: 'Righteous', cursive;
-    /* color: #777; */
-}
-.forsale-right p {
+    color: #777;
+} 
+ .forsale-right p {
     font-size: .95em;
-    padding: .5em 0 .5em 0em;
+   /*  padding: .5em 0 .5em 0em; */
     color: #777;
     line-height: 1.8em;
-}
+} 
 
 
 .forsale1 ul li {
@@ -2926,15 +2933,11 @@ ul.callbacks_tabs.callbacks1_tabs {
 .sel2 {
     width: 97%;
 }
-.forsale-right h5 {
-    font-size: 1.5em;
-}
+
 .search1 input[type="submit"] {
     width: 51%;
 }
-.forsale-right p {
-    padding: .5em .5em .5em .5em;
-}
+
 .price-grid {
     float: left;
     width: 50%;
@@ -3477,9 +3480,9 @@ a.button {
 .forsale-left {
     width: 100%;
 }
-.forsale-right {
+/* .forsale-right {
     width: 100%;
-}
+} */
 .forsale-left img {
   width: 100%;
 }
@@ -3708,9 +3711,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 .contact-me input[type="submit"], .contact-me input[type="reset"] {
     width: 24.68%;
 }
-.forsale-right h5 {
-    font-size: 1.5em;
-}
+
 /* .forsale-grids h4 a, .forsale-grids h4 a {
     font-size: 0.952em;
 } */

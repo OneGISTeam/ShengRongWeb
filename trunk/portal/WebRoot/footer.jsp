@@ -3,8 +3,8 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String name = (String)session.getAttribute("name");
-String password = (String)session.getAttribute("password");
+/* String name = (String)session.getAttribute("name");
+String password = (String)session.getAttribute("password"); */
 %>
 <!---footer--->
 <div class="footer-section">

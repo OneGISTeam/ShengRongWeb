@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,com.shengrong.hibernate.*,com.shengrong.system.*,java.io.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*,com.shengrong.hibernate.*,com.shengrong.system.*,java.io.*,java.text.SimpleDateFormat,com.shengrong.portal.tools.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -6,6 +6,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 List<Carousel> carousels = (List<Carousel>)request.getAttribute("carousels");
 List<Introduction> introductions = (List<Introduction>)request.getAttribute("introductions");
 List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessList");
+List<News> news = (List<News>)request.getAttribute("newsList");
+List<Teamprocess> teamprocesses = (List<Teamprocess>)request.getAttribute("teamprocessList");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -22,6 +24,9 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<link href="<%=basePath%>Plugins/bootstrap/bootstrap.css" rel="stylesheet" type='text/css'/>
 	<link href="<%=basePath%>Portal/style.css" rel="stylesheet" type='text/css'/>
+	<link rel="stylesheet" href="<%=basePath%>Plugins/horizontal-timeline/css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="<%=basePath%>Plugins/horizontal-timeline/css/style.css"><!-- Resource style -->
+	<script src="<%=basePath%>Plugins/horizontal-timelinejs/modernizr.js"> </script> <!-- Modernizr -->
 	<script src="<%=basePath%>Plugins/jquery/jquery-1.11.1.min.js"></script>
 	<script src="<%=basePath%>Plugins/bootstrap/bootstrap.js"></script>
 	
@@ -46,7 +51,6 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
     <link href="<%=basePath %>Plugins/carousel/owl.theme.css" rel="stylesheet" type='text/css'/>
     <style type="text/css">
     	 #scroll .item{position:relative;width:90%;margin:0 auto;overflow:hidden;} 
-		
         /* 左右箭头 */
        .owl-buttons div{
              position:absolute;
@@ -61,8 +65,8 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
              overflow:hidden;
              _display:none; 
              } 
-       .owl-prev{left:-80px;background-position:0 0;}
-       .owl-next{right:-80px;background-position:right 0;}
+       .owl-prev{left:-50px;background-position:0 0;}
+       .owl-next{right:-50px;background-position:right 0;}
        .owl-prev:before{content:"<";}
        .owl-next:before{content:">";}
 </style>
@@ -81,49 +85,7 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
   </head>
   
 <body>
-	<!---header--->
-	<div class="header-section">
-		<div class="container">
-			
-			<nav class="navbar navbar-default">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>				  
-					<div class="navbar-brand">
-						<img style="height:50px" src="<%=basePath%>Images/shengrong-green.png">
-					</div>
-				</div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="<%=basePath%>homepage.action">公司首页 <span class="sr-only">(current)</span></a></li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品中心<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="<%=basePath%>Products/coffeeMachine.jsp" target="_blank">咖啡机</a></li>
-										<li><a href="<%=basePath%>Products/coffeeMachine.jsp" target="_blank" >消防器材</a></li>
-									</ul>
-							</li>
-							<li><a href="<%=basePath%>News/tradenews.jsp">新闻前线</a></li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">资料共享 <span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="2columnsgallery.html">2 Columns Gallery</a></li>
-										<li><a href="3columnsgallery.html">3 Columns Gallery</a></li>
-										<li><a href="4columnsgallery.html">4 Columns Gallery</a></li>
-									</ul>
-							</li>
-						<li><a href="<%=basePath%>aboutshengrong.action">关于我们</a></li>
-					</ul>
-					<div class="clearfix"></div>
-				</div>
-			</nav>
-		</div>
-	</div>
-	<!-- /heander -->
+    <jsp:include page="navbar.jsp" flush="true" />
 	<!---banner--->
 	<div class="slider">
 		<div class="callbacks_container">
@@ -140,7 +102,6 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
 					  <div class="caption">
 							<h3><%=carousels.get(i).getTitle() %></h3>
 							<p><%=carousels.get(i).getContent() %></p>
-							<a href="#" class="button">了解一下</a>
 					  </div>
 				</div>
 			 <% } %>  
@@ -201,79 +162,104 @@ List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessL
 		<div class="place-section">
 			<div class="container">
 				<div class="about-grids">
+				<%  for(int i=0; i<5; i++){
+			        InputStream is = news.get(i).getImage().getBinaryStream();
+				    byte[] b = new byte[is.available()];
+			        is.read(b, 0, b.length);
+				    String imageString = new String(b);
+				    String newsDate = new SimpleDateFormat("yyyy-MM-dd").format(news.get(i).getNewsdate());
+					String contentPlainText = HtmlFilterTool.toPlainText(news.get(i).getContent());
+				     if(i==0){
+			     %> 
 					<div class="col-md-6 about-grid">
 						<div class="headline">
-							<h4>河南晟荣公司在郑州各校园进行春季招聘</h4>
-							<p>
-								2017年3月11日，“梦在苏州科技城”第五届春季大型人才招聘会在中国苏州人力资源产业
-								园科技城分园举行，作为中国科学院地理信息与文
-							</p>
-							<img src="<%=basePath %>Images/a1.jpg">
+							<h4><%=news.get(i).getTitle()%></h4>
+							<p><%=contentPlainText%></p>
+							<img src="<%=imageString%>">
 							<div>
 								<a href="#" class="button">详细情况</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-6 about-grid1">
+					<%}else{ %>
 						<div class="newsRow">
-							<h4>国家重点研发计划“全空间信息系统与智能设施管理”项目实施方案</h4>
-							<span class="badge badge-info">2017-5-19</span>
-							<p>
-								2017年5月18日，地球观测与导航重点专项管理办公室和总体专家组在北京召开了国家重点研发计划地球观测与导航重点专项“全空间信息系统与智能设施管理
-							</p>
+							<h4><%=news.get(i).getTitle()%></h4>
+							<span class="badge badge-info"><%=newsDate%></span>
+							<p><%=contentPlainText%></p>
 						</div>
-						<div class="newsRow">
-							<h4>国家重点研发计划“全空间信息系统与智能设施管理”项目实施方案</h4>
-							<span class="badge badge-info">2017-5-19</span>
-							<p>
-								2017年5月18日，地球观测与导航重点专项管理办公室和总体专家组在北京召开了国家重点研发计划地球观测与导航重点专项“全空间信息系统与智能设施管理
-							</p>
-						</div>
-						<div class="newsRow">
-							<h4>国家重点研发计划“全空间信息系统与智能设施管理”项目实施方案</h4>
-							<span class="badge badge-info">2017-5-19</span>
-							<p>
-								2017年5月18日，地球观测与导航重点专项管理办公室和总体专家组在北京召开了国家重点研发计划地球观测与导航重点专项“全空间信息系统与智能设施管理
-							</p>
-						</div>
-						<div class="newsRow">
-							<h4>国家重点研发计划“全空间信息系统与智能设施管理”项目实施方案</h4>
-							<span class="badge badge-info">2017-5-19</span>
-							<p>
-								2017年5月18日，地球观测与导航重点专项管理办公室和总体专家组在北京召开了国家重点研发计划地球观测与导航重点专项“全空间信息系统与智能设施管理
-							</p>
-						</div>
-					</div>
-					<div class="clearfix">
-					</div>
+					 <%}%>
+					 <%}%>
+					 </div>
+					
+					<div class="clearfix"></div>
 				</div>
 			</div>
 		</div>
-		<div class="team-process">
+		<div class="feature-section">
+		   <div class="container">
 			<h3>团队足迹</h3>
 			<h5>Team Process</h5>
-			<img style="width:100%" src="<%=basePath %>Images/team-bg.jpg"/>
-		</div>
-		
-		<script type="text/javascript">
-			$(function(){
-				initTeamProcess();
-			});
+			  <section class="cd-horizontal-timeline">
+	        	<div class="timeline">
+					<div class="events-wrapper">
+						<div class="events">
+							<ol>
+							  <% for(int k=0;k<teamprocesses.size();k++){
+							     String processDate = new SimpleDateFormat("yyyy/MM").format(teamprocesses.get(k).getDate());
+							     String processDate2 = new SimpleDateFormat("dd/MM/yyyy").format(teamprocesses.get(k).getDate());
+							     if(k==0){
+							   %>
+								<li><a href="#0" data-date="<%=processDate2%>" class="selected"><%=processDate%></a></li>
+								 <%
+								  }else{%>
+								<li><a href="#0" data-date="<%=processDate2%>"><%=processDate%></a></li>
+							        <%} %>
+							   <%} %>
+				            </ol>
+							<span class="filling-line" aria-hidden="true"></span>
+						</div> <!-- .events -->
+					</div> <!-- .events-wrapper -->
 			
-			function initTeamProcess(){
-				var canvas = document.getElementById("team_process");
-				var context = canvas.getContext("2d");  
-				var width = canvas.clientWidth;
-				var height = canvas.clientHeight;
-				context.beginPath();
-				context.moveTo(0,50);
-				context.lineTo(width,50);
-				//context.strokeStyle = "#969696";
-				context.stroke();
-			}
-		</script>
-	</div>
+					<ul class="cd-timeline-navigation">
+						<li><a href="#0" class="prev inactive">Prev</a></li>
+						<li><a href="#0" class="next">Next</a></li>
+					</ul> <!-- .cd-timeline-navigation -->
+				</div> <!-- .timeline -->
+
+				<div class="events-content">
+					<ol>
+					     <% for(int k=0; k<teamprocesses.size();k++){
+					      InputStream is = teamprocesses.get(k).getImage().getBinaryStream();
+				          byte[] b = new byte[is.available()];
+			              is.read(b, 0, b.length);
+				          String imageString = new String(b);
+				          String processDate2 = new SimpleDateFormat("dd/MM/yyyy").format(teamprocesses.get(k).getDate());
+				          if(k==0){
+					      %>
+						<li class="selected" data-date="<%=processDate2%>">
+						<%}else{ %>
+						<li data-date="<%=processDate2%>">
+						 <%} %>
+						<div class="team-main-d">
+						    <div class="team-main-img"><img class="process-img" src="<%=imageString%>"></div>
+						    <div class="team-main-fr">
+						        <div class="team-main-tit"><%=teamprocesses.get(k).getLocation()%></div>
+						        <div title="<%=teamprocesses.get(k).getBrief()%>" class="team-main-dd"><%=teamprocesses.get(k).getBrief()%></div>
+						    </div>
+						</div>
+						</li>
+			              <%} %>
+					</ol>
+				</div> <!-- .events-content -->
+		      </section>
+	       </div>	
+	  </div>
+
+     <script src="<%=basePath%>Plugins/horizontal-timeline/js/jquery.mobile.custom.min.js"></script>
+     <script src="<%=basePath%>Plugins/horizontal-timeline/js/main.js"></script> <!-- Resource jQuery -->
 	<!-- 添加pannel，动态链接方式，需要jsp重新编译 -->
-	<jsp:include page="footer.jsp" flush="true" />
+	 
+	<jsp:include page="footer.jsp" flush="true"/>
 </body>
 </html>

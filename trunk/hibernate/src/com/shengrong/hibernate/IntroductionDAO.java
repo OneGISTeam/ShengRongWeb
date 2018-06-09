@@ -105,14 +105,14 @@ public class IntroductionDAO extends BaseHibernateDAO {
 		}
 	}
 	
-	public List findbySql(String queryString){
+	public List findBySql(String queryString){
 		try
 		{
 			
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();	
 		}catch(RuntimeException re){
-			log.error("executeQuerySql failed", re);
+			log.error("find by Sql failed", re);
 			throw re;
 		}
 	}

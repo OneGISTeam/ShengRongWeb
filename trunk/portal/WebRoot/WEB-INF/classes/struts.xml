@@ -24,4 +24,18 @@
 		</action>
 	</package>
 	
+	 <package name="news" namespace="/" extends="struts-default">	
+		<action name="queryNewses" class="com.shengrong.portal.actions.NewsAction" method="query">
+        	<result name="success">newslist.jsp</result>
+        </action>
+        
+        <action name="openNews" class="com.shengrong.portal.actions.NewsAction" method="open">
+        	 <result name="success">singlenews.jsp</result>
+        	 <result name="error" type="chain">
+        	 	<param name="actionName">queryNewses</param>
+				<param name="namespace">/</param>
+        	 </result>
+        </action>
+	 </package>
+	
 </struts>      

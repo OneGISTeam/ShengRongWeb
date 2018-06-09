@@ -3,6 +3,7 @@ package com.shengrong.hibernate;
 import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
+
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
@@ -107,6 +108,18 @@ public class TeamprocessDAO extends BaseHibernateDAO {
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
+			throw re;
+		}
+	}
+	
+	public List findBySql(String queryString){
+		try
+		{
+			
+			Query queryObject = getSession().createQuery(queryString);
+			return queryObject.list();	
+		}catch(RuntimeException re){
+			log.error("findbySql failed", re);
 			throw re;
 		}
 	}
