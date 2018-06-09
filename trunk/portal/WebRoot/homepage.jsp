@@ -162,7 +162,7 @@ List<Teamprocess> teamprocesses = (List<Teamprocess>)request.getAttribute("teamp
 		<div class="place-section">
 			<div class="container">
 				<div class="about-grids">
-				<%  for(int i=0; i<5; i++){
+				<%  for(int i=0; i<(news.size()<5?news.size():5); i++){
 			        InputStream is = news.get(i).getImage().getBinaryStream();
 				    byte[] b = new byte[is.available()];
 			        is.read(b, 0, b.length);

@@ -123,7 +123,7 @@ public class NewsAction extends ActionBase{
 		//NewsDAO newsDao2 = new NewsDAO();
 		int newstypeid = this.news.getNewstype().getTypeid();
 		int thisnewsid =newsid;
-		String newsSql="from News where typeid=@newstypeid order by newsdate DESC";
+		String newsSql="from News where typeid=newstypeid order by newsdate DESC";
 		newsList = newsDao.findBySql(newsSql);
 		
 		if(this.news == null){
