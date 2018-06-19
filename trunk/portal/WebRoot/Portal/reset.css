@@ -1,0 +1,61 @@
+
+fieldset, img {
+	border: 0;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+caption, th {
+	text-align: left;
+}
+
+q:before, q:after {
+	content: '';
+}
+abbr, acronym {
+	border: 0;
+}
+
+.clear {
+	margin: 0px auto;
+	width: 100%;
+	height: 1px;
+	font-size: 1px;
+	clear: both;
+	background: none;
+	overflow: hidden;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix {
+	display: inline-block;
+}
+* html .clearfix {
+	height: 1%;
+}
+.clearfix {
+	display: block;
+}
+
+.space_hx { 
+	clear: both;
+	width: 100%;
+	height: 20px;
+	font-size: 1px;
+	overflow: hidden;
+}
+.space_zx { 
+	float: left;
+	width: 10px;
+	font-size: 1px;
+	overflow: hidden;
+}
+

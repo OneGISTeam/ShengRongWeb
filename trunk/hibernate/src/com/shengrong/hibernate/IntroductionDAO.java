@@ -105,17 +105,6 @@ public class IntroductionDAO extends BaseHibernateDAO {
 		}
 	}
 	
-	public List findBySql(String queryString){
-		try
-		{
-			
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();	
-		}catch(RuntimeException re){
-			log.error("find by Sql failed", re);
-			throw re;
-		}
-	}
 
 	public Introduction merge(Introduction detachedInstance) {
 		log.debug("merging Introduction instance");

@@ -30,19 +30,6 @@ List<News> newsList = (List<News>)request.getAttribute("newsList");
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
-	<!-- //FlexSlider-->
-<%-- 	<link rel="stylesheet" href="Plugins/jquery/flexslider.css" type="text/css" media="screen" />
-	<script src="<%=basePath %>Plugins/jquery/jquery.flexslider.js"></script>
-	<script>
-		// Can also be used with $(document).ready()
-				$(window).load(function() {
-				$('.flexslider').flexslider({
-				animation: "slide",
-				controlNav: "thumbnails"
-				});
-				});
-	</script> --%>
-	<!-- //FlexSlider-->
 	<style>
 	p{ text-indent:2em; padding:0px; margin:0px; }
 	</style>
@@ -81,8 +68,10 @@ List<News> newsList = (List<News>)request.getAttribute("newsList");
 						 <div class="col-md-3 blog-grid1">	
 							<div class="feature">
 								<h4>相关新闻</h4>
-						     <%
-                                for(int i=0;i<4; i++){
+						      <% int size = newsList.size();
+				                 if(size>0)
+				                {
+                                for(int i=0;i<(size<4?size:4);i++){
                            	 	is = newsList.get(i).getImage().getBinaryStream();
 								b = new byte[is.available()];
 								is.read(b, 0, b.length);
@@ -104,7 +93,14 @@ List<News> newsList = (List<News>)request.getAttribute("newsList");
 									<p><%=contentPlainTexts%><a onclick="openNews(<%=newsList.get(i).getNewsid()%>)">详情信息</a></p>
 								</div>
 								     <%}%>
-							   <%}%>
+							     <%}%>
+							   <%}
+							    else {
+				               %> 
+				                                                       暂无相关新闻
+				               <% 
+				                 }
+				               %>  
 							</div>
 						</div>
 

@@ -121,18 +121,6 @@ public class NewsDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
-	
-	public List findBySql(String queryString){
-		try
-		{
-			
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();	
-		}catch(RuntimeException re){
-			log.error("find by Sql failed", re);
-			throw re;
-		}
-	}
 
 	public News merge(News detachedInstance) {
 		log.debug("merging News instance");
