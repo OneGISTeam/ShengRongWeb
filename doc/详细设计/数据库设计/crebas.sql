@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/5/29 17:54:23                           */
+/* Created on:     2018/6/12 16:24:41                           */
 /*==============================================================*/
 
 
@@ -23,6 +23,14 @@ drop table if exists member;
 drop table if exists news;
 
 drop table if exists newstype;
+
+drop table if exists product;
+
+drop table if exists productparam;
+
+drop table if exists productpic;
+
+drop table if exists producttype;
 
 drop table if exists role;
 
@@ -190,6 +198,69 @@ INSERT INTO newstype values
 (0,'公司新闻','主要是公司内部新闻');
 
 /*==============================================================*/
+/* Table: product                                               */
+/*==============================================================*/
+create table product
+(
+   productid            int not null auto_increment,
+   typeid               int,
+   name                 char(32),
+   productname          char(255) not null,
+   productmodel         char(255) not null,
+   des                  text not null,
+   primary key (productid)
+);
+
+alter table product comment '产品表';
+
+/*==============================================================*/
+/* Table: productparam                                          */
+/*==============================================================*/
+create table productparam
+(
+   paramid              int not null auto_increment,
+   productid            int,
+   paramname            char(32) not null,
+   paramvalue           char(255) not null,
+   primary key (paramid)
+);
+
+alter table productparam comment '产品参数表';
+
+/*==============================================================*/
+/* Table: productpic                                            */
+/*==============================================================*/
+create table productpic
+(
+   picid                int not null auto_increment,
+   productid            int,
+   pic                  mediumblob not null,
+   mainpic              bool not null,
+   primary key (picid)
+);
+
+alter table productpic comment '产品图片';
+
+/*==============================================================*/
+/* Table: producttype                                           */
+/*==============================================================*/
+create table producttype
+(
+   typeid               int not null auto_increment,
+   name                 char(32) not null,
+   des                  char(255) not null,
+   primary key (typeid)
+);
+
+alter table producttype comment '产品类型表';
+
+INSERT INTO producttype values
+(0,'灭火剂','包括泡沫灭火剂、水系灭火剂等'),
+(0,'民用灭火器','包括手提式水基型灭火器、简易式水基型灭火器等'),
+(0,'军用灭火器','包括军用推车式水基型灭火器、军用手提式灭火器等'),
+(0,'警用灭火器','包括警用水基型灭火器等');
+
+/*==============================================================*/
 /* Table: role                                                  */
 /*==============================================================*/
 create table role
@@ -252,6 +323,18 @@ alter table news add constraint FK_news_manager foreign key (name)
 
 alter table news add constraint FK_news_newstype foreign key (typeid)
       references newstype (typeid) on delete restrict on update restrict;
+
+alter table product add constraint FK_Reference_12 foreign key (typeid)
+      references producttype (typeid) on delete restrict on update restrict;
+
+alter table product add constraint FK_Reference_13 foreign key (name)
+      references manager (name) on delete restrict on update restrict;
+
+alter table productparam add constraint FK_Reference_14 foreign key (productid)
+      references product (productid) on delete restrict on update restrict;
+
+alter table productpic add constraint FK_Reference_15 foreign key (productid)
+      references product (productid) on delete restrict on update restrict;
 
 alter table teamprocess add constraint FK_teamprocess_manager foreign key (name)
       references manager (name) on delete restrict on update restrict;
