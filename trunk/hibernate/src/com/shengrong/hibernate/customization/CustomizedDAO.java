@@ -82,4 +82,30 @@ public class CustomizedDAO<T> extends BaseHibernateDAO {
 		dataPkg.setDatum((List<T>)query.list());
 		return dataPkg;
 	}
+	
+	
+	public DataPackage<T> findBySql(String queryString,String table){
+		
+		Query queryObject = getSession().createQuery("from " + table + " "+ queryString);
+		DataPackage<T> dataPkg = new DataPackage<T>();
+		dataPkg.setDatum((List<T>)queryObject.list());
+		return dataPkg;
+	   }
+		/*try
+		{
+			Query queryObject = getSession().createQuery(queryString);
+			return queryObject.list();	
+		}catch(RuntimeException re){
+			log.error("find by Sql failed", re);
+			throw re;*/
+		
+	public DataPackage<T> findRelatedNews(int key1,int key2,String queryString,String table){
+		
+		Query queryObject = getSession().createQuery("from " + table + " "+ queryString);
+		queryObject.setParameter(0, key1);
+		queryObject.setParameter(1, key2);
+		DataPackage<T> dataPkg = new DataPackage<T>();
+		dataPkg.setDatum((List<T>)queryObject.list());
+		return dataPkg;
+	   }
 }

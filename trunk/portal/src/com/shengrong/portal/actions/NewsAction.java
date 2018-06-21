@@ -9,8 +9,6 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
-import net.sf.json.JSONObject;
-
 import com.shengrong.hibernate.News;
 import com.shengrong.hibernate.NewsDAO;
 import com.shengrong.hibernate.Newstype;
@@ -112,19 +110,16 @@ public class NewsAction extends ActionBase{
 			return ERROR;
 		};
 		
-		//查询所有的类型
-		//NewstypeDAO newstypeDao = new NewstypeDAO();
-		//newstypeList = newstypeDao.findAll();
-		
 		int newsid = Integer.parseInt(request.getParameter("newsid"));
 		NewsDAO newsDao = new NewsDAO();
 		this.news = newsDao.findById(newsid);
 		 
-		//NewsDAO newsDao2 = new NewsDAO();
+		CustomizedDAO<News> customizedDao = new CustomizedDAO<News>();
 		int newstypeid = this.news.getNewstype().getTypeid();
-		int thisnewsid =newsid;
-		String newsSql="from News where typeid=newstypeid order by newsdate DESC";
-		newsList = newsDao.findBySql(newsSql);
+		/*int thisnewsid =this.news.getNewsid();*/
+		String newsSql="where typeid=? and newsid!=? order by newsdate DESC";
+		DataPackage dataPkg =customizedDao.findRelatedNews(newstypeid,newsid,newsSql,"News");
+		this.newsList = dataPkg.getDatum();
 		
 		if(this.news == null){
 			return ERROR;

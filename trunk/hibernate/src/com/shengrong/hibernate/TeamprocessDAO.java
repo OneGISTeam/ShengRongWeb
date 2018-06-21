@@ -111,18 +111,6 @@ public class TeamprocessDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
-	
-	public List findBySql(String queryString){
-		try
-		{
-			
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();	
-		}catch(RuntimeException re){
-			log.error("findbySql failed", re);
-			throw re;
-		}
-	}
 
 	public Teamprocess merge(Teamprocess detachedInstance) {
 		log.debug("merging Teamprocess instance");

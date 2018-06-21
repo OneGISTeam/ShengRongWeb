@@ -6,7 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 List<Carousel> carousels = (List<Carousel>)request.getAttribute("carousels");
 List<Introduction> introductions = (List<Introduction>)request.getAttribute("introductions");
 List<Business> businesses = (ArrayList<Business>)request.getAttribute("businessList");
-List<News> news = (List<News>)request.getAttribute("newsList");
+List<News> newsList = (List<News>)request.getAttribute("newsList");
 List<Teamprocess> teamprocesses = (List<Teamprocess>)request.getAttribute("teamprocessList");
 %>
 
@@ -162,29 +162,29 @@ List<Teamprocess> teamprocesses = (List<Teamprocess>)request.getAttribute("teamp
 		<div class="place-section">
 			<div class="container">
 				<div class="about-grids">
-				<%  for(int i=0; i<(news.size()<5?news.size():5); i++){
-			        InputStream is = news.get(i).getImage().getBinaryStream();
+				<%  for(int i=0; i<(newsList.size()<5?newsList.size():5); i++){
+			        InputStream is = newsList.get(i).getImage().getBinaryStream();
 				    byte[] b = new byte[is.available()];
 			        is.read(b, 0, b.length);
 				    String imageString = new String(b);
-				    String newsDate = new SimpleDateFormat("yyyy-MM-dd").format(news.get(i).getNewsdate());
-					String contentPlainText = HtmlFilterTool.toPlainText(news.get(i).getContent());
+				    String newsDate = new SimpleDateFormat("yyyy-MM-dd").format(newsList.get(i).getNewsdate());
+					String contentPlainText = HtmlFilterTool.toPlainText(newsList.get(i).getContent());
 				     if(i==0){
 			     %> 
 					<div class="col-md-6 about-grid">
 						<div class="headline">
-							<h4><%=news.get(i).getTitle()%></h4>
+							<h4><%=newsList.get(i).getTitle()%></h4>
 							<p><%=contentPlainText%></p>
 							<img src="<%=imageString%>">
 							<div>
-								<a href="#" class="button">详细情况</a>
+								<a onclick="openNews(<%=newsList.get(i).getNewsid()%>)" class="button">详细情况</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-6 about-grid1">
 					<%}else{ %>
-						<div class="newsRow">
-							<h4><%=news.get(i).getTitle()%></h4>
+						<div class="newsRow"  onclick="openNews(<%=newsList.get(i).getNewsid()%>)">
+							<h4><%=newsList.get(i).getTitle()%></h4>
 							<span class="badge badge-info"><%=newsDate%></span>
 							<p><%=contentPlainText%></p>
 						</div>
@@ -261,5 +261,11 @@ List<Teamprocess> teamprocesses = (List<Teamprocess>)request.getAttribute("teamp
 	<!-- 添加pannel，动态链接方式，需要jsp重新编译 -->
 	 
 	<jsp:include page="footer.jsp" flush="true"/>
+	
+	<script type="text/javascript">
+		function openNews(newsid){
+			window.location.href = "<%=basePath%>openNews.action?newsid=" + newsid;
+		}
+	</script>
 </body>
 </html>

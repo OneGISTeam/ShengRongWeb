@@ -33,19 +33,6 @@ PagingInfo pagingInfo = (PagingInfo)request.getAttribute("pagingInfo");
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
-	<!-- //FlexSlider-->
-<%-- 	<link rel="stylesheet" href="Plugins/jquery/flexslider.css" type="text/css" media="screen" />
-	<script src="<%=basePath %>Plugins/jquery/jquery.flexslider.js"></script>
-	<script>
-		// Can also be used with $(document).ready()
-				$(window).load(function() {
-				$('.flexslider').flexslider({
-				animation: "slide",
-				controlNav: "thumbnails"
-				});
-				});
-	</script>  --%>
-	<!-- //FlexSlider-->
   </head>
   
 <body>
@@ -115,8 +102,7 @@ PagingInfo pagingInfo = (PagingInfo)request.getAttribute("pagingInfo");
 					              %>
 					                <li>未知</li>
 					              <%}%>
-					                <li><%=newsList.get(i).getKeywords()%></li>	
-									<%-- <li><a href="openNews(<%=newsList.get(i).getNewsid()%>)">详情信息</a></li> --%>		
+					                <li><%=newsList.get(i).getKeywords()%></li>			
 								 </ul>  
 							 </div>
 						</div>	

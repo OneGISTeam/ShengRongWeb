@@ -15,6 +15,8 @@ import com.shengrong.hibernate.NewsDAO;
 import com.shengrong.hibernate.NewstypeDAO;
 import com.shengrong.hibernate.Teamprocess;
 import com.shengrong.hibernate.TeamprocessDAO;
+import com.shengrong.hibernate.customization.CustomizedDAO;
+import com.shengrong.hibernate.customization.DataPackage;
 
 public class HomepageAction extends ActionSupport{
 	
@@ -70,23 +72,25 @@ public class HomepageAction extends ActionSupport{
 		CarouselDAO carouselDao = new CarouselDAO();
 		carousels = carouselDao.findAll();
 		
-		IntroductionDAO introductionDao = new IntroductionDAO();
-		String sql= "from Introduction  where introductionid = (SELECT max(introductionid) FROM Introduction)";
-		introductions = introductionDao.findBySql(sql);
+		CustomizedDAO<Introduction> introductioncustomizedDao = new CustomizedDAO<Introduction>();
+		String introductionSql= "where introductionid = (SELECT max(introductionid) FROM Introduction)";
+		DataPackage introductiondataPkg = introductioncustomizedDao.findBySql(introductionSql,"Introduction");
+		this.introductions= introductiondataPkg.getDatum();
 		
 		BusinessDAO businessDao = new BusinessDAO();
 		businessList = businessDao.findAll();
 		
-		NewsDAO newsDao = new NewsDAO();
-		String newsSql="from News where isheadline='1' order by newsdate DESC";
-		newsList = newsDao.findBySql(newsSql);
+		CustomizedDAO<News> newscustomizedDao = new CustomizedDAO<News>();
+		String newsSql="where isheadline='1' order by newsdate DESC";
+		DataPackage newsdataPkg = newscustomizedDao.findBySql(newsSql,"News");
+		this.newsList = newsdataPkg.getDatum();
 		
-        TeamprocessDAO teamprocessDao = new TeamprocessDAO();
-        String processSql="from Teamprocess order by date,processid";
-		teamprocessList = teamprocessDao.findBySql(processSql);
-		
+		CustomizedDAO<Teamprocess> teamprocesscustomizedDao = new CustomizedDAO<Teamprocess>();
+        String processSql="order by date,processid";
+        DataPackage teamprocessdataPkg = teamprocesscustomizedDao.findBySql(processSql,"Teamprocess");
+        this.teamprocessList =  teamprocessdataPkg.getDatum();
+        
 		return SUCCESS;
 	}
-
 
 }
