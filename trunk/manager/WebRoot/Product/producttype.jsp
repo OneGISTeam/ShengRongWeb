@@ -4,7 +4,7 @@
 String path = request.getContextPath();
 response.setCharacterEncoding("utf-8");
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-List<Newstype> newstypeList = (List<Newstype>)request.getAttribute("newstypeList");
+List<Producttype> producttypeList = (List<Producttype>)request.getAttribute("producttypeList");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -38,32 +38,31 @@ List<Newstype> newstypeList = (List<Newstype>)request.getAttribute("newstypeList
 		<div id="page-wrapper">
 			<div class="header"> 
 				<h1 class="page-header">
-					新闻类型管理<small>Newstype Manage</small>
+					产品类型管理<small>ProductType Manage</small>
 				</h1>
 				<ol class="breadcrumb">
 				  <li><a href="#">河南晟荣</a></li>
-				  <li class="active">新闻</li>
+				  <li class="active">产品</li>
 				</ol> 
 			</div>
 			<div id="page-inner">
-				<!-- form -->
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								添加新闻类型
+								添加产品类型
 							</div>
 							<div class="panel-body">
-								<form method="post" role="form" action="<%=basePath %>news/saveNewstype.action">
+								<form method="post" role="form" action="<%=basePath %>product/saveProducttype.action">
 									<div class="form-group">
-										<label>新闻类型</label>
-										<input datatype="*1-16" errormsg="请不要超过16个字！" class="form-control" name="newstype.name"/>
-										<p class="help-block">请输入新闻类型，如“娱乐新闻”、“内部消息”...</p>
+										<label>产品类型</label>
+										<input datatype="*1-16" errormsg="请不要超过16个字！" class="form-control" name="producttype.name"/>
+										<p class="help-block">请输入产品类型，如“灭火剂”、“军用灭火器”...</p>
 									</div>
 									<div class="form-group">
 										<label>类型描述</label>
-										<textarea name="newstype.des" datatype="*1-128" errormsg="请不要超过128个字！" class="form-control" rows="5"></textarea>
-										<p class="help-block">请对新闻类型进行简要描述</p>
+										<textarea name="producttype.des" datatype="*1-128" errormsg="请不要超过128个字！" class="form-control" rows="5"></textarea>
+										<p class="help-block">请对产品类型进行简要描述</p>
 									</div>
 									<button type="submit" class="btn btn-default">确认增加</button>
                                     <button type="reset" class="btn btn-default">内容重置</button>
@@ -78,29 +77,29 @@ List<Newstype> newstypeList = (List<Newstype>)request.getAttribute("newstypeList
 					<div class="col-lg-12">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								所有新闻类型列表
+								所有产品类型列表
 							</div>
 							<div class="panel-body">
 								<table class="table table-striped table-bordered table-hover" id="table_newstype">
 									<thead>
 										<tr>
 											<th>标识号</th>
-											<th>新闻类型</th>
-											<th>新闻类型描述</th>
+											<th>产品类型</th>
+											<th>产品类型描述</th>
 											<th>删除</th>
 										</tr>
 									</thead>
 									<tbody>
 										<% 
-											for(int i=0; i<newstypeList.size();i++){
+											for(int i=0; i<producttypeList.size();i++){
 												if(i%2==0){
 												%>
 													<tr class="odd gradeA">
-		                                            	<td class="center"><%=newstypeList.get(i).getTypeid() %></td>
-			                                            <td class="center"><%=newstypeList.get(i).getName() %></td>
-			                                            <td class="center"><%=newstypeList.get(i).getDes() %></td>
+		                                            	<td class="center"><%=producttypeList.get(i).getTypeid() %></td>
+			                                            <td class="center"><%=producttypeList.get(i).getName() %></td>
+			                                            <td class="center"><%=producttypeList.get(i).getDes() %></td>
 			                                            <td class="center">
-			                                            	<a type="button" class="btn btn-danger btn-sm" onclick="deleteNewstype('<%=newstypeList.get(i).getTypeid() %>')" >
+			                                            	<a type="button" class="btn btn-danger btn-sm" onclick="deleteProducttype('<%=producttypeList.get(i).getTypeid() %>')" >
 			                                            		<span class="fa fa-minus"></span>&nbsp;删除
 			                                            	</a>
 			                                            </td>
@@ -109,11 +108,11 @@ List<Newstype> newstypeList = (List<Newstype>)request.getAttribute("newstypeList
 												}else{
 												%>
 													<tr class="even gradeA">
-		                                            	<td class="center"><%=newstypeList.get(i).getTypeid() %></td>
-			                                            <td class="center"><%=newstypeList.get(i).getName() %></td>
-			                                            <td class="center"><%=newstypeList.get(i).getDes() %></td>
+		                                            	<td class="center"><%=producttypeList.get(i).getTypeid() %></td>
+			                                            <td class="center"><%=producttypeList.get(i).getName() %></td>
+			                                            <td class="center"><%=producttypeList.get(i).getDes() %></td>
 			                                            <td class="center">
-			                                            	<a type="button" class="btn btn-danger btn-sm" onclick="deleteNewstype('<%=newstypeList.get(i).getTypeid() %>')" >
+			                                            	<a type="button" class="btn btn-danger btn-sm" onclick="deleteProducttype('<%=producttypeList.get(i).getTypeid() %>')" >
 			                                            		<span class="fa fa-minus"></span>&nbsp;删除
 			                                            	</a>
 			                                            </td>
@@ -162,7 +161,7 @@ List<Newstype> newstypeList = (List<Newstype>)request.getAttribute("newstypeList
 	<script src="<%=basePath%>scripts.js"></script>
 	<script src="<%=basePath%>Plugins/validform/js/Validform_v5.3.2_ncr_min.js"></script>
 	<script type="text/javascript">
-		var dataTable = null;
+		var dataTable = null;		
 		$(function(){
 			//初始化表单验证信息
 			var form = $("form").Validform({
@@ -214,10 +213,11 @@ List<Newstype> newstypeList = (List<Newstype>)request.getAttribute("newstypeList
 	        });
 		});
 		
-		function deleteNewstype(id){
+		
+		function deleteProducttype(id){
 			$.ajax({  
 				type:"POST",
-        		url:"<%=basePath%>news/deleteNewstype.action",
+        		url:"<%=basePath%>product/deleteProducttype.action",
         		dataType:"json",
         		data:{
        				"id":id

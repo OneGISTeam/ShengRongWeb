@@ -18,13 +18,14 @@
                     $('div.sidebar-collapse').addClass('collapse');
                     $('.nav-side-portrait').addClass('collapse');
                     $('#nav_top_header').addClass('collapse');
+                    $('nav.navbar-side').css("position", "fixed");
                 } else {
                     $('div.sidebar-collapse').removeClass('collapse');
                     $('.nav-side-portrait').removeClass('collapse');
                     $('#nav_top_header').removeClass('collapse');
+                    $('nav.navbar-side').css("position", "absolute");
                 }
             });
-
         },
 
         initialization: function () {
@@ -53,3 +54,4 @@
     });
 
 }(jQuery));
+

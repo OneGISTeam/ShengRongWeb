@@ -121,7 +121,7 @@ News editNews = (News)request.getAttribute("editNews");
                                         <p class="help-block">默认为发布成头条</p>
 									</div>
 									<div class="form-group">
-										<label>选择新闻类型</label>
+										<label>选择新闻类型（注意：类型选择时要对应正确）</label>
                                            <select name="encpNews.encpNewstypeID" class="form-control">
                                            <% 
                                            	for(int i=0; i<newstypeList.size(); i++){

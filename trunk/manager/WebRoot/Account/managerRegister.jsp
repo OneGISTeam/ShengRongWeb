@@ -27,6 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<style>
 	.img-container img {
       max-width: 100%;
+      width:70%
     }
 	.friend-grid img:hover {
 	    border-radius: 50%;
@@ -136,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	<div class="modal-content">
 	            <div class="modal-header">
 	            	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	                <h4 class="modal-title">头像上产及裁剪</h4>
+	                <h4 class="modal-title">头像上传及裁剪</h4>
 	            </div>
 	            <div class="modal-body">
 	                <div class="img-container">

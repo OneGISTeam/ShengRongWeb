@@ -93,10 +93,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<a href="#"><i class="fa fa-cloud"></i>晟荣产品管理<span class="fa arrow"></span></a>
             	<ul class="nav nav-second-level">
             		<li>
-                        <a href="#">发布产品</a>
+                        <a href="<%=basePath %>product/producttype.action">产品类型</a>
                     </li>
                     <li>
-                        <a href="#">产品列表</a>
+                        <a href="<%=basePath %>product/saveProductPage.action">发布产品</a>
+                    </li>
+                    <li>
+                        <a href="<%=basePath %>product/products.action">产品列表</a>
                     </li>
             	</ul>
             </li>

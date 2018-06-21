@@ -7,6 +7,58 @@ body {
 }
 
 /*自定义部分*/
+.gallery-grid:hover{
+    cursor: pointer;
+}
+
+.productNavbarIcon{
+	top:120px;
+	right:0px;
+	word-wrap: break-word;
+	position:fixed;
+	z-index: 299;
+	background-color:white;
+	padding:5px; 
+	-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
+}
+
+.productNavbarIcon:hover{
+	cursor:pointer
+}
+
+.productNavbar{
+	min-width:150px;
+	display:none;
+	top:120px;
+	right:0px;
+	position:fixed;
+	z-index: 300;
+	background-color:white;
+	padding:5px; 
+	-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
+}
+
+img.zoom-img:hover {
+    -webkit-transform: scale(1.1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 1000ms;
+    -moz-transform: scale(1.1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 1000ms;
+    overflow: hidden;
+}
+
+.mainpic-icon{
+	position:absolute;
+	left:20px;
+	bottom:10px;
+	display:none;
+}
+
 .navbar-side li:hover{
 	background:#F09B22
 }
@@ -130,7 +182,7 @@ position: fixed;
 }
 .navbar-side {
   z-index: 1;
-  position: fixed;
+  position: absolute;
   width: 260px;
   top: 80px;
 }
