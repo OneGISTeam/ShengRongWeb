@@ -20,16 +20,15 @@ PagingInfo pagingInfo = (PagingInfo)request.getAttribute("pagingInfo");
 	<meta http-equiv="description" content="河南晟荣建筑工业科技有限公司网站">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="<%=basePath%>Plugins/bootstrap/bootstrap.css" rel="stylesheet" type='text/css'/>
+	<link href="<%=basePath%>Plugins/bootstrap/bootstrap1.css" rel="stylesheet" type='text/css'/>
 	<link href="<%=basePath%>Portal/style.css" rel="stylesheet" type='text/css'/>
-	 <link href="<%=basePath%>Plugins/pagination/pagination.css" rel="stylesheet"/>
+	<link href="<%=basePath%>Plugins/pagination/pagination.css" rel="stylesheet"/>
+	<link href="<%=basePath%>Plugins/FontAwesome/font-awesome.css" rel="stylesheet"/>
 	<script src="<%=basePath%>Plugins/jquery/jquery-1.11.1.min.js"></script>
-	<script src="<%=basePath%>Plugins/bootstrap/bootstrap.js"></script>	
+	<script src="<%=basePath%>Plugins/bootstrap/bootstrap.min.js"></script>	
 	
 	<!---fonts-->
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+	<link href='<%=basePath%>fonts.css' rel='stylesheet' type='text/css' />
   </head>
   
 <body>
@@ -46,43 +45,34 @@ PagingInfo pagingInfo = (PagingInfo)request.getAttribute("pagingInfo");
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<div class="table-responsive">
+						<div class="table-responsive" style="width:70%;margin:0 auto">
 							<table id="news_table" class="table table-hover">
                                	<thead>
 	                            	<tr>
-	                                	<th>资料标题</th>
-	                                    <th>关键字</th>
-	                                    <th>资料地址</th>
-	                                    <th>发布日期</th>
+	                                	<th style="width:20%;text-align: center">资料标题</th>
+	                                    <th style="width:20%;text-align: center">关键字</th>
+	                                    <th style="width:20%;text-align: center">发布日期</th>
+	                                    <th style="width:20%;text-align: center">删除</th>
 	                                 </tr>
 	                             </thead>
 	                             <tbody>
-	                                    	<%
-	                                    		for(int i=0; i<datumList.size(); i++){
-	                                    		String datumDate = new SimpleDateFormat("yyyy-MM-dd").format(datumList.get(i).getDatetime());
-	                                    		%>
-	                                    		<tr>
-	                                    			<td style="width:10%"><%=datumList.get(i).getTitle() %></td>
-	                                    			<td><%=datumList.get(i).getKeywords() %></td>
-	                                    			<td><%=basePath %><%=datumList.get(i).getUrl() %></td>
-	                                    			<%-- <%
-	                                    				if(datumList.get(i).getManager() == null){ 
-	                                    				%>
-	                                    				<td style="width:7%">未知</td>
-	                                    				<%	
-	                                    				}else{
-	                                    				%>
-	                                    				<td style="width:7%"><%=datumList.get(i).getManager().getName() %></td>
-	                                    				<%
-	                                    				}
-	                                    			%> --%>
-	                                    			<td><%=datumDate%></td>
-	                                    		</tr>
-	                                    		<%	
-	                                    		} 
-	                                    	%>
-	                                    </tbody>
-			                    	</table>
+	                             <%
+	                              for(int i=0; i<datumList.size(); i++){
+	                              String datumDate = new SimpleDateFormat("yyyy-MM-dd").format(datumList.get(i).getDatetime());
+	                              %>
+	                              <tr>
+	                              	<td style="width:20%;text-align: center"><%=datumList.get(i).getTitle() %></td>
+	                              	<td style="width:20%;text-align: center"><%=datumList.get(i).getKeywords() %></td>
+	                                <td style="width:20%;text-align: center"><%=datumDate%></td>
+	                                <td style="width:20%;text-align: center">
+	                                 	<a type="button" class="btn btn-primary btn-sm" onclick="downloadDatum(<%=datumList.get(i).getDatumid() %>)" >
+		                                 <span class="fa fa-download"></span>&nbsp;下载
+		                                </a>
+	                                </td>
+	                              </tr>
+	                              <%} %>
+	                              </tbody>
+			                  </table>
 						</div>
                         <!-- paging -->
                         <div id="pagination" style="text-align: center"></div>
