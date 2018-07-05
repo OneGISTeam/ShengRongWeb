@@ -83,7 +83,7 @@ Map<Integer, String> producttypeMap = (Map<Integer, String>)request.getAttribute
 														<p class="help-block">请输入产品型号，如“6MFB-18-43”...</p>
 													</div>
 													<div class="form-group">
-														<label>选择新闻类型（注意：类型选择时要对应正确）</label>
+														<label>选择产品类型（注意：类型选择时要对应正确）</label>
 			                                            <select name="encpProduct.productTypeID" class="form-control">
 			                                            <% 
 			                                            	for(Map.Entry<Integer, String> entry : producttypeMap.entrySet()) { 

@@ -13,6 +13,7 @@ import com.shengrong.hibernate.DatumDAO;
 import com.shengrong.hibernate.ManagerDAO;
 import com.shengrong.hibernate.MemberDAO;
 import com.shengrong.hibernate.NewsDAO;
+import com.shengrong.hibernate.ProductDAO;
 import com.shengrong.manager.model.AmountInfo;
 import com.shengrong.manager.model.Bytes;
 import com.sun.management.OperatingSystemMXBean;
@@ -45,8 +46,10 @@ public class StatisticAction extends ActionBase {
 		NewsDAO newsDao = new NewsDAO();
 		Long newsCount = (Long)newsDao.getSession().createQuery("select count(*) from " + "News").uniqueResult();
 		this.amountInfo.setNewsCount(newsCount);
-		/**
-		ProductDAO productDao = new ProductDAO();**/
+		
+		ProductDAO productDao = new ProductDAO();
+		Long productCount = (Long)productDao.getSession().createQuery("select count(*) from " + "Product").uniqueResult();
+		this.amountInfo.setProductCount(productCount);
 		
 		DatumDAO datumDao = new DatumDAO();
 		Long datumCount = (Long)datumDao.getSession().createQuery("select count(*) from " + "Datum").uniqueResult();

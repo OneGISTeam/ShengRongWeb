@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/6/12 16:24:41                           */
+/* Created on:     2018/7/5 17:30:34                            */
 /*==============================================================*/
 
 
@@ -13,6 +13,8 @@ drop table if exists carousel;
 drop table if exists companyprocess;
 
 drop table if exists introduction;
+
+drop table if exists joinus;
 
 drop table if exists manager;
 
@@ -31,6 +33,10 @@ drop table if exists productparam;
 drop table if exists productpic;
 
 drop table if exists producttype;
+
+drop table if exists recruit;
+
+drop table if exists recruitapply;
 
 drop table if exists role;
 
@@ -114,6 +120,20 @@ create table introduction
 );
 
 alter table introduction comment '公司简介表';
+
+/*==============================================================*/
+/* Table: joinus                                                */
+/*==============================================================*/
+create table joinus
+(
+   joinusid             int not null auto_increment,
+   name                 char(32) not null,
+   company              char(64),
+   email                char(64),
+   phone                char(32) not null,
+   comment              char(255),
+   primary key (joinusid)
+);
 
 /*==============================================================*/
 /* Table: manager                                               */
@@ -261,6 +281,48 @@ INSERT INTO producttype values
 (0,'警用灭火器','包括警用水基型灭火器等');
 
 /*==============================================================*/
+/* Table: recruit                                               */
+/*==============================================================*/
+create table recruit
+(
+   recruitid            int not null auto_increment,
+   name                 char(32),
+   recruitname          char(64) not null,
+   age                  char(32) not null,
+   workplace            char(32) not null,
+   payment              char(32) not null,
+   recruitnumber        char(32) not null,
+   publishdate          date not null,
+   deadline             date not null,
+   duty                 text not null,
+   requirement          text not null,
+   primary key (recruitid)
+);
+
+alter table recruit comment '招聘信息表';
+
+/*==============================================================*/
+/* Table: recruitapply                                          */
+/*==============================================================*/
+create table recruitapply
+(
+   applyid              int not null auto_increment,
+   recruitid            int not null,
+   applyname            char(32) not null,
+   applysex             bool,
+   applynation          char(32),
+   applynative          char(32),
+   applyeducation       char(32) not null,
+   applyemail           char(64),
+   applyphone           char(32) not null,
+   applyresume          text,
+   applydatetime        datetime not null,
+   primary key (applyid)
+);
+
+alter table recruitapply comment '招聘申请';
+
+/*==============================================================*/
 /* Table: role                                                  */
 /*==============================================================*/
 create table role
@@ -335,6 +397,12 @@ alter table productparam add constraint FK_Reference_14 foreign key (productid)
 
 alter table productpic add constraint FK_Reference_15 foreign key (productid)
       references product (productid) on delete restrict on update restrict;
+
+alter table recruit add constraint FK_Reference_16 foreign key (name)
+      references manager (name) on delete restrict on update restrict;
+
+alter table recruitapply add constraint FK_Reference_17 foreign key (recruitid)
+      references recruit (recruitid) on delete restrict on update restrict;
 
 alter table teamprocess add constraint FK_teamprocess_manager foreign key (name)
       references manager (name) on delete restrict on update restrict;

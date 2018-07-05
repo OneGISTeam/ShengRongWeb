@@ -74,7 +74,7 @@ AmountInfo amountInfo = (AmountInfo)request.getAttribute("amountInfo");
 	                                    <i class="fa fa-cloud fa-5x"></i>
 	                                </div>
 	                                <div class="col-xs-9 text-right">
-	                                    <div class="huge">XXX</div>
+	                                    <div class="huge"><%=amountInfo.getProductCount().toString() %></div>
 	                                    <div>产品数量</div>
 	                                </div>
 	                            </div>
