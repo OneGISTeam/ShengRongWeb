@@ -17,6 +17,7 @@
 	<include file="manager-datum.xml"></include>
 	<include file="manager-statistic.xml"></include>
 	<include file="manager-product.xml"></include>
+	<include file="manager-recruit.xml"></include>
 	<package name="common" namespace="/" extends="struts-default,json-default" >
 		<interceptors>
 			<interceptor name="loginStatus" class="com.shengrong.manager.interceptors.LoginStatus">

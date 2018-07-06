@@ -17,4 +17,7 @@
 	<table name="productpic" catalog="shengrong">
 		<column name="pic" type="blob"></column>
 	</table>
+	<table name="carousel" catalog="shengrong">
+		<column name="image" type="blob"></column>
+	</table>
 </hibernate-reverse-engineering>

@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	</ul>
             </li>
             <li>
-            	<a href="#"><i class="fa fa-cloud"></i>晟荣产品管理<span class="fa arrow"></span></a>
+            	<a href="#"><i class="fa fa-cubes"></i>晟荣产品管理<span class="fa arrow"></span></a>
             	<ul class="nav nav-second-level">
             		<li>
                         <a href="<%=basePath %>product/producttype.action">产品类型</a>
@@ -124,6 +124,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="<%=basePath %>aboutus/aboutmember.action">关于团队</a>
                     </li>
             	</ul>
+            </li>
+            <li>
+            	<a href="#"><i class="fa fa-bullseye"></i>招聘信息<span class="fa arrow"></span></a>
+            	<ul class="nav nav-second-level">
+            		<li>
+                        <a href="<%=basePath %>recruit/saveRecruitPage.action">发布招聘信息</a>
+                    </li>
+                    <li>
+                        <a href="#">招聘申请查看</a>
+                    </li>
+            	</ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-handshake-o"></i>加盟信息</a>
             </li>
         </ul>
     </div>
