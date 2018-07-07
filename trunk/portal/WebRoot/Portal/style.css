@@ -651,7 +651,7 @@ img.zoom-img {
 	  font-family: 'Righteous', cursive;
 }
 .membership1 {
-    padding: 2em 0 0 0;
+    padding: 0 0 0 0;
     border: 1px dotted #8E8B8B;
 }
 .membership1 h5 span {
@@ -2180,7 +2180,7 @@ section#tables  p {
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
   font-size: 0.9em;
-  color: #999;
+  color: #000;
   border-top: none !important;
 }
 .tab-content > .active {
@@ -4016,3 +4016,8 @@ a.button5 {
 .login-right input[type="submit"] {
     font-size: 1.2em;
 }
+
+.gallery-grid:hover{
+    cursor: pointer;
+}
+

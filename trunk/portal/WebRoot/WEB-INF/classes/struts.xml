@@ -16,16 +16,17 @@
 	
 	<!-- 产品中心 -->
 	 <package name="products" namespace="/" extends="struts-default">	
-		<action name="products" class="com.shengrong.portal.actions.ProductsAction">
+		<action name="products" class="com.shengrong.portal.actions.ProductsAction" method="query">
         	<result name="success">products.jsp</result>
+        	<result name="error">/error.jsp</result>
         </action>
-        <!-- <action name="openNews" class="com.shengrong.portal.actions.NewsAction" method="open">
-        	 <result name="success">singlenews.jsp</result>
+        <action name="openProduct" class="com.shengrong.portal.actions.ProductsAction" method="open">
+        	 <result name="success">singleproduct.jsp</result>
         	 <result name="error" type="chain">
-        	 	<param name="actionName">queryNewses</param>
+        	 	<param name="actionName">products</param>
 				<param name="namespace">/</param>
         	 </result>
-        </action> -->
+        </action>
 	 </package>
 	
 	<!-- 新闻前线 -->
