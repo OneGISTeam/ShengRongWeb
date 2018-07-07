@@ -3,6 +3,8 @@ package com.shengrong.portal.actions;
 import java.sql.*;
 import java.util.List;
 
+import org.hibernate.Transaction;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.shengrong.hibernate.Carousel;
 import com.shengrong.hibernate.CarouselDAO;
