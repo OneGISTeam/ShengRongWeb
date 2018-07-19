@@ -92,6 +92,7 @@ Map<Integer, String> producttypeMap = (Map<Integer, String>)request.getAttribute
 	 </div>
 	</div>
 	<jsp:include page="footer.jsp" flush="true"/>
+	<jsp:include page="floatnavbar.jsp" flush="true"/>
 	<script src="<%=basePath%>Plugins/jquery/jquery-1.11.1.min.js"></script>
 	<script src="<%=basePath%>Plugins/bootstrap/bootstrap.min.js"></script>
 	<script src="<%=basePath%>Plugins/jquery/jquery.metisMenu.js"></script>

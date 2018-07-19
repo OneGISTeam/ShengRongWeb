@@ -139,6 +139,7 @@ List<Companyprocess> cpList = (List<Companyprocess>)request.getAttribute("compan
 	  </div>
 
 	 <jsp:include page="footer.jsp" flush="true" />
+	 <jsp:include page="floatnavbar.jsp" flush="true"/>
   </body>
 	          
 </html>

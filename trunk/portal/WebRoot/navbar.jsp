@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li><a href="<%=basePath%>datumsharing.action">资料共享</a></li>
 						<li><a href="<%=basePath%>aboutshengrong.action">关于我们</a></li>
 						<li><a href="<%=basePath%>employment.action">招聘信息</a></li>
-						<li><a href="<%=basePath%>cooperation.action">加入我们</a></li>
+						<li><a href="<%=basePath%>cooperation.action">加盟我们</a></li>
 					</ul>
 					<div class="clearfix"></div>
 				</div>

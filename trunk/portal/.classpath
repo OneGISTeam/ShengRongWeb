@@ -31,6 +31,6 @@
 			<attribute name="owner.project.facets" value="jst.web.jstl"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/ShengRongHibernate"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ShengRongHibernate"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

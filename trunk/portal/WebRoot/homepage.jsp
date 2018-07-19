@@ -174,6 +174,7 @@ List<Teamprocess> teamprocesses = (List<Teamprocess>)request.getAttribute("teamp
 					<div class="col-md-6 about-grid">
 						<div class="headline">
 							<h4><%=newsList.get(i).getTitle()%></h4>
+							<span class="badge badge-info"><%=newsDate%></span>
 							<p><%=contentPlainText%></p>
 							<img src="<%=imageString%>">
 							<div>
@@ -261,7 +262,7 @@ List<Teamprocess> teamprocesses = (List<Teamprocess>)request.getAttribute("teamp
 	<!-- 添加pannel，动态链接方式，需要jsp重新编译 -->
 	 
 	<jsp:include page="footer.jsp" flush="true"/>
-	
+	<jsp:include page="floatnavbar.jsp" flush="true"/>
 	<script type="text/javascript">
 		function openNews(newsid){
 			window.location.href = "<%=basePath%>openNews.action?newsid=" + newsid;

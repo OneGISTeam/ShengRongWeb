@@ -1,8 +1,9 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*,java.util.*,com.shengrong.hibernate.*,java.text.SimpleDateFormat" pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+List<Recruit> recruitList =(List<Recruit>)request.getAttribute("recruitList");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -16,9 +17,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="河南晟荣建筑工业科技有限公司网站">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="<%=basePath%>Plugins/bootstrap/bootstrap.css" rel="stylesheet" type='text/css'/>
+	<link href="<%=basePath%>Plugins/bootstrap/bootstrap1.css" rel="stylesheet" type='text/css'/>
 	<link href="<%=basePath%>Portal/style.css" rel="stylesheet" type='text/css'/>
 	<link href="<%=basePath%>Portal/employment.css" rel="stylesheet" type='text/css'/>
+	<link rel="stylesheet" href="<%=basePath%>Plugins/FontAwesome/font-awesome.css" />
+	<link href='<%=basePath%>fonts.css' rel='stylesheet' type='text/css' />
 	<script src="<%=basePath%>Plugins/jquery/jquery-1.11.1.min.js"></script>
 	<script src="<%=basePath%>Plugins/bootstrap/bootstrap.js"></script>
 	
@@ -41,106 +44,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="case-index-title"></div>
             <div class="case-index-content">
                 <ul class="clearfix">
+                    <% for(int i=0; i<recruitList.size(); i++){
+                        String imageString ="Images/employment/"+"img00"+ (i+1)+ ".png";
+                        String deadline = new SimpleDateFormat("yyyy.MM.dd").format(recruitList.get(i).getDeadline());
+                     %> 
                     <li class="case-example-item">
-                        <a href="#">
-                            <img src="<%=basePath%>/Images/employment/img001.jpg" alt="" class="case-pad">
+                        <!-- <a href="#"> -->
+                            <img src="<%=basePath%><%=imageString%>" alt="" class="case-pad">
                             <div class="case-item-info">
-                                <div class="case-info-title">美工设计师</div>
-                                <div class="case-info-text"><p>岗位职责</p>
-                                                            <p>(1)协助产品经理设计产品草图和美工</p>
-                                                            <p>(2)网站页面设计、移动应用UI设计等</p>
-                                                            <p>任职要求</p>
-                                                            <p>(1)有良好的美术功底和审美观，有较强的视觉创作能力，色彩把控能力</p>
-                                                            <p>(2)熟练掌握Photoshop,Flash等相关软件</p>
-                                                            <p>(3)有网站设计或平面设计经验者优先</p>
-                                                            <p>(4)2年以上美工和网页设计工作经验</p>                                                 
+                                <div class="case-info-title"><%=recruitList.get(i).getRecruitname()%></div>
+                                <div class="case-info-content">
+                                    <p>截止日期：<%=deadline%></p>
+                                    <table>
+                                    	<thead>
+                                    		<tr>
+                                    			<td><i class="fa fa-info-circle"></i> <%=recruitList.get(i).getAge()%> </th>
+                                    			<td><i class="fa fa-map-marker"></i> <%=recruitList.get(i).getWorkplace()%> </th>
+                                    			<td><i class="fa fa-jpy"></i> <%=recruitList.get(i).getPayment()%> </th>
+                                    			<td><i class="fa fa-user"></i> <%=recruitList.get(i).getRecruitnumber()%> </th>
+                                    		</tr>
+                                    	</thead>
+                                    </table>
+                                </div>
+                                <div class="case-info-text">
+                                	<h5 style="line-height:2.5em"><i class="fa fa-hand-o-right"></i> 岗位职责 </h5>
+                                	<%=recruitList.get(i).getDuty()%>
+                                    <h5 style="line-height:2.5em"><i class="fa fa-hand-o-right"></i> 任职要求 </h5>
+                                    <%=recruitList.get(i).getRequirement()%> 
                                </div>
+                               <a type="button" class="btn btn-info" onclick="openRecruitapply(<%=recruitList.get(i).getRecruitid() %>)" style="margin:20px auto;">立即申请</a> 
                             </div>
-                        </a>
+                       <!--  </a> -->
                     </li>
-                    <li class="case-example-item">
-                        <a href="#">
-                            <img src="<%=basePath%>/Images/employment/img001.jpg" alt="" class="case-pad">
-                            <div class="case-item-info">
-                                <div class="case-info-title">美工设计师</div>
-                                <div class="case-info-text"><p>岗位职责</p>
-                                                            <p>(1)协助产品经理设计产品草图和美工</p>
-                                                            <p>(2)网站页面设计、移动应用UI设计等</p>
-                                                            <p>任职要求</p>
-                                                            <p>(1)有良好的美术功底和审美观，有较强的视觉创作能力，色彩把控能力</p>
-                                                            <p>(2)熟练掌握Photoshop,Flash等相关软件</p>
-                                                            <p>(3)有网站设计或平面设计经验者优先</p>
-                                                            <p>(4)2年以上美工和网页设计工作经验</p>                                                 
-                               </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="case-example-item">
-                        <a href="#">
-                            <img src="<%=basePath%>/Images/employment/img001.jpg" alt="" class="case-pad">
-                            <div class="case-item-info">
-                               
-                                <div class="case-info-title">经营类目：电脑／配件</div>
-                                <div class="case-info-text">雷神科技是一家致力于专业游戏装备的互联网公司，向玩家提供国际一流品质和性能的游戏本。</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="case-example-item">
-                        <a href="#">
-                            <img src="<%=basePath%>/Images/employment/img001.jpg" alt="" class="case-pad">
-                            <div class="case-item-info">
-                              
-                                <div class="case-info-title">经营类目：医药</div>
-                                <div class="case-info-text">易索药房，专注于终端药店的O2O平台，让商家专业卖药，让患者科学用药提供便捷的远程药事服务电子处方支持。</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="case-example-item">
-                        <a href="#">
-                            <img src="<%=basePath%>/Images/employment/img001.jpg" alt="" class="case-pad">
-                            <div class="case-item-info">
-                                
-                                <div class="case-info-title">经营类目：图书发行、批发零售</div>
-                                <div class="case-info-text">聊城市鲁西图书销售有限公司是民营图书发行公司，经营范围涵盖图书发行、批发、零售，仓储，物流。</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="case-example-item">
-                        <a href="#">
-                            <img src="<%=basePath%>/Images/employment/img001.jpg" alt="" class="case-pad">
-                            <div class="case-item-info">
-                                
-                                <div class="case-info-title">经营类目：农产品</div>
-                                <div class="case-info-text">定位于B2B和B2C运营模式，目的在于整合特色农产品，通过平台进行分拣包装、交易配送。</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="case-example-item">
-                        <a href="#">
-                            <img src="<%=basePath%>/Images/employment/img001.jpg" alt="" class="case-pad">
-                            <div class="case-item-info">
-                             
-                                <div class="case-info-title">经营类目：文化艺术品</div>
-                                <div class="case-info-text">由辽宁文博艺术品产权交易中心打造，为文化艺术品爱好者提供安全的网上交易服务。</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="case-example-item">
-                        <a href="#">
-                            <img src="<%=basePath%>/Images/employment/img001.jpg" alt="" class="case-pad">
-                            <div class="case-item-info">
-                               
-                                <div class="case-info-title">经营类目：生活服务</div>
-                                <div class="case-info-text">盟友88致力于为用户打造“电商＋店商＋点商”的“B2C+O2O”智能生活服务平台。</div>
-                            </div>
-                        </a>
-                    </li>
+                    <%} %>
                 </ul>
             </div>
         </div>
-	
-	
 	<jsp:include page="footer.jsp" flush="true"/>
+	<jsp:include page="floatnavbar.jsp" flush="true"/>
+	<script type="text/javascript">
+	     function openRecruitapply(recruitid){
+			window.open("<%=basePath%>openRecruitapply.action?recruitid=" + recruitid);
+		}
+	</script>
 	
 
 </body>

@@ -4,6 +4,7 @@
 response.setCharacterEncoding("utf-8");
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String filePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/ShengRongManager/";
 List<Datum> datumList = (List<Datum>)request.getAttribute("datumList");
 Long totalCount = (Long)request.getAttribute("totalCount");
 PagingInfo pagingInfo = (PagingInfo)request.getAttribute("pagingInfo");
@@ -50,9 +51,9 @@ PagingInfo pagingInfo = (PagingInfo)request.getAttribute("pagingInfo");
                                	<thead>
 	                            	<tr>
 	                                	<th style="width:20%;text-align: center">资料标题</th>
-	                                    <th style="width:20%;text-align: center">关键字</th>
+	                                    <th style="width:20%;text-align: center">资料描述</th>
 	                                    <th style="width:20%;text-align: center">发布日期</th>
-	                                    <th style="width:20%;text-align: center">删除</th>
+	                                    <th style="width:20%;text-align: center">下载</th>
 	                                 </tr>
 	                             </thead>
 	                             <tbody>
@@ -62,12 +63,10 @@ PagingInfo pagingInfo = (PagingInfo)request.getAttribute("pagingInfo");
 	                              %>
 	                              <tr>
 	                              	<td style="width:20%;text-align: center"><%=datumList.get(i).getTitle() %></td>
-	                              	<td style="width:20%;text-align: center"><%=datumList.get(i).getKeywords() %></td>
+	                              	<td style="width:20%;text-align: center"><%=datumList.get(i).getBrief() %></td>
 	                                <td style="width:20%;text-align: center"><%=datumDate%></td>
 	                                <td style="width:20%;text-align: center">
-	                                 	<a type="button" class="btn btn-primary btn-sm" onclick="downloadDatum(<%=datumList.get(i).getDatumid() %>)" >
-		                                 <span class="fa fa-download"></span>&nbsp;下载
-		                                </a>
+	                                 	<a type="button" class="btn btn-primary btn-sm" onclick="downloadDatum('<%=datumList.get(i).getUrl() %>')"><span class="fa fa-download"></span>&nbsp;下载</a>
 	                                </td>
 	                              </tr>
 	                              <%} %>
@@ -82,6 +81,7 @@ PagingInfo pagingInfo = (PagingInfo)request.getAttribute("pagingInfo");
 		</div>
 	</div>
 	<jsp:include page="footer.jsp" flush="true"/>
+	<jsp:include page="floatnavbar.jsp" flush="true"/>
 	<script src="<%=basePath%>Plugins/pagination/jquery.pagination.js"></script>
 	<script type="text/javascript">
 		$(function(){
@@ -105,6 +105,12 @@ PagingInfo pagingInfo = (PagingInfo)request.getAttribute("pagingInfo");
 			window.location.href=url;
 			return false;
 		}
+		
+		function downloadDatum(url){
+			var datumurl= '<%=filePath%>'+ url; 
+			 <%-- var datumurl= "<%=filePath%>"+"/Datum/temp/2018-07-13/66ce46c7-0f47-45c5-a2d1-03bbdc09c5a5.docx"; --%>
+			window.open(datumurl);
+		} 
 	</script>
 </body>
 </html>

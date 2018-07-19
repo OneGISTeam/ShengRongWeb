@@ -117,8 +117,9 @@ PagingInfo pagingInfo = (PagingInfo)request.getAttribute("pagingInfo");
     </div>	
 	<!-- 添加pannel，动态链接方式，需要jsp重新编译 -->
 	<jsp:include page="footer.jsp" flush="true" />
-	
+	<jsp:include page="floatnavbar.jsp" flush="true"/>
 	<script src="<%=basePath%>Plugins/pagination/jquery.pagination.js"></script>
+	
 	<script type="text/javascript">
 	$(function(){
 	var paginationOpt = {
