@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="container">
     			<div class="row">
 					<div class="col-sm-8 col-sm-offset-2 text">
-						<h1><i class="fa fa-check fa-2x"></i><strong>成功！</strong></h1>
+						<h1><i class="fa fa-check fa-2x"></i><strong>发送成功！</strong></h1>
 						<h4>
 							${message}
 						</h4>

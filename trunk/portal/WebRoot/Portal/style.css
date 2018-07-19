@@ -39,14 +39,18 @@ p{
 	text-align:center;
 }
 
+.headline .badge{
+	margin-top:15px;
+}
+
 .headline p{
 	border:1px solid #ccc; 
 	border-top:none;
 	border-bottom:none;
-	margin-top:20px;
+	margin-top:15px;
 	margin-left:20px;
 	margin-right:20px;
-	padding:5px;
+	/* padding:5px; */
 	color: #969696;
 	position:relative;
 	line-height:1.8em;
@@ -753,18 +757,18 @@ ul.member {
 	margin: 0 0.3em
 }
 .banner-section {
-    background: url(../Images/banner.jpg) no-repeat 0px 0px;
+    background: url(../Images/banner/banner1.jpg) no-repeat 0px 0px;
     background-size: cover;
     min-height: 180px;
 	text-align: center;
-	    padding: 5em 0 0;
+	 padding: 5em 0 0;
 }
 .banner-section h2{
     font-size: 3em;
     text-transform: capitalize;
     text-align: center;
     font-family: 'Righteous', cursive;
-    color: #fff;
+    color: #0c234c;
 }
 .copyrights{
 	text-indent:-9999px;
@@ -2320,13 +2324,14 @@ li.list-group-item1 {
     background: #fff;
 }
 .contact-grid input[type="text"], .contact-grid textarea, .contact-grid input[type="email"] {
-    display: block;
+    /* display: block; */
     background: #fff;
     color: #777;
     border: none;
     width: 50%;
     outline: none;
     font-size: 1em;
+    margin: 1em 0;
     padding: 1em 1em;
     border-bottom: 1px solid #BBB;
 }

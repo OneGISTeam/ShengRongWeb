@@ -60,7 +60,7 @@ List<News> newsList = (List<News>)request.getAttribute("newsList");
 							     %>
 								    <h3><%=news.getTitle() %></h3>
 								    <p><%=newsDate %>  / <%=news.getManager().getName()%> </p>
-								    <a href="#" class="news_img"><img src="<%=imageString%>" class="img-responsive" alt=""></a>
+								    <%-- <a href="#" class="news_img"><img src="<%=imageString%>" class="img-responsive" alt=""></a> --%>
 								     <%=news.getContent()%>
 							</div>
 						</div>
@@ -111,6 +111,7 @@ List<News> newsList = (List<News>)request.getAttribute("newsList");
 		
 	<!-- 添加pannel，动态链接方式，需要jsp重新编译 -->
 	<jsp:include page="./footer.jsp" flush="true" />
+	<jsp:include page="floatnavbar.jsp" flush="true"/>
 	<script type="text/javascript">
 		function openNews(newsid){
 			window.location.href = "<%=basePath%>openNews.action?newsid=" + newsid;

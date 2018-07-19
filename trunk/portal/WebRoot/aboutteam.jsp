@@ -112,6 +112,7 @@ List<Member> memberList = (List<Member>)request.getAttribute("memberList");
 	  </div>
 	
 	 <jsp:include page="footer.jsp" flush="true"/>
+	 <jsp:include page="floatnavbar.jsp" flush="true"/>
   </body>
 	          
 </html>

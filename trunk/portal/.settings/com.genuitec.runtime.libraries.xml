@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project adv-config="true">
+  <add-on id="hibernate.extra"/>
+  <container path="com.genuitec.runtime.library/com.genuitec.struts_2.1">
+    <disable name="antlr-2.7.2.jar" type="jar"/>
+  </container>
+  <container path="com.genuitec.runtime.library/com.genuitec.hibernate_4.1">
+    <disable name="ehcache-core-2.4.3.jar" type="jar"/>
+    <disable name="hibernate-envers-4.1.4.Final.jar" type="jar"/>
+    <disable name="hibernate-proxool-4.1.4.Final.jar" type="jar"/>
+    <disable name="infinispan-core-5.1.4.FINAL.jar" type="jar"/>
+    <disable name="jboss-marshalling-1.3.11.GA.jar" type="jar"/>
+    <disable name="jboss-marshalling-river-1.3.11.GA.jar" type="jar"/>
+    <disable name="jgroups-3.0.9.Final.jar" type="jar"/>
+    <disable name="proxool-0.8.3.jar" type="jar"/>
+    <disable name="rhq-pluginAnnotations-3.0.4.jar" type="jar"/>
+    <disable name="stax2-api-3.1.1.jar" type="jar"/>
+    <disable name="woodstox-core-asl-4.1.1.jar" type="jar"/>
+    <disable name="hibernate-infinispan-4.1.4.Final.jar" type="jar"/>
+  </container>
+</project>

@@ -64,7 +64,20 @@
 	 <package name="employment" namespace="/" extends="struts-default">	
 		<action name="employment" class="com.shengrong.portal.actions.EmploymentAction">
         	<result name="success">employment.jsp</result>
+        	<result name="error">/error.jsp</result>
         </action>
+        <action name="openRecruitapply" class="com.shengrong.portal.actions.EmploymentAction" method="open">
+        	<result name="success">recruitapply.jsp</result>
+        	<result name="error" type="chain">
+        	 	<param name="actionName">employment</param>
+				<param name="namespace">/</param>
+        	 </result>
+        </action>
+        <action name="saveRecruitapply" class="com.shengrong.portal.actions.EmploymentAction" method="save">
+        	<result name="success">/success.jsp</result>
+        	<result name="error">/error.jsp</result>
+        </action>
+        
 	 </package>
 	 
 	 <!-- 加入我们 -->
@@ -72,5 +85,10 @@
 		<action name="cooperation" class="com.shengrong.portal.actions.CooperationAction">
         	<result name="success">cooperation.jsp</result>
         </action>
+         <action name="saveCoopreation" class="com.shengrong.portal.actions.CooperationAction" method="save">
+        	<result name="success">/success.jsp</result>
+        	<result name="error">/error.jsp</result>
+        </action>
+        
 	 </package>	
 </struts>      

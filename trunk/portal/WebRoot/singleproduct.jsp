@@ -147,7 +147,7 @@ Product product = (Product)request.getAttribute("currentProduct");
 						<div class="membership1">
 						<h4><%=param.getParamname() %></h4>
 							<ul class="member">
-								<li><%=param.getParamvalue() %></li>
+								<li><%=param.getParamvalue()%></li>
 							</ul>
 						</div>
 					</div>
@@ -158,5 +158,6 @@ Product product = (Product)request.getAttribute("currentProduct");
 		</div>
     </div>
 	<jsp:include page="footer.jsp" flush="true"/>
+	<jsp:include page="floatnavbar.jsp" flush="true"/>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*,com.shengrong.hibernate.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -18,6 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="<%=basePath%>Plugins/bootstrap/bootstrap.css" rel="stylesheet" type='text/css'/>
 	<link href="<%=basePath%>Portal/style.css" rel="stylesheet" type='text/css'/>
+	<link href="<%=basePath%>Plugins/validform/css/validform.css" rel="stylesheet"/>
 	<script src="<%=basePath%>Plugins/jquery/jquery-1.11.1.min.js"></script>
 	<script src="<%=basePath%>Plugins/bootstrap/bootstrap.js"></script>
 	
@@ -41,34 +42,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="container">
 					<div class="contact-grids">
 						<div class="col-md-8 contact-grid">
-							<h5>Fill out the form and we will get back to you within 24 hours</h5>
+							<h5>我们将在24小时内回复您</h5>
 							<p></p>
-							<form>
-								<input type="text" value="姓名 " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '姓名';}" required="">
-								<input type="email" value="邮箱" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '邮箱';}" required="">
-								<input type="text" value="电话" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '电话';}" required="">
-								<textarea type="text"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '您的需求和评论...';}" required="">您的需求和评论</textarea>
+							<form method="post" role="form" action="<%=basePath %>saveCoopreation.action">
+								<ul>
+									<li style="list-style:none;">
+										<input type="text" datatype="/^\s*$/|*" placeholder="姓名" name="joinus.name">
+								    </li>
+								    <li style="list-style:none;"> 
+										<input type="text" datatype="*" placeholder="公司 " name="joinus.company" nullmsg="请填写公司名称">
+								    </li>
+									<li style="list-style:none;">
+										<input type="email"  datatype="e" placeholder="邮箱" name="joinus.email" nullmsg="请填写邮箱" errormsg="邮箱格式不正确">
+									</li>
+									<li style="list-style:none;">
+										<input type="text" datatype="/^\s*$/|n"  placeholder="电话" name="joinus.phone" errormsg="电话号码应为数字">
+									</li>
+									<li style="list-style:none;">
+										<textarea type="text" datatype="*" placeholder="您的需求和评论" name="joinus.comment"  nullmsg="请填写您的需求"></textarea>
+									</li>
+								</ul>
 								<input type="submit" value="提交" >
 							</form>
 						</div>
 						<div class="col-md-4 contact-grid1">
-							<h4>Listing Agent</h4>
-							<div class="contact-top">
-								<div class="agent-img">
-									<img src="<%=basePath%>Images/p3.png" class="img-responsive" alt="">
-								</div>
-								<div class="agent-info">
-									<h5>John son</h5>
-									<h6>Real Space Group</h6>
-								</div>
-								<div class="clearfix"></div>
-							</div>
 							<ul>
-									<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i> Office : 0041-456-3692</li>
-									<li><i class="glyphicon glyphicon-phone" aria-hidden="true"></i> Mobile : 0200-123-4567</li>
-									<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> <a href="#"><a href="mailto:info@example.com">info@example.com</a></a></li>
-									<li><i class="glyphicon glyphicon-print" aria-hidden="true"></i> Fax : 0091-789-456100</li>
-								</ul>
+								<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i> 电话 : 0041-456-3692</li>
+								<li><i class="glyphicon glyphicon-phone" aria-hidden="true"></i> 手机 : 0200-123-4567</li>
+								<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> 邮箱 : info@example.com</li>
+								<li><i class="glyphicon glyphicon-print" aria-hidden="true"></i> 传真 : 0091-789-456100</li>
+							</ul>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -76,7 +79,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 	<jsp:include page="footer.jsp" flush="true"/>
-	
+	<jsp:include page="floatnavbar.jsp" flush="true"/>
+	<script src="<%=basePath%>Plugins/validform/js/Validform_v5.3.2_ncr_min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//初始化表单验证信息
+			var form = $("form").Validform({
+				tiptype:3,
+				label:".label",
+				showAllError:true
+			});
+			ajaxPost:true
+		});
+	</script>
 
 </body>
 </html>
