@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="Manager/product" namespace="/Manager/product" extends="struts-default,json-default">
+		<interceptors>
+			<interceptor name="loginStatus" class="com.shengrong.manager.interceptors.LoginStatus">
+			</interceptor>
+		</interceptors>
+		<global-results>
+            <!-- 逻辑名为login的结果，映射到/login.jsp页面 -->
+            <result name="login">/Manager/Account/login.jsp</result>
+        </global-results>
+        
+        <action name="producttype" class="com.shengrong.manager.actions.ProductTypeAction">
+        	<result name="success">/Manager/Product/producttype.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <action name="saveProducttype" class="com.shengrong.manager.actions.ProductTypeAction" method="save">
+        	<result name="success" type="chain">
+        		<param name="actionName">producttype</param>
+				<param name="namespace">/Manager/product</param>
+        	</result>
+        	<result name="error">/Manager/error.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <action name="deleteProducttype" class="com.shengrong.manager.actions.ProductTypeAction" method="delete">
+        	<result type="json">
+        		<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+        	</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <action name="saveProductPage" class="com.shengrong.manager.actions.ProductAction">
+        	<result name="success">/Manager/Product/publicProduct.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <action name="saveProduct" class="com.shengrong.manager.actions.ProductAction" method="save">
+        	<result name="success" type="chain">
+        		<param name="actionName">products</param>
+				<param name="namespace">/Manager/product</param>
+        	</result>
+        	<result name="error">/Manager/error.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <action name="products" class="com.shengrong.manager.actions.ProductAction" method="query">
+        	<result name="success">/Manager/Product/productList.jsp</result>
+        	<result name="error">/Manager/error.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <action name="editProductPage" class="com.shengrong.manager.actions.ProductAction" method="editPage">
+        	<result name="success">/Manager/Product/editProduct.jsp</result>
+        	<result name="error">/Manager/error.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <!-- 删除产品，废弃！！！ -->
+        <action name="editProduct" class="com.shengrong.manager.actions.ProductAction" method="saveOrUpdate">
+        	<result name="success" type="chain">
+        		<param name="actionName">products</param>
+				<param name="namespace">/Manager/product</param>
+        	</result>
+        	<result name="error">/Manager/error.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <action name="deleteProduct" class="com.shengrong.manager.actions.ProductAction" method="delete">
+        	<result type="json">
+        		<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+        	</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+	</package>
+</struts>

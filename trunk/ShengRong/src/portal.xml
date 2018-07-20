@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 产品中心 -->
+	<package name="Portal/Products" namespace="/Portal/Products" extends="struts-default,json-default" >
+		<action name="products" class="com.shengrong.portal.actions.ProductsAction" method="query">
+        	<result name="success">/Portal/products.jsp</result>
+        	<result name="error">/Portal/error.jsp</result>
+        </action>
+        <action name="openProduct" class="com.shengrong.portal.actions.ProductsAction" method="open">
+        	 <result name="success">/Portal/singleproduct.jsp</result>
+        	 <result name="error" type="chain">
+        	 	<param name="actionName">products</param>
+				<param name="namespace">/Portal/Products</param>
+        	 </result>
+        </action>
+	</package>
+	
+	<!-- 新闻前线 -->
+	<package name="Portal/News" namespace="/Portal/News" extends="struts-default">	
+		<action name="queryNewses" class="com.shengrong.portal.actions.NewsAction" method="query">
+        	<result name="success">/Portal/newslist.jsp</result>
+        </action>
+    	<action name="openNews" class="com.shengrong.portal.actions.NewsAction" method="open">
+        	<result name="success">/Portal/singlenews.jsp</result>
+        	<result name="error" type="chain">
+        	 	<param name="actionName">queryNewses</param>
+				<param name="namespace">/Portal/News</param>
+        	</result>
+		</action>
+	</package>
+	 
+	<!-- 资料共享 -->
+	<package name="Portal/Datum" namespace="/Portal/Datum" extends="struts-default">	
+		<action name="datumsharing" class="com.shengrong.portal.actions.DatumAction" method="query">
+        	<result name="success">/Portal/datumlist.jsp</result>
+    	</action>
+	</package>
+	 
+	<!-- 关于我们 -->
+	<package name="Portal/Aboutus" namespace="/Portal/Aboutus" extends="struts-default">	
+		<action name="aboutshengrong" class="com.shengrong.portal.actions.AboutCompanyAction">
+			<result name="success">/Portal/aboutshengrong.jsp</result>
+		</action>
+		<action name="aboutteam" class="com.shengrong.portal.actions.AboutMemberAction">
+			<result name="success">/Portal/aboutteam.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 招聘信息 -->
+	<package name="Portal/Employment" namespace="/Portal/Employment" extends="struts-default">
+		<action name="employment" class="com.shengrong.portal.actions.EmploymentAction">
+        	<result name="success">/Portal/employment.jsp</result>
+        	<result name="error">/Portal/error.jsp</result>
+        </action>
+        <action name="openRecruitapply" class="com.shengrong.portal.actions.EmploymentAction" method="open">
+        	<result name="success">/Portal/recruitapply.jsp</result>
+        	<result name="error" type="chain">
+        	 	<param name="actionName">employment</param>
+				<param name="namespace">/Portal/Employment</param>
+        	 </result>
+        </action>
+        <action name="saveRecruitapply" class="com.shengrong.portal.actions.EmploymentAction" method="save">
+        	<result name="success">/Portal/success.jsp</result>
+        	<result name="error">/Portal/error.jsp</result>
+        </action>
+	</package>
+	
+	<!-- 加入我们 -->
+	<package name="Portal/Joinus" namespace="/Portal/Joinus" extends="struts-default">	
+		<action name="cooperation" class="com.shengrong.portal.actions.CooperationAction">
+        	<result name="success">/Portal/cooperation.jsp</result>
+        </action>
+         <action name="saveCoopreation" class="com.shengrong.portal.actions.CooperationAction" method="save">
+        	<result name="success">/Portal/success.jsp</result>
+        	<result name="error">/Portal/error.jsp</result>
+        </action>
+        
+	</package>	
+</struts>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="Manager/datum" namespace="/Manager/datum" extends="struts-default,json-default">
+		<interceptors>
+			<interceptor name="loginStatus" class="com.shengrong.manager.interceptors.LoginStatus">
+			</interceptor>
+		</interceptors>
+		<global-results>
+            <!-- 逻辑名为login的结果，映射到/login.jsp页面 -->
+            <result name="login">/Manager/Account/login.jsp</result>
+    	</global-results>
+    	
+	    <!-- 资料上传页面跳转 -->
+		<action name="datum" class="com.shengrong.manager.actions.DatumAction">
+			<result name="success">/Manager/Datum/datum.jsp</result>	
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		<!-- 保存资料 -->
+		<action name="saveDatum" class="com.shengrong.manager.actions.DatumAction" method="save">
+			<result name="success" type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		<!-- 资料上传进度获取 -->
+		<action name="saveDatumProgress" class="com.shengrong.manager.actions.DatumAction" method="saveProgress">
+			<result name="success" type="json">
+				<param name="root">
+					uploadProgress
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		<!-- 清除资料上传进度会话 -->
+		<action name="clearProgressSession" class="com.shengrong.manager.actions.DatumAction" method="clearProgressSession">
+			<result name="success" type="json">
+				<param name="root">
+					uploadProgress
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		<!-- 获取资料列表 -->
+        <action name="queryDatums" class="com.shengrong.manager.actions.DatumAction" method="query">
+        	<result name="success">/Manager/Datum/datumList.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <!-- 删除资料 -->
+        <action name="deleteDatum" class="com.shengrong.manager.actions.DatumAction" method="delete">
+        	<result name="success" type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+	</package>
+</struts>

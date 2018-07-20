@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="Manager/news" namespace="/Manager/news" extends="struts-default,json-default">
+		<interceptors>
+			<interceptor name="loginStatus" class="com.shengrong.manager.interceptors.LoginStatus">
+			</interceptor>
+		</interceptors>
+		<global-results>
+            <!-- 逻辑名为login的结果，映射到/login.jsp页面 -->
+            <result name="login">/Manager/Account/login.jsp</result>
+        </global-results>
+        
+        <!-- 新闻类型页面跳转 -->
+        <action name="newstypes" class="com.shengrong.manager.actions.NewstypeAction">
+        	<result name="success">/Manager/NewsManage/newstype.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <!-- 添加新闻类型 -->
+        <action name="saveNewstype" class="com.shengrong.manager.actions.NewstypeAction" method="save">
+        	<result name="success" type="chain">
+				<param name="actionName">newstypes</param>
+				<param name="namespace">/Manager/news</param>
+			</result>
+        	<result name="error">/Manager/error.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <!-- 删除公司简介 -->
+		<action name="deleteNewstype" class="com.shengrong.manager.actions.NewstypeAction" method="delete">
+			<result type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+		</action>
+		
+		 <!-- 新闻发布页面跳转 -->
+        <action name="newses" class="com.shengrong.manager.actions.NewsAction">
+        	<result name="success">/Manager/NewsManage/news.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <!-- 添加新闻 -->
+        <action name="saveNews" class="com.shengrong.manager.actions.NewsAction" method="save">
+        	<result name="success" type="chain">
+				<param name="actionName">queryNewses</param>
+				<param name="namespace">/Manager/news</param>
+			</result>
+        	<result name="error">/Manager/error.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <!-- 新闻列表 -->
+        <action name="queryNewses" class="com.shengrong.manager.actions.NewsAction" method="query">
+        	<result name="success">/Manager/NewsManage/newsList.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <!-- 新闻编辑页面跳转 -->
+        <action name="updateNewsPage" class="com.shengrong.manager.actions.NewsAction" method="updatePage">
+        	<result name="success">/Manager/NewsManage/editNews.jsp</result>
+        	<result name="error">/Manager/error.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <!-- 编辑更新新闻 -->
+        <action name="updateNews" class="com.shengrong.manager.actions.NewsAction" method="update">
+        	<result name="success">/Manager/success.jsp</result>
+        	<result name="error">/Manager/error.jsp</result>
+        	<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+        <!-- 删除新闻 -->
+        <action name="deleteNews" class="com.shengrong.manager.actions.NewsAction" method="delete">
+        	<result type="json">
+				<param name="root">
+					result
+					<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+				</param>
+			</result>
+			<interceptor-ref name="loginStatus"/><!-- 配置登录状态检验拦截器 -->
+			<interceptor-ref name="defaultStack"/><!-- 配置自定义的拦截器 -->
+        </action>
+	</package>
+</struts>

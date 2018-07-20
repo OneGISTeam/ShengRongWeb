@@ -132,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="<%=basePath %>recruit/saveRecruitPage.action">发布招聘信息</a>
                     </li>
                     <li>
-                        <a href="#">招聘申请查看</a>
+                        <a href="<%=basePath %>recruit/recruitList.action">招聘申请查看</a>
                     </li>
             	</ul>
             </li>
